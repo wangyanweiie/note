@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>生成器函数</title>
+</head>
+<body>
+    <!-- 生成器函数 -->
+    <!----------------------------------------------------------------------
+    （1）理解：ES6 提供的异步编程的新解决方案, 语法上生成器其实就是一个特殊的函数;
+        * 原异步编程: 通过纯回调函数（node:fs  ajax mongodb）
+    （2）声明语法：function * 函数名(){};
+    （3）生成器函数参数：next 方法可以传递实参,作为上一个 yield 语句的返回值;
+    （4）注意
+        * 生成器函数返回的结果是迭代器对象,调用迭代器对象的 next 方法可以得到 yield 语句后的值;
+        * yield 相当于函数的暂停标记,也可以认为是函数的分隔符,每调用一次 next 方法执行一段代码;
+    -------------------------------------------------------------------------------------->
+    <script>    
+        //********声明生成器函数********
+        function * gen(){
+            //yield 相当于函数代码的分隔符
+            console.log(111);
+            yield '一只没有耳朵';
+            console.log(222);
+            yield '一只没有尾巴 ';
+            console.log(333);
+            yield '真奇怪';
+            console.log(444);
+        }
+
+        //获取迭代器对象
+        let iterator = gen();
+        console.log(iterator.next());
+        console.log(iterator.next());
+        console.log(iterator.next());
+        console.log(iterator.next());
+        
+        //for..of 遍历
+        for(let i of gen()){
+            console.log(i);
+        }
+    </script>
+</body>
+</html>

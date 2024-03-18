@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rest/Spread属性</title>
+</head>
+
+<body>
+    <!--Rest/Spread属性-->
+    <!-------------------------------------------------------------------
+    理解：Rest 参数与 spread 扩展运算符在ES6中已经引入,但在ES6中只针对于数组;
+        在ES9中为对象提供了像数组一样的 rest 参数与 spread 扩展运算符...;
+    --------------------------------------------------------------------->
+    <script>
+        //rest 参数
+        function connect({host, port, ...user}){
+            console.log(host);      //127.0.0.1
+            console.log(port);      //3306
+            console.log(user);      //name password type
+        }
+        connect({
+            host: '127.0.0.1',
+            port: 3306,
+            username: 'root',
+            password: 'root',
+            type: 'master'
+        });
+
+        //...进行对象合并
+        const One = {
+            o:'小王'
+        }
+        const Two = {
+            t:'小红'
+        }
+        const Three = {
+            t:'小黑'
+        }
+        const Four = {
+            f:'小白'
+        }
+        const names = {...One, ...Two, ...Three, ...Four};
+        console.log(names);
+    </script>
+</body>
+</html>

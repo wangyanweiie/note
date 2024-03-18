@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOM对象</title>
+</head>
+<body>
+    <!---------------------------------------------------
+    1、BOM
+    （1）全称：Browser Object Model（浏览器对象模型）
+    （2）作用：可以使我们通过JS操作浏览器;
+
+    2、BOM对象：
+    （1）定义: BOM为我们提供了一组对象,用来完成对浏览器的操作;
+    （2）注意: 都作为 window对象的属性保存,可以 window调用或者直接使用;
+    （3）分类
+        ① Window     浏览器窗口
+        ② Navigator  浏览器信息  
+        ③ Location   地址信息   
+        ④ history    历史记录    
+        ⑤ Screen     屏幕信息 
+
+    3、window对象
+    （1）定义：代表浏览器的整个窗口,同时作为页面的全局对象;
+    （3）方法：
+        ① setInterval()     定时调用;
+        ② clearInterval()   关闭由 setInterval设置的定时调用;
+        ③ setTimeout()      延时调用;
+        ④ clearTimeout()    关闭由设置的 setTimeout延时调用;
+        ......
+
+    4、navigator
+    （1）定义：代表当前浏览器的信息,通过该对象可以识别不同的浏览器;
+    （2）注意：由于历史原因 Navigator中的大部分属性已经不能帮助我们识别浏览器了;
+    （3）navigator.userAgent属性：返回一个包含描述浏览器信息的内容的字符串,不同浏览器有不同的userAgent;
+
+    5、location
+    （1）定义：代表浏览器的地址信息,可以获取到地址栏信息或者操作浏览器跳转网页;
+    （2）注意：直接打印 location显示的是当前地址栏的信息,即当前页面的完整路径;
+        若直接将location修改成一个完整的路径,则页面会自动跳转到该路径,并生成相应的历史记录;
+    （3）方法：
+        ① assign()    跳转到其他页面,作用同直接修改 location;
+        ② reload()    重新加载当前页面,作用同刷新按钮;
+        ③ replace()   用新的页面替换当前页面,调用完毕也会跳转,但没有历史记录不能回退;
+    
+    6、history
+    （1）定义：代表历史浏览记录,但出于隐私不能获取具体的记录,只能操作浏览器前后翻页,且只有当次访问有效;
+    （2）属性：length：可以获取档次访问的链接数量;
+    （3）方法：
+            ① back()     回退到上一页面
+            ② forward()  前进到下一页面
+            ③ go(n)      跳转到指定页面,正值向前、负值向后
+     --------------------------------------------------->
+     <script>
+         window.onload = function(){
+            //------userAgent属性---------
+            var nu = navigator.userAgent;
+            //查看各浏览器的 userAgent (360浏览器同谷歌)
+            //console.log(nu);     
+            if(/firefox/i.test(nu)){
+                alert("我是火狐浏览器");
+            }
+            else if(/chrome/i.test(nu)){
+                alert("我是谷歌浏览器");
+            }
+            else if(/msie/i.test(nu)){
+                alert("我是IE浏览器");
+            }
+            //通过IE浏览器中特有的对象判断 IE11, 检查对象中是否包含某个属性 (属性名 in 对象名)
+            else if("ActiveXObject" in window){
+                alert("我是IE11")
+            }
+         };
+     </script>
+    
+    
+</body>
+</html>

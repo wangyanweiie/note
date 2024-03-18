@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>flat 与 flatMap</title>
+</head>
+<body>
+    <!-- 数组方法：flat/flatMap -->
+    <!--------------------------------------------------
+    （1）作用：flat()将多维数组转化为低维数组; 可以在使用map()的返回结果为多维数组时,使用flatMap()代替进行降维;
+    （2）语法：
+        * arr.flat(n)
+        * arr.flatMap(n) 
+    （3）参数：n为数字表示深度/层数,省略默认为1;
+    -------------------------------------------------->
+    <script>
+        //*********flat********
+        //将多维数组转化为低维数组
+        const arr1 = [1,2,3,4,[5,6,[7,8,9]]];
+        // console.log(arr1.flat(1));
+        console.log(arr1.flat(2));
+
+        //********flatMap********
+        const arr2 = [1,2,3,4];
+        const result01 = arr2.map(item => [item * 10]);
+        const result02 = arr2.flatMap(item => [item * 10]);
+        console.log(result01);
+        console.log(result02);
+    </script>
+</body>
+</html>

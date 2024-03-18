@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>Vue监测数据改变的原理(对象)</title>
+		<script type="text/javascript" src="../js/vue.js"></script>
+	</head>
+	<body>
+		<!-- Vue监视对象 -->
+		<!--------------------------------
+		不管嵌套多少层的对象vue都可以监测到,
+		都有为该对象服务的setter与getter方法;
+		----------------------------------->
+		<div id="root">
+			<h4>学校名称：{{name}}</h4>
+			<h4>学校地址：{{address}}</h4>
+		</div>
+	</body>
+
+	<script type="text/javascript">
+		Vue.config.productionTip = false
+		//声明vue实例
+		const vm = new Vue({
+			el:'#root',
+			data:{
+				name:'尚硅谷',
+				address:'北京',
+				student:{
+					name:'tom',
+					age:{
+						rAge:30,
+						sAge:25,
+					},
+					friends:[{name:'jerry',age:35}]
+				}
+			}
+		})
+	</script>
+</html>

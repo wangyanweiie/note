@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>函数对象的方法</title>
+</head>
+<body>
+    <script>
+    /*-------------------------------------------
+    函数对象的方法
+    1、call 与 apply
+    （1）定义：都是函数对象的方法,通过函数对象来调用;
+    （2）语法：
+        ①函数名.call(对象名, 实参1,实参2...)
+        ②函数名.apply(对象名, [实参1,实参2...])
+
+    （3）与普通调用的区别
+        在调用call()与 apply()方法时,可以将一个对象指定为第一个参数,并且该对象会成为函数执行时的 this;
+        即我们可以通过调用 call()与apply()方法修改函数执行时的 this;
+
+    （4）call与apply传参的区别（是否传递实参可选）
+        ① call方法可以将实参放在对象后依次传递;
+        ② apply方法需要传递数组或者类数组,即将要传递的实参放到数组中统一传递;
+    ---------------------------------------------------------------------*/
+    </script>
+    <script>
+        //创建函数
+        function fun(){
+            console.log(this)
+        };
+        //声明对象
+        var obj = {
+            name:"obj",
+            sayname:function(){
+                console.log(this.name);
+            }
+        };
+        var obj2 = {name:"obj2"};
+
+        //1.直接调用函数
+        fun();                      // this：window
+        fun.call();                 // this：window
+        fun.apply();                // this：window
+
+        //2.可以将对象指定参数,并且该对象会成为函数执行时的 this
+        fun.call(obj);              // this：Object
+        fun.apply(obj);             // this：Object
+
+        //3.可以通过调用call()与 apply()方法修改函数执行时的 this
+        obj.sayname();              // this：obj
+        obj.sayname.call(obj2);     // this：obj2
+
+        //****************************************************
+        //运用call与apply方法传递参数
+        function fn(a,b){
+            console.log("a="+ a);
+            console.log("b="+ b);
+        }
+        var obj = {
+            name:"obj",
+            sayname:function(){
+                console.log(this.name);
+            }
+        };
+        fn(2,3)
+        fn.call(obj,2,3);
+        fn.apply(obj,[2,3]);
+
+    </script>
+</body>
+</html>

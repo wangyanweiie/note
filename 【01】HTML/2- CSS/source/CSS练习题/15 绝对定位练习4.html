@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>绝对定位练习4</title>
+    <style>
+        .box{
+            width: 290px;
+            height: 390px;
+            background-color: lightgoldenrodyellow;
+            overflow: hidden;
+        }
+        .phone-box{
+            width: 290px;
+            height: 240px;
+            background-color: pink;
+            margin-top: 25px;
+            position: relative;
+        }
+        /*img1与img2定位到同一位置*/
+        .phone-box>img{
+            width: 120px;
+            height: 240px;
+            position: absolute;
+            top: 0;
+            left: 85px;
+         }
+        .box:hover .img1{
+            left: 55px;
+        }
+        .box:hover .img2{
+            left: 115px;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <div class="phone-box">
+        <img src="../Jinli/20190916182659b.png" alt="" class="img1">
+        <img src="../Jinli/20190916182852a.png" alt="" class="img2">
+    </div>
+</div>
+</body>
+</html>

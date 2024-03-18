@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>定时器应用练习5</title>
+    <script src="js/tools.js"></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            height: 100%;
+            border-left: black solid 1px;
+            position:absolute;
+            top: 0;
+            left: 800px;
+        }
+        #box01{
+            width: 100px;
+            height: 100px;
+            background-color:pink;
+            position: absolute;
+            /*防止IE获取到的是auto*/
+            left: 0;
+        }
+        #box02{
+            width: 100px;
+            height: 100px;
+            background-color:green;
+            position: absolute;
+            top: 200px;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            var btn01 = document.getElementById("btn01");
+            var btn02 = document.getElementById("btn02");
+            var btn03 = document.getElementById("btn03");
+            var box01 = document.getElementById("box01");
+            var box02 = document.getElementById("box02");
+           //单击响应函数中直接调用 move函数
+            btn01.onclick = function(){
+                move(box01,"left",800,20);
+            };      
+            btn02.onclick = function(){
+                move(box01,"left",0,10);
+            };
+            //宽度变为 800后 高度变为 400 最后 top为0
+            btn03.onclick = function(){
+                move(box02,"width",800,10,function(){
+                    move(box02,"height",400,15,function(){
+                        move(box02,"top",0,20,function(){})
+                    })
+                });
+            };
+        };
+    </script>
+</head>
+<body>
+    <button id="btn01">粉色向右移动</button>
+    <button id="btn02">粉色向左移动</button><br><br>
+    <button id="btn03">绿色改变宽高</button><br><br>
+    <div id="box"></div>
+    <div id="box01"></div>
+    <div id="box02"></div>
+</body>
+</html>

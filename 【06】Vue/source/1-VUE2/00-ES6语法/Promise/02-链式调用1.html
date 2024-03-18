@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+  // 链式编程
+  new Promise((resolve, reject) => {
+    //模拟第一次网络请求的代码
+    setTimeout(() => {
+      resolve()
+    }, 1000)
+  }).then(() => {
+    //第一次处理的代码
+    console.log('Hello World');
+    console.log('Hello World');
+    return new Promise((resolve, reject) => {
+      //模拟第二次网络请求的代码
+      setTimeout(() => {
+        resolve()
+      }, 1000)
+    })
+  }).then(() => {
+    //第二次处理的代码
+    console.log('Hello VueJs');
+    console.log('Hello VueJs');
+    return new Promise((resolve, reject) => {
+      //模拟第三次网络请求的代码
+      setTimeout(() => {
+        resolve()
+      },1000)
+    })
+  }).then(() => {
+    //第三处理的代码
+    console.log('Hello Python');
+    console.log('Hello Python');
+  })
+</script>
+</body>
+</html>

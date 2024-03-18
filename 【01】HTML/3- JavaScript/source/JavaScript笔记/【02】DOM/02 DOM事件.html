@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件</title>
+    <style>
+        .box{
+            width: 200px;
+            height: 200px;
+            border: 3px solid red;
+        }
+        .box1{
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+    <button id="btn">点击</button>
+    <div id="box" class="box">
+        <div class="box1"></div>
+    </div>
+    <script>
+    /*----------------------------------------------------------- 
+    事件（Event）
+    1、定义：时间就是用户与浏览器之间的交互行为;
+    2、语法
+    （1）HTML：<元素 on事件 = "js代码"></元素>
+    （2）HTML与JS
+        ① html： <元素 on事件 = "函数名();"></元素>
+        ② js:    function 函数名(){ 函数体 };
+    （3）JS：元素.on事件 = function(){ 函数体 };
+
+    3、处理事件
+    （1）在事件的对应属性中设置一些Js代码,当事件被触发时,代码会执行;
+    （2）可以为按钮的对应事件绑定处理函数的形式来响应事件,当事件被触发时,对应的函数会被调用;
+    （3）注意：浏览器在加载页面时,是按照自上而下的顺序加载的,读取到一行则运行一行;
+            a、一般需要将 script标签写在页面下边,确保可以在页面加载完后执行代码;
+            b、若将 script标签写在页面上边,在代码执行时页面还没有加载,DOM对象也没有加载,无法获取到DOM对象;
+               优化：将JS代码写在 window.onload() = function{}中,该事件对应的响应函数会在页面加载完成后再执行;
+
+    4、 常用事件（元素名.事件）
+    （1）框架/对象事件
+        ① onload            页面或图片加载完成后触发 
+        ② onscroll          元素的滚动条滚动时触发 
+    （2）鼠标事件
+        ① onclick           点击触发
+        ② ondblclick        双击触发
+        ③ onmousedown       鼠标按下触发
+        ④ onmouseup         鼠标释放触发
+        ⑤ onmousemove       鼠标移动触发（支持冒泡）
+        ⑥ onwheel           鼠标滚轮在元素上下滚动时触发（适用于谷歌与火狐）
+        ⑦ onmousewheel      鼠标滚轮在元素上下滚动时触发（适用于谷歌与IE）
+        ⑧ onmouseenter      鼠标移入触发（不支持冒泡）
+        ⑨ onmouseleave      鼠标移出触发（不支持冒泡）
+        ①① onmouseover      鼠标移入触发（支持冒泡）
+        ①② onmouseout       鼠标移出触发（支持冒泡）
+    （3）键盘事件
+        ① onkeydown         键盘按键被按下（若常按连续触发）
+        ② onkeyup           键盘按键被松开
+    （4）表单事件
+        ① onfocus           获取焦点时触发
+
+    5、事件属性（event.属性）
+    （1）事件对象属性
+        ① target            返回触发此事件的元素（事件的目标节点）
+    （2）鼠标事件对象属性
+        ① clientX           返回鼠标指针相对于当前可见窗口的水平坐标
+        ② clientY           返回鼠标指针相对于当前可见窗口的垂直坐标
+        ③ pageX             返回鼠标指针相对于整个页面的水平坐标、即导航条可滑动的整体区域
+        ④ pageY             返回鼠标指针相对于整个页面的垂直坐标（只支持 IE9及以上浏览器）
+        ⑤ wheelDelta        返回鼠标滚轮滚动方向：正值向上、负值向下
+    （3）键盘事件对象属性
+        ① keyCode           返回被敲击的键生成的 Unicode字符码
+        ② ctrlKey           返回 CTRL键是否被按下：true按下、false没有按下
+        ② altKey            返回 ALT键是否被按下
+        ② shiftKey          返回 SHIFT键是否被按下
+    --------------------------------------------------------------------------------*/
+    </script>
+    <script>
+        window.onload = function(){
+            //通过ID获取到button按钮
+            var btn = document.querySelector('button');
+            //给点击事件绑定响应函数
+            btn.onclick = function(){
+                alert('Hello World');
+            };
+
+            //通过ID获取div元素
+            var box = document.getElementById('box');
+            //点击div时控制台输出点击
+            box.onclick = function(){
+            console.log('点击');
+            };
+
+            // 鼠标按下
+            box.onmousedown = function(){
+                console.log('按下');
+            };
+            // 鼠标释放
+            box.onmouseup = function(){
+                console.log('释放');
+            };
+            // 鼠标移入
+            box.onmouseenter = function(){
+                console.log('移入');
+            };
+            // 鼠标移出
+            box.onmouseleave = function(){
+                console.log('移出');
+            };
+           
+             /*// 鼠标移入 支持冒泡
+            box.onmouseover = function(){
+                console.log('移入');
+            };
+            // 鼠标移出 支持冒泡
+            box.onmouseout = function(){
+                console.log('移出');
+            };*/
+
+            // 鼠标移动
+            box.onmousemove = function(){
+                 console.log('移动');
+            };
+        }; 
+    </script>   
+</body>
+</html>

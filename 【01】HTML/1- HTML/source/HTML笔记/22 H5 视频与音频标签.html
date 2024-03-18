@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>H5视频与音频</title>
+</head>
+<body>
+<!-------------------------------
+1、视频
+（1）标签:行内元素
+    <video></video>
+（2）支持的格式您的浏览器不支持视频
+    .mp4  .ogg(移动端) .webM(高清)
+（3）属性
+    src：路径、必须属性（重点）
+    width：视频的宽度
+    height：视频的高度
+    controls：显示控制面板（重点）
+    poster=""：视频播放前显示一张图片  poster：海报
+    autoplay：自动播放（注意：谷歌浏览器不支持视频自动播放）
+    loop：循环播放
+    muted：静音
+
+2、音频
+（1）标签：行内元素
+    <audio>您的浏览器不支持音频</audio>
+（2）支持格式
+    .mp3  .ogg  .wav
+（3）属性
+    src：路径、必须属性（重点）
+    controls：显示控制面板（重点）
+    loop：循环播放
+    autoplay：自动播放
+    muted：静音
+--------------------------------------->
+<!--视频-->
+    <video src="../videos/video1.mp4" width="200" controls loop poster="../images/img3.gif">
+        您的浏览器不支持视频
+    </video>
+    <br>
+<!--音频-->
+    <audio src="../videos/HandClap.mp3" controls>
+        您的浏览器不支持音频
+    </audio>
+</body>
+</html>

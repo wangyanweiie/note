@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>表单元素的属性</title>
+</head>
+<body>
+
+<!-------------------------------------------------------------------
+表单元素属性
+    type：设置输入框的类型
+    name：表单元素的名称
+    value：当前值
+    placeholder：阴影提示文字不可编辑
+
+    checked：默认被选中(true),一般配合单选按钮和多选按钮使用,属性等于属性值
+    selected：默认显示(true)，配合下拉列表select的option使用，属性等于属性值
+    disabled：禁用(true),属性等于属性值
+
+    readonly：只读，属性等于属性值
+--------------------------------------------------------------------->
+
+<form action="" name="form1" method="post">
+    姓名：<input type="text" name="userName" placeholder="手机/邮箱/用户名" /><br/>
+    密码：<input type="password" name="password" placeholder="密码" /><br/>
+    <!--disabled 禁用意见文本框-->
+    意见：<input type="text" disabled/><br>
+    <!--checked 男默认选中-->
+    性别：<input type="radio" name="sex" checked id="man"/><label for="man">男</label>
+    <input type="radio" name="sex" id="woman"/><label for="woman">女</label><br/>
+    <input type="submit" value="登录"/>
+    <input type="reset" value="重置"/><br/>
+    <!--selected 默认显示黑龙江-->
+    <select name="sheng">
+        <option value="bj">北京</option>
+        <option value="hb">河北</option>
+        <option value="hn">河南</option>
+        <option value="wh">武汉</option>
+        <option value="hlj" selected>黑龙江</option>
+        <option value="gx">广西壮族自治区</option>
+    </select>
+</form>
+
+</body>
+</html>

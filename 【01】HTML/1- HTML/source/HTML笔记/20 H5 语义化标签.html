@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<!----------------------------------------------
+语义化标签
+（1）定义：看到标签，知道其表示的含义
+    正确的标签干正确的事情，例如网页标题 hn,段落 p
+
+（2）优点：
+    有利于搜索引擎优化
+    有利于屏幕阅读者读取
+    有利于开发者的开发和维护
+
+（3）H5新增语义化布局标签：双标记、块级元素
+    （1）header：头部
+    （2）nav：导航
+    （3）footer：页脚
+    （4）aside：侧边栏
+    （5）article：文章
+    （6）section：章节
+
+（4）非语义化标签：针对浏览器解析时
+    <div>..</div>：没有任何语义的一个块级容器
+    <span>..</span>:没有任何语义的一个行内容器
+-------------------------------------------->
+    <!-- div布局 -->
+    <div>头部</div>
+    <div>导航</div>
+    <div>
+        <div>
+            文章
+            <div>章节</div>
+        </div>
+        <div>
+            侧边栏
+        </div>
+    </div>
+    <div>页脚</div>
+    <hr/>
+
+    <!--H5布局-->
+    <header>头部</header>
+    <nav>导航</nav>
+    <div>
+        <article>
+            文章
+            <section>章节</section>
+        </article>
+        <aside>
+            侧边栏
+        </aside>
+    </div>
+    <footer>页脚</footer>
+
+</body>
+</html>

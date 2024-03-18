@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<!-- loader的使用配置 -->
+<!------------------------------------------------------------------------
+1、理解
+  我们主要是用webpack来处理我们写的Js代码,并且webpack会自动处理js之间相关的依赖;
+  但是在开发中我们不仅仅有基本的js代码处理,我们也需要加载css、图片以及一些高级的将ES6转成ES5代码;
+  以及将TypeScript转成ES5代码,scss、less转成css,.jsx、.vue文件转成js文件等等;
+  而webpack本身的能力来说对于这些转化是不支持的,此时就需要给webpack扩展对应的loader;
+
+2、loader使用过程：
+（1）大部分的loader在webpack的官网中都可以找到,并且有对应的用法;
+（2）只需要通过npm安装需要的loader,在 webpack.config.js中的modules下进行配置即可;
+（3）当需要多个loader时是按照从右向左的(从下向上)顺序进行读取的;
+
+3、常用loader（官网查询使用方式）
+（1）css文件       style-loader 与 css-loader
+（2）less文件      less-loader
+（3）图片          url-loader 与 file-loader
+（4）ES6-ES5语法   babel-loader
+（5）vue文件       vue-loader 与 vue-template-compiler
+
+4、图片打包的注意事项（url loader）
+  * 当加载的图片小于webpack.config.js中配置的limit时,会将图片编译成base64字符串形式;
+  * 当加载的图片大于webpack.config.js中配置的limit时,需要使用file-loader模块进行加载,并在打包路径生成新的图片文件;
+  * webpack自动32位hash值作为文件名,目的是防止名字重复,但真实开发中一般打包的图片名字有要求;
+    比如所有的图片放在一个文件夹中,跟上图片原来的名称,同时也要防止重复;
+    所以可以在options中添加上如下选项：name: 'img/[name].[hash:8].[ext]'
+--------------------------------------------------------------------------------------->
+</body>
+</html>

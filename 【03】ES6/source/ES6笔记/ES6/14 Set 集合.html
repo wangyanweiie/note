@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Set集合</title>
+</head>
+<body>
+    <!-- Set(集合) -->
+    <!--------------------------------------------------------------
+    1、理解：ES6提供的新的数据结构,它类似于数组,但成员的值都是唯一的;
+    2、作用：集合实现了iterator接口,可以使用扩展运算符...与for..of进行遍历;
+    3、语法
+    （1）let 对象名 = new Set();     可迭代数据作为参数,返回结果是Set集合(伪数组)
+    （2）let 对象名 = new Set([]);   一般使用数组作为参数
+
+    4、属性/方法
+    （1）对象名.size    返回集合的元素个数;
+    （2）对象名.add     增加一个新元素,返回当前集合;
+    （3）对象名.delete  删除元素,返回 boolean 值;
+    （4）对象名.has     检测集合中是否包含某个元素,返回 boolean 值;
+    （5）对象名.clear   清空集合,返回 undefined;
+    ----------------------------------------------------------------->
+    <script>
+        //********声明 Set*******
+        let s1 = new Set();     //object
+        console.log(typeof s1);
+        //输出结果会自动去重
+        let s2 = new Set(['大事儿','小事儿','好事儿','坏事儿','小事儿']);
+
+        //*******属性/方法*******
+        //元素个数
+        console.log(s2.size);
+        //添加新的元素
+        s2.add('喜事儿');
+        //删除元素
+        s2.delete('坏事儿');
+        //检测
+        console.log(s2.has('破事儿'));
+        //清空
+        //s2.clear();
+        console.log(s2);
+        
+        //*******for of遍历*******
+        for(let i of s2){
+            console.log(i);
+        }
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件对象</title>
+    <style>
+        *{
+            margin: 0;
+        }
+        #area{
+            width: 300px;
+            height: 150px;
+            border: black 1px solid;
+            background-color: pink;
+        }
+        #show{
+            width: 300px;
+            height: 30px;
+            border: black 1px solid;
+        }
+    </style>
+</head>
+<body>
+    <!--------------------------------------------------------------------------------------
+    事件对象
+    （1）定义：当事件的响应函数被触发时,浏览器每次都会将一个事件对象（event）作为实参传递给响应函数;
+        在事件对象中封装了当前事件一切的相关信息,比如鼠标移动的坐标、滑轮滚动的方向、键盘按下、分线程返回的数据data等
+    （2）调用：可以给响应函数添加一个形参（event）,直接获取到浏览器传递给函数的事件对象;
+    （3）注意：IE8及以下的浏览器中事件的响应函数被触发时,浏览器不会传递event事件对象;
+        但是有将事件对象作为 window的属性保存的,即需要通过 window.event调用;
+    （4）兼容 IE8的调用方式：event = event || window.event;
+     --------------------------------------------------------------------------------------->
+     <div id="area"></div>
+     <div id="show"></div>
+     <script>
+        window.onload = function(){
+            var area  = document.getElementById("area");
+            var show  = document.getElementById("show");
+            //鼠标移动响应函数
+            area.onmousemove = function(event){
+                //解决事件对象在 IE8中的兼容性
+                event = event || window.event;
+                //显示事件被触发时,鼠标在的水平位置 + 垂直位置
+                var x = event.clientX;
+                var y = event.clientY;
+                show.innerHTML = "x="+x+";y="+y;
+            };
+        };
+    </script>
+</body>
+</html>

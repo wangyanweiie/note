@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<!---------- 对象的解构赋值 ---------->
+<script>
+//声明对象
+const obj = {
+  name: '小明',
+  age: 18,
+  height: 188,
+  address: "中国"
+}
+//传统方法取出对象的属性
+/*const name = obj.name;
+const age = obj.age;*/
+
+//对象的解构赋值: 按照名字分配
+const { name, height, age } = obj;  
+console.log(name);
+console.log(age);
+console.log(height);
+</script>
+<!---------- 数组的解构赋值 ---------->
+<script>
+//声明数组
+const names = ['小明','小红','小白','小黑'];
+//传统方法取出数组元素
+/*const name1 = names[0];
+const name2 = names[1];*/
+
+//数组的解构赋值
+const[name1,name2,name3] = names;
+console.log(name1);
+console.log(name2);
+console.log(name3);
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <span v-if="isShow">
+            <label for="Phone">手机账号:</label>
+            <input type="text" placeholder="手机登录">
+        </span>
+        <span v-else>
+            <label for="Email">邮箱账号:</label>
+            <input type="text" placeholder="邮箱登录">
+        </span>
+        <button @click = "btnClick">切换登录</button>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        const app = new Vue({
+            el:"#app",
+            data:{
+                isShow:true
+            },
+            methods:{
+                btnClick(){
+                    this.isShow = !this.isShow
+                }
+            }
+        })
+    </script>
+</body>
+</html>

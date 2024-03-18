@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>兼容性问题</title>
+    <style>
+    /*---------------------------------------------
+    兼容性问题
+    1、厂商前缀（重点）：解决浏览器对css3新特性的支持
+    css3新特性：圆角/盒阴影/字阴影/背景颜色渐变/伪对象选择器/属性选择器/兄弟选择器
+
+      浏览器          内核          厂商前缀
+      ① 谷歌        blink内核       -webkit-
+      ② 火狐        gecko内核       -moz-
+      ③ 苹果        webkit内核      -webkit-
+      ④ IE          trident内核     -ms-
+      ⑤ 欧朋        blink内核       -o-
+
+    2、cssHack：解决IE6、7、8的兼容性问题
+    （1）条件注释法：和HTML写在同一个位置
+        <!--[if 条件]>
+            满足条件执行的代码
+        <![endif]-->
+    （2）属性前缀和后缀
+        前缀：+ - _ * #  -color:red;
+        后缀：!important(优先级最高)
+    -------------------------------------------------*/
+        .box{
+            width: 300px;
+            height: 300px;
+            background-color: red;
+            border-radius: 40px;
+
+            -webkit-border-radius:40px;
+            -moz-border-radius:40px;
+            -ms-border-radius:40px;
+            -o-border-radius:40px;
+        }
+    /*条件注释*/
+    body{
+        background-color: pink;
+        /*前缀与后缀*/
+        color: white !important;
+        color: deepskyblue;
+    }
+    </style>
+</head>
+<body>
+    <div class="box">王言伟</div>
+</body>
+</html>

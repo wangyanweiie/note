@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>变量</title>
+</head>
+<body>
+    <script>
+        /*-------------------------------------
+        1、JS变量命名规则
+            ①变量名区分大小写  a和A是两个变量
+            ②可以包含数字、字母、下划线、$
+            ③不能以数字开头
+            ④不能是JavaScript的关键字和保留字
+            ⑤见名知意
+            ⑥多个单词建议驼峰命名法
+                大驼峰  每个单词首字母大写：UserName
+                小驼峰  第一个单词首字母小写,后面单词首字母大写：userName
+
+        2、JavaScript变量
+        （1）定义：值可以改变的量称为变量
+        （2）作用：存储数据的容器
+        （3）变量声明：var 变量名;
+        （4）变量赋值：变量名 = 值;
+        （5）变量初始化：var 变量名 = 值;
+        （6）一条语句可以声明多个变量,用逗号运算符隔开;
+        （7）声明变量没有赋值调用：undefined
+        （8）没有声明变量直接调用：ReferenceError
+        （9）重新赋值时,后面的值会覆盖前面的值
+        （10）重新声明时,JS的值不会丢失
+            var x = 10;
+            var x;
+            console.log(x);   //输出结果仍为10
+
+        （11）变量的声明提升
+            ①var关键字声明的变量: 会将JS变量的声明提到所在作用域的最前面,但赋值留在原地;
+             但是若不写var则不会声明提升,会报错;
+            ②例子：
+                console.log(s);   
+                var s = 100; 
+                上式等同于==>   
+                var s;
+                console.log(s);  
+                s = 100; 
+        （12）不写var的情况：函数中不写var声明的变量是全局变量,作用域是全局;
+        -----------------------------------------------------------------*/
+    </script>
+    <script>
+        //变量声明+赋值
+        var x;
+        x = 5;
+        console.log(x);
+        //变量初始化  
+        var y = 10;             
+        var z = x + y;
+        console.log(z);
+        //一条语句合并声明,逗号隔开
+        var a = 5,b = 10,c = a + b;
+        console.log(c);
+        //重新声明
+        var m = 10;
+        var m;
+        console.log(m); 
+        //重新赋值
+        var n = 10;
+        n = 100;
+        console.log(n);
+        //声明提升
+        console.log(s);
+        var s;
+    </script>
+</body>
+</html>

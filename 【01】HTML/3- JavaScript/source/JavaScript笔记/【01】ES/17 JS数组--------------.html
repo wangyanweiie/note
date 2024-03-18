@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数组</title>
+</head>
+<body>
+    <script>
+    /*---------------------------------------------------
+    数组
+    1、定义：中括号包含的一组有序的值
+    2、作用：存储数据的容器（多条且有序）
+    3、数组元素：数组每一条数据称为数组元素,可以是任何数据类型,之间用逗号隔开;
+    4、本质：数组的本质是对象,数组是对象的一种特殊表现形式（typeof返回object）
+    5、创建
+    （1）字面量法
+        var 数组名 = [数组元素1,数组元素2,...];
+    （2）new
+        var 数组名 = new Array(数组元素1,数组元素2,...);
+    （3）区别
+        当只有一条数据,且数据类型为 number
+        a、字面量法表示下标为 0,长度为 1,数据为此 number
+        b、new方法表示长度为此 number,数组元素为 empty
+
+    6、调用
+    （1）语法：数组名[index]
+    （2）注意：调用多个要用遍历
+
+    7、赋值
+    （1）语法：数组名[index] = 值;
+    （2）总结：操作数组,都是操作数组的下标,返回下标所对应的值;
+              如果数组声明,但没有赋值,返回类型 undefined
+
+    8、空位：empty
+    （1）定义：两个逗号之间没有值称为数组的空位
+    （2）注意：最后一个数组元素后面加逗号不会产生空位,建议不加;
+    ------------------------------------------------------*/
+    </script>
+    <script>
+        //创建数组：[] 与 Array()的区别
+        var arr1 = [5];
+        console.log(arr1);  //[5]：长度为1
+        var arr2 = new Array(5);
+        console.log(arr2);  //[empty × 5]：长度为5
+        document.write(arr2); //,,,, 代表五个空位
+
+        //调用数组
+        var arr = ['张一山','张若昀','郭艾伦','王一博'];
+        console.log(arr);
+        console.log(arr[1]);//张若昀
+        console.log(arr[3]);//王一博
+        console.log(arr[5]);//下标越界   undefined
+        //重新赋值
+        arr[2] = 666;
+        console.log(arr);   // ["张一山", "张若昀", 666, "王一博"]
+        //增加值
+        arr[4] = '库里';
+        console.log(arr);   // ["张一山", "张若昀", 666, "王一博", "库里"]
+        arr[6] = '迪丽热巴';
+        console.log(arr);   // ["张一山", "张若昀", 666, "王一博", "库里",,"迪丽热巴"]
+        console.log(arr[5]); //undefined
+        console.log(arr.length); 
+    </script>
+</body>
+</html>

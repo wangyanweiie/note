@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object.fromEntries</title>
+</head>
+<body>
+    <!--对象方法：Object.fromEntries-->
+    <!----------------------------------------------------
+    （1）作用：用于创建对象,但需要接收二维数组或者Map作为参数;
+    （2）语法
+        * const 变量名 = Object.fromEntries([])
+        * const 变量名 = Object.fromEntries({})
+    ------------------------------------------------------>
+    <script>
+        //********** Object.fromEntries ***********
+        // 二维数组作形参：返回值是一个对象;
+        const res = Object.fromEntries([
+            ['name','尚硅谷'],
+            ['class', 'Java,python,web,linux']
+        ]);
+        console.log(res);
+
+        //Map对象作形参
+        const m = new Map();
+        m.set('name','小王');
+        const result = Object.fromEntries(m);
+        console.log(result);
+ 
+        //ES8中的逆运算：Object.entries 将一个对象转化为二维数组
+        const arr = Object.entries({
+            name: "尚硅谷"
+        })
+        console.log(arr);
+        
+    </script>
+</body>
+</html>

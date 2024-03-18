@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>迭代器</title>
+</head>
+<body>
+    <!-- 迭代器 (Iterator) -->
+    <!---------------------------------------------------------------     
+    （1）定义：迭代器就是一种机制,它是一种接口为各种不同的数据结构提供统一的访问机制;
+        任何数据结构只要部署Iterator接口 (即Symbol.iterator属性),就可以完成遍历操作;
+
+    （2）for..of 遍历命令
+        * ES6创造了一种新的遍历命令 for..of 循环, Iterator 接口主要供 for..of 消费;
+        * for..of遍历返回的是保存的键值;
+        * for..in遍历返回的保存的键名/下标;
+
+    （3）原生具备 iterator 接口的数据(可用 for..of 遍历)
+        * Array
+        * Arguments
+        * Set
+        * Map
+        * String
+        * TypedArray
+        * NodeList
+
+    （4）工作原理
+        * 创建一个指针对象,指向当前数据结构的起始位置;
+        * 第一次调用对象中的 next 方法,指针自动指向数据结构的第一个成员;
+        * 接下来不断调用 next 方法,指针一直往后移动,直到指向最后一个成员;
+        * 每调用 next 方法返回一个包含 value 和 done 属性的对象;
+        * 在遍历过程中 done 的值一直都是 false, 当值为 true 时代表当前循环结束;
+        
+    （5）应用：需要自定义遍历数据时要想到迭代器;
+    ----------------------------------------------------------------------->
+    <script>
+        //声明一个数组
+        const xiYou = ['唐僧','孙悟空','猪八戒','沙僧'];
+        console.log(xiYou);     //原型中存在 iterator接口
+
+        //使用 for...in 遍历数组
+        for(let i in xiYou){
+            console.log(i);        //返回键名/下标
+        }
+
+        //使用 for...of 遍历数组
+        for(let i of xiYou){
+            console.log(i);       //返回键值
+        }
+
+        
+        let iterator = xiYou[Symbol.iterator]();
+        console.log(iterator);  //原型中存在 next方法
+
+        //工作原理：调用对象的next方法
+        console.log(iterator.next());       // { done: false, value: '唐僧' }
+        console.log(iterator.next());       // { done: false, value: '孙悟空' }
+        console.log(iterator.next());       // { done: false, value: '猪八戒' }
+        console.log(iterator.next());       // { done: false, value: '沙僧' }
+        console.log(iterator.next());       // { done: true, value: undefined }
+    </script>
+</body>
+</html>

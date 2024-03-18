@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>字符串方法：matchAll</title>
+</head>
+<body>
+    <!--字符串方法：matchAll-->
+    <!-------------------------------
+    （1）语法：str.matchAll();
+    （2）作用：数据的批量提取
+    ---------------------------------->
+    <script>
+        let str = `<ul>
+            <li>
+                <a>肖生克的救赎</a>
+                <p>上映日期: 1994-09-10</p>
+            </li>
+            <li>
+                <a>阿甘正传</a>
+                <p>上映日期: 1994-07-06</p>
+            </li>
+        </ul>`;
+        //声明正则
+        const reg = /<li>.*?<a>(.*?)<\/a>.*?<p>(.*?)<\/p>/sg
+        //调用方法
+        const result = str.matchAll(reg);
+        //遍历输出
+        /*for(let i of result){
+            console.log(i);
+        }*/
+        //...运算符拆分
+        const arr = [...result];
+        console.log(arr);
+ 
+    </script>
+</body>
+</html>

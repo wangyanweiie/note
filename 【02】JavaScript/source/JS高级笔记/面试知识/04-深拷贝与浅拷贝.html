@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<!-- 深拷贝与浅拷贝 -->
+<!----------------------------------------------------------------------
+1.浅拷贝
+  * 理解: 浅拷贝就是增加了一个指针指向已存在的内存,浅拷贝只是拷贝了内存地址;
+    子类的属性指向的是父类属性的内存地址,当子类的属性修改后,父类的属性也被修改;
+
+2.深拷贝
+  * 理解: 深拷贝就是增加一个指针,并申请一个新的内存,并且让这个新增加的指针指向这个新的内存地址;
+    当我们需要复制原对象但又不能修改原对象时,就需要使用深拷贝; (可以依赖lodash)
+-------------------------------------------------------------------------->
+<!-- 手写深拷贝 -->
+  <script>
+  function deepClone(obj){
+    let cloneObj;
+    //判断当输入的数据: 为简单数据类型时直接复制
+    if(obj && typeof obj !== 'object'){
+      cloneObj = obj;
+    }
+    //当输入的数据是对象或者数组时
+    else if(obj && typeof obj === 'object'){
+      //检测输入的数据是数组还是对象
+      cloneObj = Array.isArray(obj) ? [] : {};
+
+      //变量数据对象
+      for(let key in obj){
+        //判断对象是否存在key属性
+        if(obj.hasOwnProperty(key)){
+          //若当前元素类型为对象时递归调用
+          if(obj[key] && typeof obj[key] === 'object'){
+            cloneObj[key] = deepClone(obj[key]);
+          }
+          //若当前元素类型为基本数据类型
+          else{
+            cloneObj[key] = obj[key];
+          }
+        }
+      }
+    }
+    return cloneObj;
+  }
+
+  </script>
+</body>
+</html>

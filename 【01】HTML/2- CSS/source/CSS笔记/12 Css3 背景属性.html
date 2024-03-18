@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>背景属性</title>
+    <style>
+/*------------------------------------------------------
+背景属性
+（1）背景颜色：background-color: transparent;（默认值透明色）
+    ①关键字：red  blue
+    ②十六进制：包含0-9 a-f（不区分大小写）
+        #000000   黑色   简写  #000
+        #ffffff   白色   简写  #fff
+    ③rgb:取值0-255
+        rgb(0,0,0) 黑色
+        rgb(255,255,255)  白色
+    ④rgba(0,,0,0,.5)
+        a:表示透明度  取值0-1
+
+（2）背景图片：background-images: url("图片路径");
+    ①当背景图片小于容器时，水平垂直平铺
+     当背景图片大于容器时，显示不完全
+    ②背景图片和img图片元素的区别：
+        背景图片：父元素多大，显示多大
+        img元素：父元素放不下，会溢出
+
+（3）背景图片平铺：background-repeat: ;
+    ① repeat：水平垂直平铺（默认值）
+    ② no-repeat：不平铺
+    ③ repeat-x：水平方向平铺
+    ④ repeat-y：垂直方向平铺
+
+（4）背景图片大小：background-size: 水平方向大小 垂直方向大小;
+    ① px：当只取一个值，等比例缩放
+    ② %：当只取一个值，等比例缩放
+    ③ cover：背景图片会覆盖整个背景区域，但是背景图片可能显示不完全，图片是等比例缩放
+    ④ contain：背景图片显示完全，扩展至最大，但是背景区域可能覆盖不完全，图片是等比例缩放
+
+（5）背景图片定位：background-position: 水平方向的位置 垂直方向的位置;
+    ① px：取正值背景图片往右下移动，取负值往左上移动
+    ② %
+    ③ left right center top bottom （默认位置在左上角）
+     注意：当只取一个值时，第二个值默认居中
+
+（6）背景图片固定：background-attachment: scroll（默认值）|fixed（固定）;
+
+（7）简写：background 背景颜色 背景图片 背景图片是否平铺 背景图片大小 背景图片定位 背景图片固定;
+        注意：没有取值的属性取默认值
+            当简写属性和单个属性同时存在，单个属性写在简写属性要的下面
+-----------------------------------------------------------------------------------------*/
+        body{
+            width: 2000px;
+            height: 1500px;
+            background-image: url("../images/img4.gif");
+            /*背景图片固定*/
+            background-attachment:fixed;
+        }
+        .box{
+            width: 600px;
+            height: 600px;
+            /*background-color: pink;*/
+            /*背景图片*/
+            /*background-image: url("../images/img3.gif ");*/
+            /* 设置背景图片是否平铺 */
+            /*background-repeat: no-repeat;*/
+
+            /*简写*/
+            background: pink url("../images/img3.gif") no-repeat;
+            /* 设置背景图片的大小 */
+            /*background-size: 100% 100%;*/
+            /*background-size: 1000px 500px; */
+            /*background-size: cover; */
+            /*background-size: contain; */
+            /*background-size: 200px;*/
+
+            /*背景图片定位 */
+            /*background-position: 100px 100px; */
+            background-position: 50%
+            /*background-position: right bottom;*/
+        }
+    </style>
+</head>
+<body>
+
+<div class="box"></div>
+
+</body>
+</html>

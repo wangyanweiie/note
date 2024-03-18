@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>定时器应用练习4</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            height: 100%;
+            border-left: black solid 1px;
+            position:absolute;
+            top: 0;
+            left: 800px;
+        }
+        #box01{
+            width: 100px;
+            height: 100px;
+            background-color:pink;
+            position: absolute;
+            /*防止IE获取到的是auto*/
+            left: 0;
+        }
+        #box02{
+            width: 100px;
+            height: 100px;
+            background-color:green;
+            position: absolute;
+            top: 200px;
+        }
+    </style>
+    <script>
+        //定义函数：获取元素 obj当前显示名为 name的样式
+        function getStyle(obj,name){
+            if(window.getComputedStyle){
+                return getComputedStyle(obj,null)[name];
+            }
+            else{
+                return obj.currentStyle[name];
+            }
+        }
+        /*定义函数：控制元素移动
+        参数：
+            obj：要执行的对象；
+            attr：要执行动画对应的样式（"width" "left"..）
+            target：执行动画的目标位置
+            speed：移动速度
+            callback:回调函数 在动画执行结束开始执行*/
+
+        function move(obj,attr,target,speed,callback){
+                //关闭上一次开启的定时器；
+                clearInterval(obj.timer);
+                //获取当前位置与目标位置比较
+                var current =  parseInt(getStyle(obj,attr));
+                if(current > target){
+                    speed = -speed;
+                }
+                //开启定时器
+                //向开启定时器的对象 obj添加一个timer属性用于保存自己的标识
+                obj.timer = setInterval(function(){
+                    //将获取到的 obj的 left值转换为 number类型
+                    var oldValue = parseInt(getStyle(obj,attr));
+                    var newValue = oldValue + speed;
+                    //判断当前值与目标位置的距离
+                    if((speed<0 && newValue<target) || (speed>0 && newValue>target)){
+                        newValue = target;
+                    }
+                    //attr是变量 不能用点访问 只能用中括号且里面不加引号
+                    obj.style[attr] = newValue + "px";
+                    //当距离达到目标距离时停止移动 关闭定时器
+                    if(newValue == target){
+                        clearInterval(obj.timer);
+                        /*动画执行完毕：
+                        先判断是否有传递回调函数，有则执行回调函数
+                        若没有传递回调函数也不影响正常运行*/
+                        callback && callback();
+                    }
+                },30);
+        };
+        window.onload = function(){
+            var box01 = document.getElementById("box01");
+            var box02 = document.getElementById("box02");
+            var btn01 = document.getElementById("btn01");
+            var btn02 = document.getElementById("btn02");
+            var btn03 = document.getElementById("btn03");
+           //单击响应函数中直接调用 move函数
+            btn01.onclick = function(){
+                move(box01,"left",800,20);
+            };      
+            btn02.onclick = function(){
+                move(box01,"left",0,10);
+            };
+            //宽度变为800后 高度变为400 最后top为0
+            btn03.onclick = function(){
+                move(box02,"width",800,10,function(){
+                    move(box02,"height",400,15,function(){
+                        move(box02,"top",0,20,function(){})
+                    })
+                });
+            };
+        };
+    </script>
+</head>
+<body>
+    <button id="btn01">粉色向右移动</button>
+    <button id="btn02">粉色向左移动</button><br><br>
+    <button id="btn03">绿色改变宽高</button><br><br>
+    <div id="box"></div>
+    <div id="box01"></div>
+    <div id="box02"></div>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<!-------------------------------------------------------------
+v-bind:
+（1）作用：用于动态绑定一个或多个属性值,或者向另一个组件传递props值;
+    比如图片的链接src、网站的链接href、动态绑定一些类、样式等等;
+（2）语法糖：：（冒号）
+----------------------------------------------------------------->
+
+<div id="app">
+  <!-- 错误的做法: 这里不可以使用 mustache 语法-->
+  <!--<img src="{{imgURL}}" alt="">-->
+
+  <!-- 正确的做法: 使用v-bind指令 -->
+  <img v-bind:src="imgURL" alt="">
+  <a v-bind:href="aHref">百度一下</a>
+
+  <!--语法糖的写法-->
+  <img :src="imgURL" alt="">
+  <a :href="aHref">百度一下</a>
+</div>
+
+<script src="../Js/vue.js"></script>
+<script>
+  const app = new Vue({
+    el: '#app',
+    data: {
+      message: '你好阿',
+      imgURL: 'https://img11.360buyimg.com/mobilecms/s350x250_jfs/t1/20559/1/1424/73138/5c125595E3cbaa3c8/74fc2f84e53a9c23.jpg!q90!cc_350x250.webp',
+      aHref: 'http://www.baidu.com'
+    }
+  })
+</script>
+
+</body>
+</html>

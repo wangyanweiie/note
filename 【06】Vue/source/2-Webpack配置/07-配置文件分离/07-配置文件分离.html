@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<!-- 配置文件分离-->
+<!------------------------------------------------------------------
+1、理解: 将需要的webpack.config.js配置文件拆分成生产需要与开发需要的配置;
+  打包时用到的是开发依赖,运行时用到的就是生产依赖;
+2、流程:
+  * 拆分webpack.config.js文件: base.js(公共) dev.js(开发) prod.js(生产)
+  * 安装合并依赖工具: npm install webpack-merge@4.1.5 --save -dev
+  * 在dev.js与prod.js文件中引入merge工具,用于合并base.config.js文件;
+  * 在package.json文件中修改config的文件路径: 
+    - "build": "webpack --config ./config/prod.js",
+    - "dev": "webpack-dev-server --open --config ./config/dev.js"
+  * 修改base.config.js中打包成bubble的拼接路径
+---------------------------------------------------------------------->
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>创建页面练习</title>
+</head>
+<body>
+    <!-- <h1 align="center" title="哈哈哈">一号标题</h1> -->
+    <script>
+        //创建h1元素
+        var h1 = document.createElement("h1");
+        //将h1元素添加到body中
+        document.body.appendChild(h1);
+        //创建文本
+        var text = document.createTextNode("一号标题");
+        //将文本添加到h1中
+        h1.appendChild(text);
+        //创建align属性
+        var align = document.createAttribute("align");
+        //属性赋值
+        align.value = "center";
+        //设置属性节点
+        h1.setAttributeNode(align);
+        //创建title属性
+        var title = document.createAttribute("title");
+        title.value = "哈哈哈";
+        h1.setAttributeNode(title);
+    </script>
+</body>
+</html>

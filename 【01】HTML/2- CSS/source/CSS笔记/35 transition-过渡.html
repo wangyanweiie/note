@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>transition</title>
+    <style>
+        /*----------------------------------------
+        过渡
+        1、作用：使元素从一个样式逐渐变到另外一个样式
+        2、条件: 过渡必须有触发事件 (:hover)
+        3、语法
+        （1）选择过渡的css属性：transition-property: 属性1,属性2,..;
+            ① 以下属性可以过渡：
+             * 取值为颜色
+             * 取值为数值
+             * 阴影：text|box-shadow
+             * 背景渐变：background
+             * 转换：transform
+           ② 简写：transition-property: all；
+
+        （2）过渡的持续时间：transition-duration: ;
+            ①单位：s|ms
+
+        （3）过渡的速度变化类型：transition-timing-function: ;
+            ease：          先加速后减速（默认值）
+            ease-in：       加速
+            ease-out：      减速
+            ease-in-out：   先加速后减速
+            linear          匀速
+        （4）过渡的延迟时间：transition-delay: ;
+            ① 单位：s|ms
+            ② 可以取负值：把负值这段时间的效果直接跳过
+
+        （5）简写
+            transition: all  持续时间  速度变化类型  延迟时间;
+                        必选   必选        可选        可选
+        ---------------------------------------------------------*/
+        .box{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            margin: 50px;
+            /* transition-property: transform,box-shadow,width,border-radius; */
+            /* transition-property: all;
+            transition-duration: 2s;
+            transition-timing-function:linear ;
+            transition-delay: -1s; */
+            transition:all  1s linear 0.5s;
+        }
+        .box:hover{
+            transform: translateY(-5px);
+            box-shadow: 0 3px 3px red;
+            width: 1200px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>鼠标滚轮事件练习</title>
+    <style>
+        #box01{
+            width: 200px;
+            height: 200px;
+            background-color:pink;
+        }
+        body{
+            height: 2000px;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            var box01 = document.getElementById("box01");
+            //将 box01的响应函数提取出来封装
+            function fun(event){
+                event = event || window.event;
+                //判断滚轮的方向
+                if(event.wheelDelta > 0){
+                    //正值：向上滚动 div区域变短
+                    box01.style.height = box01.clientHeight - 20 + "px";
+                }
+                else{
+                    //负值：向下滚动 div区域变长
+                    box01.style.height = box01.clientHeight + 20 + "px";
+                }
+                /*当滚轮滚动时，如果浏览器有滚动条，滚动条会随之滚动；
+                这是浏览器的默认行为，可以通过 return false取消这一行为*/
+                return false;
+            };
+            //onmousewheel适用于谷歌与 IE
+            box01.onmousewheel = fun;
+            //onwheel适用于谷歌与火狐
+            box01.onwheel = fun;
+        };
+        
+    </script>
+</head>
+<body>
+    <div id="box01"></div>
+</body>
+</html>

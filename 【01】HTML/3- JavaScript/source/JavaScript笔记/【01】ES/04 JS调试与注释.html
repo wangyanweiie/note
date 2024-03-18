@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>JS调试</title>
+</head>
+<body>
+<!-----------------------------------------------------------
+    1、JS调试
+    （1）打开控制台：ctrl+shift+J
+    （2）断点调试：控制台source--page--选中行设置断点--刷新页面 --选中要查看的元素右击 add to watches--单步调试观察
+    （3）控制台报错：错误类型、错误原因、错误位置
+    （4）script报错
+        ①多个script时,一个script报错,对其他script不会影响;
+        ②同一script内,发生错误之前的不会受影响,错误及错误之后的不能执行;
+
+    2、JS注释
+    （1）HTML：<! -- 内容 - ->
+    （2）CSS：/* 内容 * /
+    （3）JavaScript
+        ①单行注释：//内容
+        ②多行注释：/* 内容 * /
+
+    注意：注释之间不能相互嵌套
+---------------------------------------------------------------->
+<script>
+    console.log("HelloWorld 1-1");
+    console.log("HelloWorld 1-2");
+    console.log("HelloWorld 1-3");
+</script>
+<script>
+    console.log("HelloWorld 2-1");
+    console.lo("HelloWorld 2-2");
+    console.log("HelloWorld 2-3");
+</script>
+<script>
+    console.log("HelloWorld 3-1");
+    console.log("HelloWorld 3-2");
+    console.log("HelloWorld 3-3");
+</script>
+</body>
+</html>

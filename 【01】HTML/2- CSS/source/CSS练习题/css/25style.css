@@ -1,0 +1,29 @@
+.box{
+    width: 1226px;
+    height: 460px;
+    background-color: pink;
+    margin: 0 auto;
+    background-image: url("../../xiao/1c3e97686468231f3f78048d7f2b7fdc.jpg");
+    background-size: 100%;
+    animation: PPT 10s linear infinite;
+}
+.box.hover{
+    animation-play-state: paused;
+}
+@keyframes PPT {
+    0%{
+        background-image: url("../../xiao/1c3e97686468231f3f78048d7f2b7fdc.jpg");
+    }
+    25%{
+        background-image: url("../../xiao/37de2b47154ae899cd31f4dcc291f1a2.jpg");
+    }
+    50%{
+        background-image: url("../../xiao/ASDFadfv.jpg");
+    }
+    75%{
+        background-image: url("../../xiao/e6e5ad482c9e0bc0aff2153bca94c0da.jpg");
+    }
+    100%{
+        background-image: url("../../xiao/37de2b47154ae899cd31f4dcc291f1a2.jpg");
+    }
+}

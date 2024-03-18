@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>静态成员</title>
+</head>
+<body>
+    <!-- 静态成员 -->
+    <!-----------------------------------------------------------------------------
+        ES5：实例对象无法获取构造函数本身的属性或者方法,只能获取构造函数原型上的属性或方法
+        ES6：实例对象无法访问class类的静态成员;
+            * 静态成员：在class类中使用 static 关键字声明的属性或者方法 
+    ---------------------------------------------------------------->
+    <script>
+        //*****ES5:构造函数声明实例对象*****
+        function Phone(){};
+        //向构造函数自身添加属性与方法
+        Phone.name = '手机';
+        Phone.change = function(){
+            console.log("我可以改变世界");
+        }
+        //向构造函数的原型上添加属性
+        Phone.prototype.size = '5.5inch';
+
+        /*实例对象无法获取构造函数本身的属性或者方法,
+        只能获取构造函数原型上的属性或方法;*/
+        let nokia = new Phone();
+        console.log(nokia.name);    //undefined
+        //nokia.change();           //报错
+        console.log(nokia.size);    //5.5inch
+
+
+        //******ES6:class类声明实例对象******
+        class SJ{
+            //静态属性
+            static name = '手机';
+            static change(){
+                console.log("我可以改变世界");
+            }
+        }
+        let vivo = new SJ();
+        //实例对象无法访问静态属性
+        console.log(vivo.name);     //undefined
+        console.log(SJ.name);       //手机
+    </script>
+</body>
+</html>

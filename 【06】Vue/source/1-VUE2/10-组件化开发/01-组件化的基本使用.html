@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<!--组件使用的三个步骤-->
+<!-------------------------------------
+1、创建组件构造器
+（1）语法：
+  const 组件构造器对象 = Vue.extend({
+    template: `
+      <div>
+        <h3>标题</h3>
+        <p>段落内容</p>
+        ......
+      </div>`
+  })
+（2）理解：调用Vue.extend()创建的是一个组件构造器;传入template代表我们自定义组件的模板;
+  该模板就是在使用到组件的地方要显示的HTML代码,通常需要将模板代码中的众多语句用一个div标签包起来;
+
+2、注册组件（全局组件）
+（1）语法： Vue.component('组件标签名',组件构造器对象)
+（2）理解：调用Vue.component()是将刚才的组件构造器注册为一个组件,并且给它起一个组件的标签名称;
+  所以需要传递两个参数：① 注册组件的标签名 ② 组件构造器;
+
+3、使用组件标签名：组件必须挂载在某个Vue实例下才可以使用;
+------------------------------------------------>
+<!--3.在挂载在vue实例下的组件中使用组件标签-->
+<div id="app">
+  <my-cpn></my-cpn>
+  <my-cpn></my-cpn>
+</div>
+<!-- 未挂载在vue实例下:无效 -->
+<div><my-cpn></my-cpn></div>    
+
+<script src="../Js/vue.js"></script>
+<script>
+  // 1.创建组件构造器对象
+  const constructor = Vue.extend({
+    template: `
+      <div>
+        <h2>我是标题</h2>
+        <p>我是内容,哈哈哈哈</p>
+        <p>我是内容,呵呵呵呵</p>
+      </div>`
+  })
+
+  // 2.注册组件(全局组件)
+  Vue.component('my-cpn',constructor)
+
+  const app = new Vue({
+    el: '#app',
+    data: {
+      message: ''
+    }
+  })
+</script>
+
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<!-------------------------------------------------------------------
+  v-bind不支持驼峰命名法;
+  在组件的props属性中定义的属性如果使用了驼峰命名法,使用v-bind的绑定时需要将其转化为用"-"连接
+---------------------------------------------------------------------->
+<div id="app">
+  <!-- <cpn :cInfo="info" :childMyMessage="message" v-bind:class></cpn> -->
+  <cpn :c-info="info" :child-my-message="message" v-bind:class></cpn>
+</div>
+<!-- 子组件模板 -->
+<template id="cpn">
+  <div>
+    <h2>{{cInfo}}</h2>
+    <h2>{{childMyMessage}}</h2>
+  </div>
+</template>
+
+<script src="../Js/vue.js"></script>
+<script>
+  //子组件
+  const cpn = {
+    template: '#cpn',
+    //父组件向子组件中传递数据
+    props: {
+      cInfo: {
+        type: Object,
+        //default：当类型是对象/数组时,默认值必须是一个函数返回一个对象/数组;
+        default() {
+          return {}
+        }
+      },
+      childMyMessage: {
+        type: String,
+        default: ''
+      }
+    }
+  }
+  //声明vue实例对象（父组件）
+  const app = new Vue({
+    el: '#app',
+    data: {
+      info: {
+        name: 'why',
+        age: 18,
+        height: 1.88
+      },
+      message: '哈哈哈'
+    },
+    components: {
+      //cpn:cpn 的对象字面量增强写法
+      cpn
+    }
+  })
+</script>
+
+</body>
+</html>

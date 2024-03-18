@@ -1,0 +1,79 @@
+body{
+    background: #eee;
+    color: rgb(51,51,51);
+    font-size: 14px;
+}
+.title{
+    padding: 22px 0;
+}
+.box{
+    width: 960px;
+    height: 450px;
+    /*background: pink;*/
+    margin: 0 auto;
+    position: relative;
+}
+.box>img{
+    width: 210px;
+    border: 1px solid #ddd;
+    padding: 10px;
+    background: white;
+    position: absolute;
+    transition: all 0.3s;
+}
+.img1{
+    top: 0;
+    left: 375px;
+    transform: rotate(5deg);
+}
+.img2{
+    top: 0;
+    right: 120px;
+    transform: rotate(-15deg);
+}
+.img3{
+    bottom: 0;
+    left: 760px;
+    transform: rotate(10deg);
+}
+.img4{
+    top: 200px;
+    left: 370px;
+    transform: rotate(-10deg);
+}
+.img5{
+    bottom: 50px;
+    left: 0;
+    transform: rotate(10deg);
+}
+.img6{
+    top: 0;
+    left: 0;
+    transform: rotate(-10deg);
+}
+.img7{
+    top: 105px;
+    left: 750px;
+    transform: rotate(15deg);
+}
+.img8{
+    top: 295px;
+    left: 205px;
+    transform: rotate(5deg);
+}
+.img9{
+    bottom: 0;
+    left: 550px;
+    transform: rotate(-5deg);
+}
+.img10{
+    top: 60px;;
+    left: 180px;
+    transform: rotate(-10deg);
+}
+
+img:hover{
+    box-shadow: 0 5px 30px rgba(0,0,0,.2);
+    /*当只取一个值时transform的其他属性设置为默认:即旋转效果消失*/
+    transform: scale(1.2);
+}

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>函数练习</title>
+</head>
+<body>
+    <script>
+    //创建函数：求1-100之间偶数的个数以及偶数和的平均值
+    var count = 0;
+    var sum = 0;
+    function even()
+    {
+        for(var i = 1; i <= 100; i++)
+        {
+            if (i %2 == 0) {
+                count ++;
+                sum = sum + i;
+            }
+        }
+        console.log(count);
+        console.log(sum / count);
+    }
+    even();
+
+    //创建函数：打印正三角
+    var san = function()
+    {
+        for(var i = 1; i <= 5; i++)
+        {
+            for(var j = 1; j <= i; j++){
+                document.write("*");
+            }
+            document.write("<br>");
+        }
+    };
+    san();
+
+    //创建函数：打印等腰三角形
+    function dengyao()
+    {
+        for(var i = 1; i <= 5; i++)
+        {
+            for(var j = 1; j <= 6-i; j++){
+                document.write("&nbsp;");
+            }
+            for(var j = 1; j <= i; j++){
+                document.write("*");
+            }
+            document.write("<br>");
+        }
+    }
+    dengyao();
+
+    </script>
+</body>
+</html>

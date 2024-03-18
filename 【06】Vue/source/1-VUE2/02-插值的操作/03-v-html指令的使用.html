@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<!-----------------------------------------------------------------------------------
+v-html="string"
+（1）作用：当请求到的数据本身就是一个HTML代码时,如果直接通过{{}}来输出,会将HTML代码一起输出;
+    通过v-html可以对HTML代码按照HTML格式进行解析显示对应的内容;
+（2）注意：该指令后面往往会跟上一个string类型,并且会将string的html解析出来并且进行渲染;
+-------------------------------------------------------------------------------------->
+<div id="app">
+  <h2>{{url}}</h2>
+  <h2 v-html="url"></h2>
+</div>
+
+<script src="../Js/vue.js"></script>
+<script>
+  const app = new Vue({
+    el: '#app',
+    data: {
+      message: '你好阿',
+      url: '<a href="http://www.baidu.com">百度一下</a>'
+    }
+  })
+</script>
+
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>内容溢出</title>
+    <style>
+/*---------------------------------------------------
+内容溢出
+（1）元素内容溢出
+    overflow: hidden|auto|scroll
+      hidden： 溢出部分隐藏不显示
+      auto：   自动,若有溢出显示滚动条,没有溢出不显示;
+      scroll： 有没有溢出都显示滚动条,若溢出在当前高度之外的内容都自动隐藏,滚动才可以显示;
+
+（2）一行文字溢出省略号显示
+    ① white-space: nowrap;       文字在同一行显示,不换行
+    ② overflow: hidden;          溢出内容隐藏,自动找高
+    ③ text-overflow: ellipsis;   文字隐藏内容省略号显示
+-----------------------------------------------------*/
+        .box{
+            width: 500px;
+            height: 200px;
+            background-color: pink;
+            /*溢出隐藏*/
+            /*overflow: hidden;*/
+            /*overflow: scroll;*/
+            overflow: auto;
+        }
+        .box1{
+            width: 200px;
+            /*不换行*/
+            white-space: nowrap;
+            overflow: hidden;
+            /*省略号*/
+            text-overflow: ellipsis;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="box">
+    你是年少的欢喜
+    <br/>
+    <img src="../images/img5.gif" alt=""/>
+</div>
+
+<div class="box1">你是年少的欢喜 喜欢的少年是你</div>
+
+</body>
+</html>

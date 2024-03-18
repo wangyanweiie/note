@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<!----------------------------------------------------
+v-once
+（1）作用：当变量的值在控制台进行改变时,页面不会重新渲染;
+（2）注意：该指令后面不需要跟任何表达式(比如之前的v-for后面是要跟表达式的)
+          该指令表示元素和组件只渲染一次,不会随着数据的改变而改变;
+---------------------------------------------------------------->
+<div id="app">
+  <h2>{{message}}</h2>
+  <h2 v-once>{{message}}</h2>
+</div>
+
+<script src="../Js/vue.js"></script>
+<script>
+  const app = new Vue({
+    el: '#app',
+    data: {
+      message: '你好阿'
+    }
+  })
+</script>
+
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>分支结构嵌套练习题</title>
+</head>
+ 
+<body>
+
+    <script>
+    //----------------------------练习1：计算当前工资
+        /*var value = prompt("请输入您的工资");
+        if (value > 0){
+            if(value >= 1000){
+                value = value * 1.2; 
+            }
+            else if(value < 1000 && value >= 800){
+                value = value * 1.15; 
+            }
+            else{
+                value = value * 1.1;
+            }
+            console.log(value);
+        }
+        else {
+            console.log("请输入正确的工资");
+        }*/
+
+    //------------------------------练习2：判断是否是闰年
+        /*var year = prompt("请输入年份");
+        if (year > 0){year
+            if(year % 4 == 0 && year % 100 != 0 || year % 400 == 0){
+                console.log(year +"闰年");
+            }
+            else{
+                console.log(year +"平年");
+            }
+        }
+        else {
+            console.log("请输入正确的年份");
+        }*/
+
+    //-----------------------------练习3：判断年龄段
+        /*var age = prompt("请输入年龄");
+        if (age > 0 && age < 130){
+            if(age < 14){
+                console.log("儿童");
+            }
+            else if(age >= 14 && age < 24){
+                console.log("青少年");
+            }
+            else if(age >= 24 && age < 40){
+                console.log("青年");
+            }
+            else if(age >= 40 && age < 60){
+                console.log("中年");
+            }
+            else{
+                console.log("老年");
+            }
+        }
+        else {
+            console.log("请输入正确的年龄");
+        }*/
+    //----------------------------练习4：成绩评定
+        var score = prompt("请输入您的成绩");
+        if(score >= 0 && score <= 100)
+        {
+            if(score >= 90){
+                console.log('A' + score);
+            }
+            else if(score >= 80){
+                console.log('B' + score);
+            }
+            else if(score >= 70){
+                console.log('C' + score);
+            }
+            else if(score >= 60){
+                console.log('D' + score);
+            }
+            else{
+                console.log('不及格' + score);
+            }
+        }
+        else{
+            console.log('请输入正确的成绩'); 
+        } 
+    </script>
+</body>
+</html>

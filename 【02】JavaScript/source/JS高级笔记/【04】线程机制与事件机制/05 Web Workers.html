@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Web Workers</title>
+</head>
+<body>
+<!-- Web Workers -->
+<!-----------------------------------------------
+1. 定义：HTML5提供的 JS多线程解决方案
+2、作用：我们可以将一些计算量大的代码交由 Web Worker运行而不冻结用户界面,
+      但分线程完全受主线程的控制,且不得操作 DOM,故新标准并没有改变 JS单线程的本质;
+3、使用：
+  * 创建在分线程执行的 JS文件;
+  * 在主线程的 JS中向分线程发消息并设置回调;
+
+4. API应用程序编程接口
+（1）构造函数 Worker
+    语法：var 对象名  = new Worker("path");
+    作用：加载分线程执行的 JS文件,path即文件的相对路径
+
+（2）向另一个线程发送消息并设置回调
+    主线程：对象名.postMessage();
+    分线程： postMessage();
+
+（3）接收另一个线程的回调函数,接收到的数据存在 event.data
+    主线程：对象名.onmessage = function(event){};
+    分线程：onmessage = function(event){};
+
+5. 缺陷
+  * worker内代码不能操作 DOM(即不能更新 UI界面)
+  * 不能跨域加载 JS文件
+  * 不是每个浏览器都支持这个新特性
+  （注意：浏览器的安全机制直接运行报错访问不了 JS文件,VS-Code需要通过插件 Live Serve）
+--------------------------------------------------------------------------------->
+<input type="text" placeholder="数值" id="input">
+<button id="btn">斐波那契</button>
+<script type="text/javascript">
+//*****采用递归的方法实现斐波那切数列的计算*****
+//前两位为 1,余下公式：f(n)=f(n-1)+f(n-2)
+  /*function fibonacci(n){
+    //三目运算：递归调用
+    return n<=2 ? 1 : fibonacci(n-1) + fibonacci(n-2)  
+  }
+  var input = document.getElementById('input');
+  var btn = document.getElementById('btn');
+  btn.onclick = function(){
+    //创建变量保存当前文本框中输入的数值
+    var number = input.value;
+    var result = fibonacci(number);
+    alert(result);
+  };*/
+
+//************通过主线程 + 分线程求取************
+  var input = document.getElementById('input');
+  var btn = document.getElementById('btn');
+  btn.onclick = function(){
+    var number = input.value;
+    //创建一个 Worker对象
+    var worker = new Worker('JS/worker.js');
+    //主线程向分线程发送消息
+    worker.postMessage(number);
+    console.log('主线程向分线程发送数据：'+ number);
+    //绑定接收消息的监听
+    worker.onmessage = function(event){
+      //event.data中就保存了需要接收的数据
+      console.log('主线程接收分线程返回的数据：'+ event.data);
+    };
+  };
+  //console.log(this);  //window
+
+</script>
+</body>
+</html>

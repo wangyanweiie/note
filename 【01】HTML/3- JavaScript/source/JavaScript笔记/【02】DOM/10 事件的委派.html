@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件的委派</title>
+    <style>
+        #ul{
+            background-color:pink;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            var btn = document.getElementById("btn");
+            //点击按钮添加一个li
+            btn.onclick = function(){
+                var li = document.createElement("li");
+                li.innerHTML = '<a href="javascript:;" class="link">我是添加的li</a>';
+                ul.appendChild(li);
+            };
+            //获取到li的父元素用于绑定点击超链接的单击响应函数
+            var ul = document.getElementById("ul");
+            ul.onclick = function(event){
+                event = event || window.event;
+                //添加条件：当点击的是期望的元素时显示弹窗,点击ul内的其他区域则不作反应 (target:触发此事件的对象)
+                if(event.target.className == "link"){
+                     alert("我是ul的li");
+                }
+            };
+        };
+    </script>
+</head>
+<body>
+    <!------------------------------------------------------------------
+    事件的委派
+    （1）理解: 将事件统一绑定给元素共同的祖先元素,这样当后代元素的事件触发时,
+        会一直冒泡到祖先元素,从而通过祖先元素的响应函数来处理事件;
+    （2）作用
+        * 事件的委派是利用了冒泡,通过委派可以减少事件绑定的次数,提高程序的性能;
+        * 解决动态元素(创建页面时不在页面内,后添加的元素)无法自动绑定事件问题
+    -------------------------------------------------------------------->
+    <button id="btn">添加超链接</button>
+    <ul id="ul">
+        <li><a href="javascript:;" class="link">我是li</a></li>
+        <li><a href="javascript:;" class="link">我是li</a></li>
+        <li><a href="javascript:;" class="link">我是li</a></li>
+    </ul>
+</body>
+</html>

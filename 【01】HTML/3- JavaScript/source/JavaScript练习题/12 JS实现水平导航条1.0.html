@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS实现水平导航条1</title>    
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        /*a{
+            text-decoration: none;
+            color: white;
+        }
+        li{
+            list-style-type: none;
+            float: left;
+            padding: 20px 60px;
+            background-color: pink;
+        }*/
+    </style>
+</head>
+<body>
+    <!-- <ul>
+        <li><a href="#">手机</a></li>
+        <li><a href="#">电视</a></li>
+        <li><a href="#">笔记本</a></li>
+        <li><a href="#">家电</a></li>
+        <li><a href="#">路由器</a></li>
+        <li><a href="#">智能硬件</a></li>
+    </ul> -->
+
+    <script>
+        var i;
+        var arr = ["手机","电视","笔记本","家电","路由器","智能硬件"]
+        for(i = 0; i < arr.length; i++)
+        {
+            //创建属性ul
+            var ul = document.createElement("ul");
+            //将 ul属性追加到 body中
+            document.body.appendChild(ul);
+
+            var li = document.createElement("li");
+            ul.appendChild(li);
+
+            var a = document.createElement("a");
+            li.appendChild(a);
+
+            var text = document.createTextNode(arr[i]);
+            a.appendChild(text);
+
+            //给 li创建 style属性
+            var listyle = document.createAttribute("style");
+            //设置属性节点
+            li.setAttributeNode(listyle);
+            //设置属性值
+            listyle.value = "list-style-type: none; float: left; padding: 20px 60px; background-color: #333;"
+
+            //给 a创建 style属性
+            var astyle = document.createAttribute("style");
+            a.setAttributeNode(astyle);
+            astyle.value = "text-decoration: none;color: white;"
+
+            //给 a创建 href属性
+            var href = document.createAttribute("href");
+            a.setAttributeNode(href);
+            href.value = "#"
+        }  
+    </script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    .active {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+<!-------------------------------------------------------------------------
+v-bind动态绑定class（对象语法）
+（1）直接通过{}绑定一个class类,通过判断传入一个或者多个值,当与普通的class类同时存在时不冲突;
+（2）语法：<h2 v-bind:class="{类名1: boolean, 类名2: boolean}">{{message}}</h2>
+    （可以在HTML标签中绑定class,在vue中的data中需要设置class对应的布尔值为true/false）
+--------------------------------------------------------------------------------->
+<div id="app">
+  <!-- <h2>{{message}}</h2> -->
+
+  <h2 v-bind:class="{active: isActive}">{{message}}</h2>
+  <!-- 如果过于复杂可以放在一个methods或者computed中-->  
+  <!-- <h2 class="title" v-bind:class="getClass()">{{message}}</h2> -->
+
+  <button v-on:click="btnClick">按钮</button>
+</div>
+
+<script src="../Js/vue.js"></script>
+<script>
+  const app = new Vue({
+    el: '#app',
+    data: {
+      message: '你好阿',
+      isActive: true,
+      isLine: true
+    },
+    methods: {
+      //点击按钮当前文字颜色切换
+      btnClick: function () {
+        this.isActive = !this.isActive
+      },
+      getClass: function () {
+        return {active: this.isActive, line: this.isLine}
+      }
+    }
+  })
+</script>
+
+</body>
+</html>

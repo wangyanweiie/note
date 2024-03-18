@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    /*[]：属性选择器*/
+    [v-cloak] {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+<!--------------------------------------------------------------
+v-cloak
+（1）作用：在某些情况下,浏览器可能会先直接显然出未编译的Mustache标签；
+  借助v-cloak可以在编译完成前将其隐藏;
+（2）原理：在vue解析之前,div中会存在属性v-cloak,当解析完成后,div中的v-cloak属性自动消失;
+  可以设置属性[v-cloak]的样式为隐藏：display:none 实现;
+（3）v-clock不需要跟任何表达式
+-------------------------------------------------------------->
+<div id="app" v-cloak>
+  <h4>{{message}}</h4>
+</div>
+
+<script src="../Js/vue.js"></script>
+<script>
+  // 在vue解析之前,div中存在一个属性v-cloak
+  // 在vue解析之后,div中v-cloak属性自动消失
+  setTimeout(function () {
+    const app = new Vue({
+      el: '#app',
+      data: {
+        message: '你好阿'
+      }
+    })
+  }, 2000)
+</script>
+
+</body>
+</html>

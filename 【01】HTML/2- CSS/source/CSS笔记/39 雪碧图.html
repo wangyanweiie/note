@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>雪碧图</title>
+    <style>
+    /*---------------------------------------------------------
+    雪碧图（sprite）
+    （1）定义：雪碧图是一项图片整合技术，把许多小图整合到一张大图上面
+    （2）优点
+        ①减少图片的字节数
+        ②减少页面的http请求
+        ③减少图片命名的困扰
+
+    （3）原理
+        ①引入雪碧图：background-image:url();
+        ②设置位置：background-position:;
+        注意：默认显示背景图片的左上角（0，0）
+            容器是不可以移动的，移动的是图片；雪碧图背景图片定位只取负值，往左上走。
+    ---------------------------------------------------------------------------*/
+    .box1{
+        width: 200px;
+        height: 51px;
+        background-image: url("../Jinli/spirite.png");
+    }
+    .box2{
+        width: 66px;
+        height: 66px;
+        background-image: url("../Jinli/spirite.png");
+        background-position: -375px 0;
+    }
+    .box3{
+        width: 120px;
+        height: 38px;
+        background-image: url("../Jinli/spirite.png");
+        background-position: -394px -451px;
+    }
+    </style>
+</head>
+<body>
+    <div class="box1"></div>
+    <div class="box2"></div>
+    <div class="box3"></div>
+</body>
+</html>

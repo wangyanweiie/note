@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 练习1：通过vue实例显示数据 -->
+    <!-- <div id="app">
+        <h1>{{message}}</h1>
+    </div>
+    <script src="../../Js/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el:"#app",
+            data:{
+                message:"哈哈哈"
+            }
+        })
+    </script> -->
+
+    <!-- 练习2：列表展示 -->
+    <!-- <div id="app">
+        <ul>
+            <li v-for="item in movies">
+                {{item}}
+            </li>
+        </ul>
+    </div>
+    <script src="../../Js/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el:"#app",
+            data:{
+                movies:["海贼王","死神","名侦探柯南","火影忍者"]
+            }
+        })
+    </script> -->
+    
+    <!-- 练习3：计数器 -->
+    <div id="app">
+        当前显示的是:
+        <button @click="der">-</button>
+        {{count}}
+        <button @click="inc">+</button>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        const app = new Vue({
+            el:"#app",
+            data:{
+                count:0
+            },
+            methods:{
+                der(){
+                    this.count--;
+                },
+                inc(){
+                    this.count++;
+                }
+            }
+        }) 
+    </script>
+</body>
+</html>

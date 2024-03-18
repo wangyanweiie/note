@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ES6模块化引入方式</title>
+</head>
+<body>
+    <!---------------------------
+    import 引入方式：
+        * 通用导入方式
+        * 解构赋值形式
+        * 简便形式：只针对默认暴露 
+    ----------------------------->
+    <!--浏览器使用外部文件方式 1-->
+    <!--<script type="module">
+        //***********通用导入方式***********
+        //分别引入m1.js m2.js m3.js模块的内容
+        /*
+        import * as m1 from "./src/JS/m1.js";
+        import * as m2 from "./src/JS/m2.js";
+        import * as m3 from "./src/JS/m3.js";
+        console.log(m1);
+        console.log(m2);
+        console.log(m3);
+        m3.default.change();
+        */
+
+        //****************解构赋值形式****************
+        //应对分别暴露
+        import {school, teach} from "./src/JS/m1.js";
+        console.log(school);
+        console.log(teach);
+        //应对统一暴露：变量名 as 别名,可以使重名的变量不产生冲突;
+        import {school as gg, findJob} from "./src/JS/m2.js";
+        console.log(gg);
+        console.log(findJob);
+        //应对默认暴露：不能直接使用 default,必须设置别名;
+        import {default as m3} from "./src/JS/m3.js";
+        console.log(m3);
+
+        //******简便形式:只针对默认暴露******
+        //直接设置变量名
+        import m from "./src/JS/m3.js";
+        console.log(m);
+    </script>-->
+    
+    <!--浏览器使用外部文件方式 2-->
+    <script src="./src/JS/app.js" type="module"></script>
+</html>

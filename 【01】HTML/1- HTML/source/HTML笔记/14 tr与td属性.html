@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>tr与td属性</title>
+</head>
+<body>
+
+
+<!----------------------------------------------------------------------------------------------------------------------
+（1）tr属性
+    height：设置一行的高度
+    align：设置行内容的水平对齐方式，默认left，取值center、right
+    valign：设置行内容的垂直对齐方式，默认middle（居中），取值top（居上）、bottom（居下）
+    bgcolor：设置这一行的背景颜色
+    background：设置行的背景图片
+
+（2）td属性
+    width：设置单元格的宽度  同列等宽
+    height：设置单元格的高度  同行等高
+    align：设置单元格内容的水平对齐方式
+    valign：设置单元格内容的垂直对齐方式
+    bgcolor：设置单元格的背景颜色
+    background：设置单元格的背景图片
+    重点掌握：
+        colspan：跨行、水平合并。写在开始合并的单元格内，取值为number，删除的个数 = 取值的数字-1，水平合并删除同一行的td
+        rowspan：跨列、垂直合并。写在开始合并的单元格内，取值为number，删除的个数 = 取值的数字-1，垂直合并删除后面几行的td
+----------------------------------------------------------------------------------------------------------------------->
+<!--示例1-->
+<table border="1" width="500" height="300" bgcolor="#ffffe0 "
+       cellpadding="20" cellspacing="0">
+    <caption><b>成绩单</b></caption>
+    <tr align="center" valign="middle" bgcolor="#ffc0cb ">
+        <td>序号</td>
+        <td>姓名</td>
+        <td>语文</td>
+        <td>数学</td>
+    </tr>
+    <tr align="center" valign="middle">
+        <td>1</td>
+        <td bgcolor="#00bfff">王言伟</td>
+        <td>60</td>
+        <td>60</td>
+    </tr>
+    <tr align="center" valign="middle">
+        <td>2</td>
+        <td>王若兮</td>
+        <td>100</td>
+        <td>100</td>
+    </tr>
+</table>
+<!--换行-->
+<br/>
+<!--示例2：合并单元格-->
+<table border="1" width="500" height="300" cellspacing="0">
+    <tr>
+        <td colspan="2"></td>
+        <!-- <td></td> -->
+        <td rowspan="2"></td>
+    </tr>
+    <tr>
+        <td rowspan="2"></td>
+        <td></td>
+        <!-- <td></td> -->
+    </tr>
+    <tr>
+        <td colspan="2"></td>
+        <!-- <td></td> -->
+    </tr>
+</table>
+</body>
+</html>

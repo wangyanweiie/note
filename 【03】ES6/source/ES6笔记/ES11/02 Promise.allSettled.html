@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise.allSettled</title>
+</head>
+<body>
+    <!-- Promise.allSettled -->
+    <!---------------------------------------------------------------------
+    （1）作用：该方法接收一个 Promise数组作为参数,返回的结果也是一个 Promise对象;
+        并且返回的 Promise对象永远是成功的状态,即 allSettled方法不管数组中的 Promise对象返回成功还是失败都会执行完;
+        而 all方法是只有数组中所有的Promide实例对象的状态都为成功才会返回成功,否则返回失败;
+    （2）语法
+        * const 变量名 = Promise.allSettled([])
+        * const 变量名 = Promise.all([])
+    --------------------------------------------------------------------------------->
+    <script>
+        //声明两个promise对象
+        const p1 = new Promise((resolve, reject)=>{
+            setTimeout(()=>{
+                resolve('商品数据 - 1');
+            },1000)
+        });
+        const p2 = new Promise((resolve, reject)=>{
+            setTimeout(()=>{
+                //resolve('商品数据 - 2');
+                reject('出错啦!');
+            },1000)
+        });
+        //allsettled方法：result成功（p1状态成功 p2状态失败）
+        const result = Promise.allSettled([p1, p2]);
+        console.log(result);
+        //all方法：res直接失败报错
+        //const res = Promise.all([p1, p2]);
+        //console.log(res);    
+
+    </script>
+</body>
+</html>

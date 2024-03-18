@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- 1.引入ECharts文件: 引入下载文件报错,只能在线引入; -->
+  <script src="https://cdn.bootcss.com/echarts/4.2.1-rc1/echarts.min.js"></script>
+  <title>ECharts</title>
+  <style>
+    #box{
+      width: 1000px;
+      height: 600px;
+      border: solid 1px #ccc;
+    }
+  </style>
+</head>
+<body>
+  <!-- 2.准备一个有固定的宽高的盒子容器 -->
+  <div id="box"></div>
+  <script type="text/javascript">
+    //3.基于准备好的dom,初始化ECharts实例,决定图表呈现的位置;
+    var myChart = echarts.init(document.getElementById("box"))
+    //4.指定图表的配置项和数据(不同的图表对应不同的配置项)
+    var option = {
+      title: {
+        text: 'Referer of a Website',
+        subtext: 'Fake Data',
+        left: 'center'
+      },
+      tooltip: {
+        trigger: 'item'
+      },
+      legend: {
+        orient: 'vertical',
+        left: 'left'
+      },
+      series: [
+        {
+          name: 'Access From',
+          type: 'pie',
+          radius: '50%',
+          data: [
+            { value: 1048, name: 'Search Engine' },
+            { value: 735, name: 'Direct' },
+            { value: 580, name: 'Email' },
+            { value: 484, name: 'Union Ads' },
+            { value: 300, name: 'Video Ads' }
+          ],
+          emphasis: {
+            itemStyle: {
+              shadowBlur: 10,
+              shadowOffsetX: 0,
+              shadowColor: 'rgba(0, 0, 0, 0.5)'
+            }
+          }
+        }
+      ]
+    };
+    //5.使用刚指定的配置项和数据显示图表
+    myChart.setOption(option);
+  </script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+//定义变量
+@bgColor: pink;
+@fColor: white;
+@border: 5px + 5;
+
+.wrap{
+  //运算单位以左侧第一个单位为准
+  height: 100px * 2 - 50rem;  
+  color: @fColor;
+  background-color: @bgColor;
+  border: @border  solid skyblue;
+  //设置子级元素样式: less嵌套写法
+  .inner{
+    width: 200px;
+    height: 20px;
+    background-color: green;
+    //伪类选择器(&)
+    &:hover{
+      background-color:purple;
+    }
+  }
+}
+.img{
+  width: (85 / 50)rem;
+  height: (85 / 50)rem;
+}
+
+//设置子级元素样式: css写法
+/*.wrap .inner{
+    width: 200px;
+    height: 20px;
+    background-color: green;
+    font-size: @fs14;
+}*/

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>浮动问题</title>
+    <style>
+		/*-------------------------------------------------
+		浮动问题
+		（1）理解
+				浮动不会重叠
+				浮动只有左右浮动
+				浮动后所有元素转换为块级元素..
+				浮动后元素在页面中不占据位置..
+				浮动是碰到父元素的边框或者浮动元素的边框就会停止..
+
+		（2）语法：float:left|right|none(默认值);
+				注意：float:right会出现倒序排列问题，一般使用float:left
+
+		（3)清除浮动的影响
+			子元素浮动后排除到普通文档流之外，在页面中不占据位置;
+			如果父元素没有设置高度，父元素的高度会坍塌，会对后面的元素产生影响;
+				方法：
+				① 浮动元素的父元素加高（高度已知）
+				② 浮动元素的父元素加 overflow:hidden|auto; (自动找高)
+				③ 受影响的元素加 clear:left|right|both; (但浮动元素的父元素高度没有找到)
+				④ 空div法: 浮动元素后面加一个空div并设置样式{clear:both;} (可以找到父元素高度)
+				⑤ 伪元素法（重点）
+					浮动元素的父元素 :after{
+						content: "";
+						display: block;  //把元素转换为块级元素
+						clear: both;     //清除浮动
+					}
+		----------------------------------------------------------*/
+		.box{
+				background-color: pink;
+				/* height: 300px; */
+				/* overflow: hidden; */
+		}
+		/*伪对象法*/
+		.box::after {
+				content: "";
+				display: block;
+				clear: both;
+		}
+		.one{
+				width: 100px;
+				height: 100px;
+				background-color: red;
+				float: right;
+		}
+		.two{
+				width: 200px;
+				height: 200px;
+				background-color: plum;
+				float: right;
+		}
+		.three{
+				width: 300px;
+				height: 300px;
+				background-color: paleturquoise;
+				float: right;
+		}
+
+		/*受影响的元素加clear*/
+		.box1{
+				width: 100%;
+				height: 500px;
+				background-color: palegreen;
+				/*clear: both; */
+		}
+		/*空div法：浮动元素加clear*/
+		/*.clear{
+				clear: both;
+		}*/
+	</style>
+</head>
+<body>
+
+<div class="box">
+    <div class="one"></div>
+    <div class="two"></div>
+    <div class="three"></div>
+
+    <!--空div法-->
+    <div class="clear"></div>
+</div>
+
+<!--受影响的元素加clear -->
+<div class="box1"></div>
+
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<!-- vue-router 3.xx-->
+<!------------------------------------------------
+1、安装命令: npm install vue-router --save
+
+2、搭建路由框架流程
+  * 路径: /src/router/index.js
+  * 导入路由对象,并且调用 Vue.use(VueRouter)安装插件;
+  * 创建路由实例,并且传入路由映射配置导出;
+  * 在main.js文件中Vue实例挂载创建的路由实例
+
+3、使用vue-router
+  * 创建路由组件: /src/components/.vue文件
+  * 配置路由映射: 在index.js中配置组件与路径映射关系
+  * 设置改变URL的方式: 在index.js中设置mode:'history'（默认hash）
+  * 使用路由: 在App.vue中通过内置组件<router-link>与<router-view>
+
+4、<router-link>与<router-view>
+（1）<router-link>
+     * to="路径"       设置需要跳转的组件路径
+     * tag="标签类型"  设置要渲染成的标签类型（默认a标签）
+     * replace        设置成在页面中不能返回
+     * active-class   设置点击时在标签上增加的class名
+（2）<router-view>
+     * 会根据当前的路径,动态渲染出不同的组件;
+     * 当路由切换时改变的是<router-view>挂载的组件,其他内容不变;
+
+5、默认路径
+  设置当进入网站不需要点击,<router-view>默认渲染首页的内容显示？
+  需要在routes中再配置一个映射设置默认重定向:
+    * path: '/'
+    * redirect: '/home'
+
+6、通过代码实现路由跳转
+    * 在标签中通过v-on监听响应事件,在vue实例的中设置响应的methods;
+    * 在响应函数中输入语句: this.$router.push/replace("路径");
+
+(vue-router所有的组件中都添加了$router的属性,并且$router中有许多方法;
+ this.$router本质上指向的就是index.js中创建的router实例对象)
+------------------------------------------------------------------>
+</body>
+</html>

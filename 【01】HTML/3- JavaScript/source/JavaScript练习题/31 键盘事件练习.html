@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>键盘事件练习</title>
+    <script>
+        window.onload = function(){
+            //给 document绑定键盘事件
+            document.onkeydown = function(event){
+                event = event || window.event;
+                if(event.keyCode === 89 && event.ctrlKey == true){
+                    console.log("ctrl与y键同时按下");
+                }
+            };
+            document.onkeyup = function(){};
+            
+            //给 input绑定事件
+            var inp = document.getElementById("inp");
+            inp.onkeydown = function(event){
+                event = event || window.event;
+                //使文本框中不能输入数字
+                //数字的Unicode字符码：48-57  
+                //数字小键盘不是同一编码:96-105
+                if((event.keyCode >= 48 && event.keyCode <= 57) || (event.keyCode >= 96 && event.keyCode <= 105)){
+                    /*在文本框中输入内容属于 onkeydown的默认行为；
+                    若取消了这一行为，输入的内容不会出现在文本框中*/
+                    return false;
+                }
+            };
+        };
+    </script>
+</head>
+<body>
+    <input type="text" id="inp">
+</body>
+</html>

@@ -1,0 +1,48 @@
+/*
+①语法：
+    选择器{
+        属性:属性值;
+        属性:属性值;
+    }
+②属性
+    color：字体颜色
+    background-color: 背景颜色
+    width: 宽度px;
+    height: 高度px;
+    float left：向左浮动
+        作用：用于块级元素同一行显示
+*/
+.header{
+    background-color: pink;
+    width: 450px;
+    height: 50px;
+}
+.content{
+    background-color: deepskyblue;
+    width: 450px;
+    height: 100px;
+}
+.footer{
+    background-color: greenyellow;
+    width: 450px;
+    height: 50px;
+}
+
+.left{
+    background-color: darkgray;
+    width: 150px;
+    height: 100px;
+    float:left;
+}
+.center{
+    background-color: ivory;
+    width: 150px;
+    height: 100px;
+    float:left;
+}
+.right{
+    background-color: yellow;
+    width: 150px;
+    height: 100px;
+    float:left;
+}

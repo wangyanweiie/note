@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    .title {
+      font-size: 50px;
+      color: red;
+    }
+  </style>
+</head>
+<body>
+<!--------------------------------
+v-bind:style动态绑定CSS内联样式
+（1）语法：<h2 :style="{key(属性名): value(属性值)}">{{message}}</h2>
+（2）注意：CSS属性名的一般使用驼峰式或者短线分隔,比如fontSize(font-size)
+-------------------------------------------------------------------->
+<div id="app">
+  <!--'20px'必须加上单引号,否则是当做一个变量去解析-->
+  <h2 :style="{fontSize: '20px'}">{{message}}</h2>
+
+  <!--finalSize当成一个变量使用,需要拼串拼上px-->
+  <h2 :style="{fontSize: finalSize + 'px', backgroundColor: finalColor}">{{message}}</h2>
+  <!-- 如果过于复杂可以放在一个methods或者computed中-->  
+  <h2 :style="getStyles()">{{message}}</h2>
+</div>
+
+<script src="../Js/vue.js"></script>
+<script>
+  const app = new Vue({
+    el: '#app',
+    data: {
+      message: '你好阿',
+      finalSize: 20,
+      finalColor: 'red',
+    },
+    methods: {
+      getStyles: function () {
+        return {fontSize: this.finalSize + 'px', backgroundColor: this.finalColor}
+      }
+    }
+  })
+</script>
+
+</body>
+</html>

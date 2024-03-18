@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<!-- 箭头函数 -->
+<!------------------------------------------------
+1、语法
+（1）参数问题
+    * 无参数: const 函数名 = () => {}
+    * 一个参数(小括号可省): const 函数名 = 参数 => {}
+    * 多个参数: const 函数名 = (参数1,参数2) => {}
+
+（2）函数代码块中语句问题
+    * 多行语句: const 函数名 = (参数) => {
+                  语句1;
+                  语句2;
+              }
+    * 一行语句: const 函数名 = (参数) => 语句
+    * 一行语句一个参数: const 函数名 = 参数 => 语句
+
+（3）箭头函数与普通函数的区别
+    * 箭头函数全都是匿名函数, 普通函数可以有匿名函数,也可以有具名函数;
+    * 箭头函数不能用于构造函数, 普通函数可以用于构造函数,以此创建对象实例;
+    * this的指向不同：
+      箭头函数没有this,而它会去查找离它最近的作用域里面的this;
+      普通函数中this指向调用它的对象,用作构造函数时它指向创建的实例对象;
+----------------------------------------------------------------------->
+<script>
+  const obj = {
+    abc() {
+      setTimeout(function () {
+        setTimeout(function () {
+          //通过函数方式调用的this永远都是window
+          console.log(this);
+        })
+        setTimeout(() => {
+          //通过函数方式调用的this永远都是window
+          console.log(this);
+        })
+      })
+
+      setTimeout(() => {
+        setTimeout(function () {
+          //通过函数方式调用的this永远都是window
+          console.log(this);
+        })
+
+        setTimeout(() => {
+          //箭头函数没有this,寻找最近作用域中的this即指向obj;
+          console.log(this);
+        })
+      })
+    }
+  }
+  obj.abc();
+</script>
+</body>
+</html>

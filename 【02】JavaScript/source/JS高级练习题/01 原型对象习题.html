@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>原型对象习题</title>
+</head>
+<body>
+
+<script type="text/javascript">
+  /*********测试题1*********/
+  function A(){};
+  A.prototype.n = 1;
+  var b = new A();
+  A.prototype = {
+    n: 2,
+    m: 3
+  };
+  var c = new A();
+  console.log(b.n, b.m);  //1 undefined
+  console.log(c.n, c.m);  //2 3
+
+  /*********测试题2*********/
+  function Fn(){};
+  Object.prototype.a = function(){
+    console.log('a');
+  };
+  Function.prototype.b = function(){
+    console.log('b');
+  };
+  var fn = new Fn();
+  fn.a();   //a
+  //fn.b();
+  Fn.a();   //a
+  Fn.b();   //b
+  console.log(fn);  //Fn{}
+  console.log(Object.prototype);
+  console.log(Function.prototype);
+
+</script>
+</body>
+</html>

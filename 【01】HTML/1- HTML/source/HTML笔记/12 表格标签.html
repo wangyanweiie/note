@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>表格标签</title>
+    <style>
+        .tb td{
+            border: solid 1px black;
+        }
+    </style>
+</head>
+<body>
+
+<!--------------------------------------------------------------
+表格 table tr td
+（1）作用：向用户展示数据
+
+（2）特点：同行等高、同列等宽
+    行：横向
+    列：纵向
+（3）标签
+    <table></table>：表格
+    <thead></thead>：列表第一行参数
+    <tbody></tbody>：列表内容
+    <tr></tr>：行  table row
+    <td></td>：列、单元格  table data  cell  所有内容写在单元格内
+    <th></th>：特殊的单元格，默认水平居中且加粗,和td同一个位置
+    <caption></caption>：表格的标题
+
+（4）结构：table>tr*n>td*m  点击tab自动补全
+    注意：n和m大于0
+    <table>
+    <caption>标题</caption>
+        <thead>
+             <tr>
+                <th>...</th>
+                <th>...</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>...</td>
+                <td>...</td>
+            </tr>
+            <tr>
+                <td>...</td>
+                <td>...</td>
+            </tr>
+        </tbody>
+    </table>
+---------------------------------------------------------------------->
+<table class="tb" border="1" bgcolor="pink" cellpadding="10" cellspacing="0">
+    <thead>
+    <tr>
+        <th>姓名</th>
+        <th>年龄</th>
+        <th>手机号</th>
+        <th>住址</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>小王</td>
+        <td>18</td>
+        <td>151xxx</td>
+        <td>江苏徐州</td>
+    </tr>
+    <tr>
+        <td>小叶</td>
+        <td>18</td>
+        <td>182xxx</td>
+        <td>江苏苏州</td>
+    </tr>
+    <tr>
+        <td>小明</td>
+        <td>18</td>
+        <td>188xxx</td>
+        <td>江苏南京</td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

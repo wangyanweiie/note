@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<!--传递参数-->
+<!-------------------------------
+1、params
+（1）配置路由格式: /router/:id
+（2）传递流程: 在Path后面跟上对应的值（04-动态路由）
+（3）传递后形成的路径: /router/xxx
+
+2、query
+（1）配置路由格式: /router 普通配置
+（2）传递流程:
+    * 通过v-bind动态绑定to="{}"
+        <router-link :to="{path:'/profile', query:{name:'July',age:18}}">
+    * 组件profile.vue的computed属性中访问 $route.query
+        computed:{
+          profile(){
+            return this.$route.query;
+          }
+        }
+    * 组件中使用 {{profile}}} 显示在页面中
+（3）传递后形成的路径: /router?id=abc
+（4）作用: query属性的参数是对象,可传递大量数据;
+
+3、通过代码的方式修改路由(见App.vue)
+------------------------------------------->
+</body>
+</html>

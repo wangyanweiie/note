@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<!--vue实例的template-->
+<div id="app">
+  {{message}}
+</div>
+
+<script src="../Js/vue.js"></script>
+<script>
+  //声明vue实例
+  const app = new Vue({
+    //挂载id="app"的template
+    el: '#app',
+    data: {
+      message: '你好阿'
+    }
+  })
+</script>
+
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>标准盒模型</title>
+    <style>
+/*---------------------------------------------
+1、盒模型的理解: 
+	* 盒模型是规定了网页元素如何显示,元素间的相互关系;
+	* HTML每一个元素都可以看作为一个盒模型,一个盒子包括了内容、边框、内边距与外边距;
+
+2、标准盒模型|W3C盒模型
+（1）组成部分
+    content + padding + border + margin
+    内容    内边距  边框   外边距
+    注意：背景颜色最远到边框border，padding会撑大容器
+
+（2）实际宽度（与怪异盒模型计算宽度不同）
+    width + padding + border + margin
+
+（3）content：内容区域
+    width:;   元素的宽度  px  %（相对于父元素）
+    height:;  元素的高度  px  %（相对于父元素）
+    min-width:;  最小宽度
+    max-width:;  最大宽度
+    min-height:; 最小高度
+    max-height:; 最大高度
+    注意：默认情况下高度都由内容撑开，块级元素宽度为100%，行内元素宽度由内容撑开
+         块级元素可以设置宽高，行内元素设置宽高不生效，图片img属于行内块除外
+-------------------------------------------------------------------------*/
+			.box {
+				width: 200px;
+				height: 200px;
+				background-color: blueviolet;
+				margin: auto;
+			}
+			.box1 {
+				width: 200px;
+				height: 200px;
+				background-color: yellowgreen;
+				/*margin: auto;*/
+			}
+/*
+（4）border：边框
+	① border-style:solid（实线）|dashed（虚线）|dotted（点线）|double（双实线,要求边框至少为3px）|none（不显示）;
+	② border-color:;  边框的颜色
+	③ border-width:;  边框的宽度
+	④ 简写：border:边框的宽度 边框的样式 边框的颜色;  设置四周的边框
+		简写的单边属性：
+		border-top：上边框
+		border-bottom：下边框
+		border-left：左边框
+		border-right：右边框
+*/
+			table{
+				width: 200px;
+				height: 200px;
+				text-align: center;
+				border: solid pink 5px;
+			}
+			td{
+				border: solid skyblue 5px;
+			}
+/*
+（5）padding：内边距（不可以取负值和auto）
+		① 作用：设置内容距边框的距离
+		② 语法：
+			padding:value;  四周
+			padding:value value;  上下  左右
+			padding:value value value;  上  左右  下
+			padding:value value value value;  上  右  下  左（顺时针）
+		③ 单边的内边距：
+			padding-left:;  左内边距
+			padding-right:;  右内边距
+			padding-top:;   上内边距
+			padding-bottom:;  下内边距
+		④ 注意：padding会撑大容器
+
+（6）margin：外边距（可以取正负、auto）
+		① 作用：设置元素之间的距离，margin是透明的
+		② 语法：
+			margin:value;  四周
+			margin:value value;  上下  左右
+			margin:value value value;  上  左右  下
+			margin:value value value value;  上  右  下  左（顺时针）
+		③ 单边的内边距：
+			margin-left:;  左外边距
+			margin-right:;  右外边距
+			margin-top:;   上外边距
+			margin-bottom:;  下外边距
+		④ 注意：块级元素水平居中 margin:0 auto;
+			当垂直方向外边距相撞时，取较大值
+*/
+		.box2{
+			width: 200px;
+			height: 200px;
+			background-color: #00e890;
+			/*border-style: solid;
+			border-color: pink;
+			border-width: 5px;*/
+			border: double pink 5px;
+			padding: 20px;
+			/*padding: 20px 40px;*/
+			/*padding: 20px 40px 60px 80px;*/
+			/*margin: 20px;*/
+			/* margin: 20px 40px 60px 80px; */
+			margin: 0 auto;
+		}
+	</style>
+</head>
+<body>
+<!--块级元素-->
+<div class="box">王言伟</div>
+<!--行内元素，图片是行内块除外-->
+<span class="box1">哈哈哈</span><br/>
+<!--设置表格边框-->
+<table>
+    <tr>
+        <td>王言伟</td>
+        <td>王若兮</td>
+    </tr>
+    <tr>
+        <td>88</td>
+        <td>99</td>
+    </tr>
+</table>
+
+<!--设置边框、内边框、外边距-->
+<div class="box2"> </div>
+
+</body>
+</html>

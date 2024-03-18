@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>获取页面节点</title>
+</head>
+<body>
+    <script>
+    /*-------------------------------------------------------
+    1、元素节点（document调用）
+    （1）document.getElementById("")
+        作用：通过 id获取, 返回页面中第一个符合条件的元素;
+    （2）document.getElementsByTagName("")
+        作用：通过标签名获取, 返回符合条件的所有元素, 伪数组类型, 可以操作下标;
+    （3）document.getElementsByName("")
+        作用：通过 name获取, 返回符合条件的所有元素, 伪数组类型;
+    （4）document.getElementsByClassName("")
+        作用：通过className获取, 返回符合条件的所有元素, 伪数组类型;
+        注意：只支持 IE9及以上的浏览器
+    （5）document.body
+        作用：可以获取 body标签
+    （6）document.documentElement
+        作用：可以获取 html根标签  
+    （7）document.all
+        作用：可以获取页面中的所有标签
+        
+    （8）document.querySelector('css选择器')
+        作用：可以根据css选择器查询元素对象, 返回页面中第一个符合条件的元素;
+        注意：虽然 IE8中没有getElementsByClassName(), 但可以使用querySelector()代替;
+    （9）document.querySelectorAll('css选择器')
+        作用：返回符合条件的所有元素, 伪数组类型;
+
+    2、元素节点的子节点（元素节点调用）
+    （1）getElementsByTagName("")
+        作用：方法、返回当前节点的指定标签名后代节点, 伪数组类型;
+    （2）childNodes
+        作用：属性、返回当前节点中包括文本节点的所有子节点, 伪数组类型;
+        注意：标签中的空白也会被作为文本节点, 但在 IE8及以下的浏览器中不会。
+    （3）children
+        作用：返回当前节点中所有子元素, 文本节点不会被包括在内, 伪数组类型;
+    （4）firstChild
+        作用：返回当前节点的第一个子节点（包括空白文本节点）;
+    （5）lastChild
+        作用：返回当前节点的最后一个子节点（包括空白文本节点）;
+
+    3、父节点与兄弟节点（元素节点调用）
+    （1）parentNode
+        作用：属性、表示当前节点的父节点;
+    （2）previousSibling
+        作用：表示当前节点前一个兄弟节点（包括空白文本节点）;
+    （3）nextSibling
+        作用：表示当前节点后一个兄弟节点（包括空白文本节点）;
+    ----------------------------------------------------------*/
+    </script>
+        <!-- 通过ID选中 HTML部分代码 -->
+        <div id="box">哈哈1</div>
+        <div id="box">哈哈2</div>
+        <h1 id="h1">一号标题</h1>
+        <!-- 通过标签名选中 HTML部分代码 -->
+        <ul id="ul">
+            <li><a href="#">列表1</a></li>
+            <li><a href="#">列表1</a></li>
+            <li><a href="#">列表1</a></li>
+            <li><a href="#">列表1</a></li>
+            <li><a href="#">列表1</a></li>
+        </ul>
+        <ul>
+            <li><a href="#">列表2</a></li>
+            <li><a href="#">列表2</a></li>
+            <li><a href="#">列表2</a></li>
+            <li><a href="#">列表2</a></li>
+            <li><a href="#">列表2</a></li>
+        </ul>
+        <!-- 通过类选中 HTML部分代码 -->
+        <div class="box">1</div>
+        <div class="box">2</div>
+        <div class="box">3</div>
+        <p class="box">4</p>
+        <p class="box">5</p>
+    <script>
+        //通过ID选中 JS部分代码
+        var div1 = document.getElementById('box');
+        console.log(div1);         // <div id="box">哈哈1</div>
+        var h = document.getElementById('h1'); // <h1 id="h1">一号标题</h1>
+        console.log(h);
+
+        //通过标签名选中 JS部分代码
+        var list = document.getElementsByTagName('li')
+        console.log(list);
+
+        // 先通过id选中ul, 再通过标签名选中li
+        var ul = document.getElementById('ul');
+        console.log(ul);
+        var list = ul.getElementsByTagName('li');
+        console.log(list);
+
+        //通过className选中 JS部分代码
+        var box = document.getElementsByClassName('box');
+        console.log(box);
+
+        //通过css选择器选中 JS部分代码
+        var div = document.querySelector('.box');
+        console.log(div);
+
+        var div = document.querySelectorAll('.box');
+        console.log(div);
+
+        var list = document.querySelectorAll("#ul>li");
+        console.log(list);
+        
+    </script>
+</body>
+</html>

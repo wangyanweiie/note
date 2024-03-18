@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    /*---------------------------------------------------------------------
+    原型对象 (prototype)
+    1、定义：我们所创建的每一个函数,浏览器都会向函数中添加一个隐藏属性prototype,
+            该属性对应着的一个对象就是所谓的原型对象;
+    2、作用
+    （1）若函数作为普通函数使用,prototype没有任何作用;
+    （2）若函数以构造函数调用时,它所创建的对象会有一个隐含的属性(__proto__),指向该函数原型对象(prototype);
+    3、语法：类名.prototype.属性名/方法名 = 值/函数;
+
+    4、原型链
+    （1）语法
+        ① 原型：对象名.__proto__
+        ② 原型的原型：对象名.__proto__.__proto__
+        ......
+    （2）原型对象就相当于一个公共区域,所有的属于同一个类（构造函数）的实例对象都可以访问到该原型对象;
+    （3）访问规则：
+        ① 当我们访问对象中的属性或者方法时,会先在对象自身查找,若有则直接使用;
+        ② 若自身没有则去原型对象中查找,若有直接使用;
+        ③ 若原型对象中也没有,则去原型对象的原型中寻找,最后找到Object对象的原型对象;
+        ④ Object的原型对象没有原型,若再没有,则返回undefined;
+    （4）作用: 可以将实例对象中的共用的属性或者方法,统一设置到构造函数的原型对象中;
+        省去了分别为每一个对象添加,也不会影响到全局作用域,就可以让每个对象具有这些属性或者方法;
+
+    5、对象中的toString方法（了解）
+        当我们直接打印一个对象时,实际上输出的是对象的 toString方法的返回值;
+        如果我们希望对象不输出 [Object],可以为对象添加一个 toString方法;
+        为了希望同一个类下的所有实例都可以使用,可以将该方法添加到类（构造函数）的原型对象中;
+        语法：类名.prototype.toString = function(){};
+    -------------------------------------------------------------------------------------*/
+    </script>
+    <script>
+        //构造函数 1.0：将共用的方法写在函数内部,浪费内存空间
+        /*function Person(name,age,gender){
+            this.name = name;
+            this.age = age;
+            this.gender = gender;
+            this.sayName = function(){
+                alert("Hello" + this.name)
+            };
+        }
+        var per = new Person("小王",18,"男");
+        per.sayName();
+        */
+
+        //构造函数 2.0：将共用的方法放到全局作用域中,不安全
+        /*function Person(name,age,gender){
+            this.name = name;
+            this.age = age;
+            this.gender = gender;
+            this.sayName = fun;
+        }
+        function fun(){
+            alert("Hello" + this.name)
+        };
+        var per = new Person("小王",18,"男");
+        per.sayName();*/
+       
+        //构造函数 3.0：将方法放到函数中的原型对象中！
+        function Person(name,age,gender){
+            this.name = name;
+            this.age = age;
+            this.gender = gender;
+        }
+        //向原型对象中写入方法 sayName,读取实例应该也含有写入的方法
+        Person.prototype.sayName = function(){
+            alert("Hello" + this.name)
+        };
+        var per = new Person("小王",18,"男");
+        per.sayName();
+        //向原型中写入属性,读取实例应该也含有写入的属性
+        Person.prototype.high = 165;
+        console.log(per.high);
+        console.log(per);
+
+    </script>
+</body>
+</html>

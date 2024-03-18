@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>对象</title>
+</head>
+<body>
+    <script>
+    /*-----------------------------------------
+    对象
+    1、定义：大括号定义的无序的数据集合
+    2、作用：存储数据的容器（多条且无序）
+    3、组成：对象由键值对组成,多个键值对之间用逗号分隔, 最后一个键值对后面不能加逗号;
+    4、键值对：键值对由键名和键值组成,键名和键值之间用冒号:分隔
+    5、键名 (key)
+    （1）定义：键名也称为属性,为string类型,默认加不加引号都可以;
+    （2）注意：①以数字开头 或者 ②包含特殊符号时必须加引号;     
+    6、键值 (value)：键值也称为属性值,是键名所对应的具体的值,可以是任何数据类型;
+    7、对象的读写与删除
+    （1）读取
+        ① 点运算符：对象名.键名
+        ② 中括号运算符：对象名['键名']
+        注意：读取对象中没有的键名时,返回undefined,不报错
+    （2）写入
+        ① 点运算符：对象名.键名 = 值;
+        ② 中括号运算符：对象名['键名'] = 值;
+    （3）删除：delete 对象.键名
+
+    （4）使用点和 []的区别：
+        ① 能用点运算符肯定能用[],能用[]不一定能用点;
+        ② 以下情况必须用[]:
+            当键名不符合标识符规范
+            当键名为变量时使用[],且括号内不需要加引号;
+    ------------------------------------------------*/
+    </script>
+    <script>
+        //读取对象
+        var obj = {
+            userName:'成果',
+            age:18,
+            where:'地球',
+            '1height':'165cm'
+        }
+        console.log(obj);
+        console.log(obj.userName);      //成果
+        console.log(obj['age']);        //18
+        console.log(obj['i']);          //undefined
+        console.log(obj['1height']);    //165cm
+
+        //写入对象
+        var obj = {
+            userName:'张一山',
+            age:18
+        };
+        obj.userName = '孙红雷';
+        obj['age'] = 38;
+        obj['height'] = '188cm';
+        console.log(obj);
+        
+    </script>
+</body>
+</html>

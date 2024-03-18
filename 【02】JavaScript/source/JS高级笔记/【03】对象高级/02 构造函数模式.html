@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>构造函数模式</title>
+</head>
+
+<body>
+<!--------------------------------------
+4、构造函数模式
+（1）语法
+    function 构造函数名(形参1,形参2,...){
+      this.属性名 = 形参1;
+      this.属性名 = 形参2;
+      .....
+      this.方法名 = function(){
+        函数体;
+      };
+    };
+（2）调用：var 变量 = new 构造函数名(实参1,实参2,...);
+（3）套路: 创建对象时普通函数是直接调用，构造函数是通过 new关键字调用
+（4）适用场景: 需要创建多个类型确定的对象
+（5）问题: 每个对象都有相同的数据, 浪费内存
+---------------------------------------->
+<script type="text/javascript">
+  //*****定义 Person类型*****
+  function Person(name, age) {
+    this.name = name;
+    this.age = age;
+    this.setName = function (name){
+      this.name = name;
+    };
+  };
+  var p1 = new Person('Tom', 15);
+  var p2 = new Person('Bob', 20);
+  p1.setName('Lucy');
+  console.log(p1 instanceof Person); //true
+  //每个对象都有相同的数据 setName, 浪费内存   
+  console.log(p1, p2);
+
+  //*****定义 Student类型*****
+  function Student (name, price){
+    this.name = name;
+    this.price = price;
+  };
+  var s = new Student('Bob', 10000);
+  console.log(s instanceof Student); //true
+
+</script>
+</body>
+</html>

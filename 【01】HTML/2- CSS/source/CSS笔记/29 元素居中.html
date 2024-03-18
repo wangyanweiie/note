@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+	<meta charset="UTF-8">
+	<title>居中问题</title>
+	<style>
+		/*--------------------------------------
+		居中问题
+		1.元素内容水平居中：text-align: center;
+		2.块级元素水平居中：margin: 0 auto;
+		3.一行文字垂直居中：line-height = height
+		4.多行内容垂直居中 (已知宽高)
+		（1）margin:  px 0;     加在自己身上
+		（2）padding: px 0;     加在父元素上
+
+		5.子元素在父元素中水平垂直居中
+		（1）已知宽高
+				① margin: 加在子元素上调整
+				② padding：加在父元素上调整
+				③ 父元素相对定位,子元素固定定位调整
+				④ 父元素相对定位,子元素绝对定位调整
+
+		（2）未知宽高
+				① 绝对定位: 子元素
+					position: absolute;
+					top: 50%;
+					left: 50%;
+					transform: translate(-50%,-50%)
+				② 弹性盒模型: 父元素
+					display: flex;
+					justify-content: center;
+					align-items: center;
+				③ 表格法:
+					display: table-cell;     (父元素)
+					vertical-align: middle;  (父元素)
+					margin: 0 auto;          (子元素)
+		-----------------------------------------*/
+		/* ⑤绝对定位 (未知元素宽高) */
+		.box1{
+				width: 300px;
+				height: 300px;
+				background-color: pink;
+				position: relative;
+		}
+		.box11{
+				width: 100px;
+				height: 100px;
+				background-color: red;
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform:translate(-50%,-50%)
+		}
+
+		/* ⑥弹性盒法  */
+		.box2{
+				width: 300px;
+				height: 300px;
+				background-color: pink;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+		}
+		.box22{
+				width: 100px;
+				height: 100px;
+				background-color: green;
+		}
+
+		/* ⑦ 表格法（面试） */
+		.box3{
+				width: 300px;
+				height: 300px;
+				background-color: pink;
+				display: table-cell; 
+				vertical-align: middle;
+		}
+		.box33{
+				width: 100px;
+				height: 100px;
+				background-color: blue;
+				margin: 0 auto; 
+		}
+	</style>
+</head>
+<body>
+    <!-- 绝对定位 -->
+    <div class="box1">
+        <div class="box11"></div>
+    </div>
+    <!-- 弹性盒模型 -->
+    <div class="box2">
+        <div class="box22"></div>
+    </div>
+    <!-- 表格法 -->
+    <div class="box3">
+        <div class="box33"></div>
+    </div>
+</body>
+</html>

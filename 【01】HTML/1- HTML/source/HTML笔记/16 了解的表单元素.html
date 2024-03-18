@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>只需了解的表单元素</title>
+</head>
+<body>
+
+<!------------------------------------------------------------------------------
+表单元素（了解）
+（1）文件  <input type="file"/> 注意：默认的表单编码格式不支持上传文件
+    当表单元素有文件时，需要把表单的编码格式改为二进制: enctype="multipart/form-data"
+
+（2）隐藏域：<input type="hidden"/> 隐藏域用户看不到，当它携带的信息可以正常提交
+
+（3）图片提交按钮：<input type="image" src="路径"/>
+    file：文件
+    hidden:隐藏
+    image:图片
+
+（4）下拉列表
+    <select name="" id="">
+        <optgroup label="组名" >
+        <option value="">...</option>
+        <option value="">...</option>
+        <option value="">...</option>
+    </select>
+
+（5）多行文本框
+    <textarea name="message" id="" cols="30" rows="10">你好</textarea>
+-------------------------------------------------------------------------------->
+<form action="" name="form1" enctype="multipart/form-data">
+    <p>
+        文件：<input type="file"/>
+    </p>
+    <p>
+        隐藏域：<input type="hidden"/>
+    </p>
+    <p>
+        图片提交按钮：
+        <input type="image" src="../images/img3.gif" width="50" />
+    </p>
+
+    <!--下拉列表-->
+    <select name="sheng">
+        <option value="bj">北京</option>
+        <option value="hb">河北</option>
+        <option value="hn">河南</option>
+        <option value="wh">武汉</option>
+        <option value="hlj">黑龙江</option>
+        <option value="gx">广西壮族自治区</option>
+    </select>
+    <!--分组<optgroup label=""> -->
+    <select name="shi">
+        <optgroup label="北京" >
+            <option value="">朝阳</option>
+            <option value="">大兴</option>
+            <option value="">通州</option>
+        </optgroup>
+        <optgroup label="河北" >
+            <option value="">保定</option>
+            <option value="">张家口</option>
+            <option value="">石家庄</option>
+        </optgroup>
+    </select>
+    <br/><br/>
+
+    多行文本框：<br/>
+    <textarea name="message" id="" cols="30" rows="10">哈哈哈</textarea>
+</form>
+</body>
+</html>

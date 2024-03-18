@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>绝对定位练习1</title>
+    <link rel="icon" href="../images/favicon.ico"/>
+    <link rel="stylesheet" href="css/reset.css"/>
+    <style>
+        .box{
+            width: 303px;
+            height: 375px;
+            background-color: palevioletred;
+            position: relative;
+        }
+        .box>img{
+            /*width: 303px;*/
+            /*height: 375px;*/
+            width: 100%;
+        }
+        .text{
+            width: 100%;
+            height: 88px;
+            /*background-color: skyblue;*/
+            /*给box加相对定位，相对于父元素box定位*/
+            position: absolute;
+            left: 0;
+            bottom: 20px;
+        }
+        .text>p:first-child{
+            width: 303px;
+            height:31px;
+            color: #fff;
+            font-size: 21px;
+            font-weight: 700;
+            margin-bottom: 0;
+        }
+        .text>p:nth-child(2){
+            width: 303px;
+            height:21px;
+            color: #fff;
+            font-size: 14px;
+        }
+        .text>P:last-child{
+            width: 289px;
+            height: 36px;
+            padding-left: 14px;
+            font-size: 22px;
+            font-weight: 700;
+            color: #f1904a;
+        }
+        .text span{
+            margin-left: 4px;
+            color: #fff;
+            font-size: 14px;
+            text-decoration: line-through;
+        }
+
+    </style>
+</head>
+<body>
+<div class="box">
+    <img src="../meizu/7f195891-a750-411d-9cd2-fda36fc8790f.jpg" alt=""/>
+    <div class="text">
+        <p>魅族超充USB-C移动电源</p>
+        <p>【限时券后价149|满200减20】</p>
+        <!--需要重新分块写-->
+        <p>¥149<span>¥169</span></p>
+    </div>
+</div>
+
+</body>
+</html>

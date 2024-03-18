@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Form表单</title>
+</head>
+<body>
+<!-------------------------------------------------------------------------------------
+表单
+（1）作用：提交数据，页面具有交互性
+（2）标签：双标记、块级元素
+    注意：form之间不能相互嵌套，但是一个页面可以包含多个form，可以嵌套表格table
+（3）属性
+    <form name="表单的名称" action="提交的地址" method="提交的方式（默认值）get|post"></form>
+    get和post的区别：
+        ① get提交的数据不安全，会在地址栏中显示，post安全
+        ② get只能提交少量的数据（不能大于2kb），post理论上没有限制
+
+（4）重点表单元素：<input type="" name="" value="" id=""/> <label for="id">内容</label>
+                         类型    名字     当前值     点击label标签中的文字就会选中相同id关联的的选择框
+
+    普通的文本框：<input type="text" name="userName" value="文本框显示的内容"/>
+    只能输入数字：<input type="number">
+    密码框：<input type="password" name="password"/>
+    单选框：<input type="radio" name="xx"/> --------（注意：多个单选按钮必须加相同的name属性:互斥）
+    复选框：<input type="checkbox"/>
+    提交按钮：<input type="submit"/>
+    重置按钮：<input type="reset"/>
+    没有任何功能的按钮：<input type="button"/>
+
+    提交按钮：<button></button>  默认type="submit"
+    重置按钮：<button type="reset"></button>
+    没有任何功能的按钮：<button type="button"></button>
+
+（5）label标签：提升用户体验度，关联单选或多选框与文字
+    ①单选：<input type="radio" name="sex" id="man"/> <label for="man">男</label>
+    ②多选：<input type="checkbox" id="song"/> <label for="song">唱</label>
+    注意：label的for属性值与input的id属性值相同
+---------------------------------------------------------------------------------------------->
+    <form action="" name="form1" method="post">
+        姓名：<input type="text" name="userName" value="王言伟"/>
+        <br/>
+        密码：<input type="password" name="password"/>
+        <br/>
+        性别：<input type="radio" name="sex" id="man"/><label for="man">男</label>
+            <input type="radio" name="sex" id="woman"/><label for="woman">女</label>
+            <input type="radio" name="sex" id="wowo"/><label for="wowo">女博士</label>
+        <br/>
+        爱好：<input type="checkbox" id="song" checked="true"/><label for="song">唱</label>
+            <input type="checkbox" id="jump"/><label for="jump">跳</label>
+            <input type="checkbox" id="rap"/><label for="rap">rap</label>
+            <input type="checkbox" id="basketball"/><label for="basketball">篮球</label>
+        <br/>
+        <input type="submit" value="登录"/>
+        <input type="reset" value="重置"/>
+        <input type="button" value="没有任何功能"/>
+
+        <button>默认登录</button>
+        <button type="reset">重置</button>
+        <button type="button">没有任何功能</button>
+    </form>
+</body>
+</html>

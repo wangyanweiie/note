@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>animation</title>
+    <style>
+    /*----------------------------------------------------
+    动画
+    （1）动画与过渡的区别
+        ①过渡只能制作简单的动画,动画可以制作复杂的动画;
+        ②过渡必须有触发事件,动画可以没有;
+        ③动画可以控制播放次数;
+    （2）定义动画
+        @keyframes name{
+            0%|from{
+                cs样式
+            }
+            任意百分比{
+                css样式
+            }
+            100%|to{
+                css样式
+            }
+        }
+    （3）调用动画
+        animation: name  duration timing-function   delay  iteration-count  direction   fill-mode;
+                   name  持续时间  速度变化类型     延迟时间   播放次数         播放方向   动画停在最后一帧
+                   必选    必选      可选            可选      可选             可选        可选
+        注意：写在父元素上页面刷新即调用动画,写在: hover上鼠标悬停调用动画;
+            简写没有先后顺序,但当有两个时间时,第一个是持续时间,第二个是延迟时间;
+
+    （4）属性
+        ①动画的名称
+            animation-name: ;
+        ②持续时间
+            animation-duration: 0s|0ms;
+        ③速度变化类型
+            animation-timing-function: ease|ease-in|ease-out|ease-in-out|linear;
+        ④延迟时间（可取负值）
+            animation-delay: 0s|0ms ;
+        ⑤播放次数
+            animation-iteration-count:  number|infinite(无限播放) ;
+        ⑥播放方向
+            animation-direction: alternate(偶数次倒着播放);
+        ⑦动画停在最后一帧
+            animation-fill-mode: forwards;
+        ⑧动画的播放状态（只能写在悬停：hover中）
+            animation-play-state: running（默认值）|paused（暂停）;
+    --------------------------------------------------------------*/
+        .box{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            animation: dongHua 2s linear 1s infinite alternate forwards;
+        }
+        .box:hover{
+            animation-play-state: paused;
+        }
+        /*若是实现轮播图效果,需要在 ..%引入背景图片方式,background-image:url("图片路径"); */
+        @keyframes dongHua{
+            0%{
+                background-color: red;
+            }
+            25%{
+                background-color: orange;
+            }
+            50%{
+                background-color: yellow;
+            }
+            75%{
+                background-color: green;
+            }
+            100%{
+                background-color: blue;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+</body>
+</html>

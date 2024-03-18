@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<!-----------------------------
+下拉列表select：与option结合使用
+<select name="" id="">
+  <option value=""></option>
+  <option value=""></option>
+  <option value=""></option>
+</select>
+
+（1）单选应用：只能选中一个值,v-model绑定的data中属性是一个字符串类型值,
+  当我们选中option中的一个时,会将它的value赋值到绑定的data中属性中;
+（2）多选应用：可以选中多个值,v-model绑定的data中属性是一个数组类型,
+  当选中多个值时,就会将选中的option对应的value添加到该数组中;
+---------------------------------------------------------------->
+
+<div id="app">
+  <!--1.选择一个-->
+  <select name="abc" v-model="fruit">
+    <option value="苹果">苹果</option>
+    <option value="香蕉">香蕉</option>
+    <option value="榴莲">榴莲</option>
+    <option value="葡萄">葡萄</option>
+  </select>
+  <h5>您选择的水果是: {{fruit}}</h5>
+
+  <!--2.选择多个：multiple属性（按住ctrl键可选择多个）-->
+  <select name="abc" v-model="fruits" multiple>
+    <option value="苹果">苹果</option>
+    <option value="香蕉">香蕉</option>
+    <option value="榴莲">榴莲</option>
+    <option value="葡萄">葡萄</option>
+  </select>
+  <h5>您选择的水果是: {{fruits}}</h5>
+</div>
+
+<script src="../Js/vue.js"></script>
+<script>
+  const app = new Vue({
+    el: '#app',
+    data: {
+      fruit: '香蕉',
+      fruits: []
+    }
+  })
+</script>
+
+</body>
+</html>

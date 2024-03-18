@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>背景渐变与定位</title>
+    <style>
+        .box{
+            width: 615px;
+            height: 610px;
+            background: pink;
+            position: relative;
+        }
+        .new{
+            width: 60px;
+            height: 60px;
+            color: white;
+            text-align: center;
+            line-height: 60px;
+            background: linear-gradient(120deg,#ff910e,#ffd037);
+            border-radius: 50%;
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            transition: all 0.2s;
+        }
+        /*盒阴影*/
+        .box:hover {
+            box-shadow: 0 15px 30px rgba(0,0,0,.1);
+            transform:translate(0,-2px);
+    }
+</style>
+</head>
+<body>
+
+<div class="box">
+    <div class="new">新品</div>
+<!--
+    <div>
+        <a href="https://detail.meizu.com/item/meizu18.html" target="_blank">
+            <p class="name">魅族18</p>
+            <p class="decs">限时领券立省300|12期免息</p>
+            <p class="price"><span class="money">¥</span>3999</p>
+            <img src="../meizu/de87d38d-3785-4605-a211-71364ded123f.png" alt="" class="img"/>
+        </a>
+    </div>-->
+</div>
+
+</body>
+</html>

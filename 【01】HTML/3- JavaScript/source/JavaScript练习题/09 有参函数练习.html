@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>有参函数练习</title>
+</head>
+<body>
+    <script>
+    //有参函数：求圆的面积
+    function area(r){
+        var s = r * r * Math.PI;
+        console.log("面积:" + s );
+    }
+    area(10);
+        
+    //有参函数：判断一个数的奇偶性
+    function number(i)
+    {
+        if(i > 0)
+        {
+            if(i % 2 ==0){
+            console.log(i +"：偶数");
+        }
+        else console.log(i +"：奇数");
+        }
+        else console.log("请输入大于零的正整数");   
+    }
+    number(88);
+
+    //有参函数：判断一年是否为闰年
+    function year(n)
+    {
+        if (n > 0) 
+        {
+            if((n % 4 == 0 && n % 100 !=0)||(n % 400 == 0)){
+                console.log(n +"：闰年");
+            }
+            else console.log(n +"：平年");
+        }
+        else console.log("请输入正确的年份");
+    }
+    year(2021);
+
+    //有参函数：判断三个数的最大值
+    function max(a,b,c)
+    {
+        var m;
+        if(a>b){
+            if(a>c){
+                m = a;
+            }else{
+                m = c;
+            }
+        }   
+        else{
+            if(b>c){
+                m = b;
+            }else{
+                m = c;
+            }
+        }
+        console.log("最大值：" + m);
+    }
+    max(5,-22,3);
+    
+    //有参函数：判断三个数的最大值
+    function max(a,b,c)
+    {
+        var m;
+        if(a>b){
+            m = a;
+        }
+        else m = b;
+        if(m < c){
+            m = c;
+        }
+        console.log("最大值：" + m);
+    }
+    max(5,22,3);
+
+    </script>
+</body>
+</html>

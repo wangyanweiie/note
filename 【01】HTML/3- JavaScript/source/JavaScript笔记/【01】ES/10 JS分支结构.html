@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript分支结构</title>
+</head>
+<body>
+    <script>
+        /*---------------------------------------------------------------------
+        1、if语句
+        （1）单分支结构：一件事情,满足就执行,不满足什么也不做;
+            if(条件){满足条件执行的语句}
+
+        （2）双分支结构：一件事情,满足就执行if里面的语句,不满足就执行else里面的语句;
+            if(条件){满足条件执行的语句}
+            else{不满足条件执行的语句}
+
+        （3）多分支结构：多选一执行,满足就执行对应的代码,并不往下执行;
+            if(条件){满足当前条件执行的语句}
+            else if(条件){满足当前条件执行的语句}
+            else if(条件){满足当前条件执行的语句}
+            else{以上条件都不满足执行的语句}
+        
+        2、switch语句
+        （1）语法：
+            switch(条件表达式){
+                case 表达式1 : 语句1 ; break;
+                case 表达式2 : 语句2 ; break;
+                case 表达式3 : 语句3 ; break;
+                default:语句4 ; break;
+            }
+        （2）执行过程
+            语句执行时,依次将case后表达式的值与switch后表达式的值进行全等比较;
+            若比较结果为true,则执行后面的语句（若当前case后没有break时,则之后的的所有语句都会被执行）
+            若比较结果为false,则继续向下比较;
+            若所有的比较结果都为false,则执行default语句
+
+        3、分支结构相互嵌套
+
+        4、动态输入框
+        （1）语法：var 变量名 = prompt('提示',默认值)
+        （2）注意：默认值可以省略,返回string
+            例子：浏览器窗口弹出请输入您的名字
+            var name = prompt("请输入您的名字");
+        ---------------------------------------------------------------------*/
+    </script>
+
+    <script>
+        //分支结构相互嵌套
+        var sex = prompt("请输入您的性别");
+        var age = prompt("请输入您的年龄");
+        if((sex == "男" || sex == "女") && (age > 0 && age < 130))
+        {
+            if(sex == "男" && age>22){
+                console.log("可以结婚")
+            }
+            
+            else if(sex == "女" && age>20){
+                console.log("可以结婚")
+            }
+            
+            else{
+                console.log("不能结婚")
+            }
+        }
+        else{
+            console.log("请输入正确的性别或者年龄")
+        }
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<!----------------------------------------------------------------
+template模板分离写法
+（1）作用：将其中的HTML分离出来写,然后挂载到对应的组件上,结构更加清晰;
+（2）Vue提供了两种写法来定义HTML模块内容: 在全局或者vue实例中都是通过id绑定 template:"#id";
+  * <script type="text/x-template" id="">...</script>
+  * <template id="">...</template>
+  
+（3）语法
+  全局组件：
+   Vue.component('组件标签名', {
+    template: '#id'
+  })
+  局部组件：
+  components: {
+      组件标签名: {
+        template:'#id'
+      }
+    }
+-------------------------------------------------------------------->
+<div id="app">
+  <cpn></cpn>
+  <cpn></cpn>
+</div>
+
+<!--1.script标签形式-->
+<!--
+<script type="text/x-template" id="cpn">
+<div>
+  <h2>script标签</h2>
+  <p>我是内容哈哈哈哈</p>
+</div>
+</script>
+-->
+<!--2.template标签形式-->
+<template id="cpn">
+  <div>
+    <h2>template标签</h2>
+    <p>我是内容呵呵呵呵呵</p>
+  </div>
+</template>
+
+<script src="../Js/vue.js"></script>
+<script>
+  //注册一个全局组件
+  Vue.component('cpn', {
+    //通过id绑定抽离出的模板 
+    template: '#cpn'
+  })
+  //挂载在vue实例下
+  const app = new Vue({
+    el: '#app',
+  })
+</script>
+
+</body>
+</html>

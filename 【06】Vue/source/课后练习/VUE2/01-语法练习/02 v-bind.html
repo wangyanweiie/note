@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #app{
+            cursor: pointer;
+        }
+        .box{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <!-- 练习1：v-bind绑定超链接与图片链接地址 -->
+    <!-- <div id="app">
+        <a :href="Href">百度一下</a>
+        <img :src="Img" alt="">
+    </div>
+    <script src="../../Js/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el:"#app",
+            data:{
+                Href:'http://www.baidu.com',
+                Img:"https://www.baidu.com/img/PCjing_5e539553b5304b9f43deb8a0fc918e45.png"
+            }
+        })
+    </script> -->
+
+    <!-- 练习2：v-bind绑定class类 -->
+    <!-- <div id="app">
+        <h5 :class = "{box:isBox}"></h5>
+        <button v-on:click = "btnClick">button</button>
+    </div>
+    <script src="../../Js/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el:"#app",
+            data:{
+                isBox:true
+            },
+            methods:{
+                btnClick: function () {
+                    this.isBox = !this.isBox
+                }
+            }
+        })
+    </script> -->
+    <!-- 练习3: 点击列表中的哪一项,那么该项的文字变成红色 -->
+    <!-- <div id="app">
+        <ul>
+            <li v-for = "(item,index) in movies" 
+            v-bind:class="{box:index===currentIndex}" 
+            v-on:click="liClick(index)">
+                {{index+1}}: {{item}}
+            </li>
+        </ul>
+    </div>
+    <script src="../../Js/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el:"#app",
+            data:{
+                movies:["海贼王","死神","火影忍者","名侦探柯南"],
+                currentIndex:0,
+            },
+            methods:{
+               liClick(index){
+                    this.currentIndex = index;
+                }
+            }
+        })
+    </script> -->
+    <!-- 练习4: v-bind绑定style -->
+    <div id="app">
+        <h5>哈哈哈</h5>
+        <!-- 将样式封装在一个方法中 -->
+        <h5 :style="getStyle()">哈哈哈哈</h5>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        const app = new Vue({
+            el:"#app",
+            data:{
+                finalSize:"20",
+                finalColor:"red"
+            },
+            methods:{
+                getStyle(){
+                    return {fontSize:this.finalSize + "px",backgroundColor:this.finalColor} 
+                }
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<!------------------------------------------------------------------
+v-on
+（1）作用：用一个监听按钮的点击事件,可以将事件指向一个在methods中定义的函数;
+（2）语法：v-on:事件名 = "响应函数名()"
+（3）语法糖：@
+（4）当进行事件监听时的参数传递问题:
+    * v-on:事件名 = "响应函数名"
+      如果调用的方法不需要额外参数,那么方法后的()可以不添加;
+      但此时如果方法本身中有一个参数,那么会默认将原生事件event参数传递进去;
+
+    * v-on:事件名 = "响应函数名(实参,$event)"
+      如果需要同时传入某个参数,同时需要event时,可以通过 $event 传入事件;
+      而且如果传入的参数是基本数据类型可以直接写,如果是字符串会被解析成变量到vue实例中寻找;
+（5）注意: v-on可以绑定多个方法,中间用逗号隔开;
+------------------------------------------------------------------------------------>
+
+<div id="app">
+  <h3>当前计数: {{counter}}</h3>
+
+  <!--<button v-on:click="counter++">+</button>-->
+  <!--<button v-on:click="counter--;">-</button>-->
+
+  <!--<button v-on:click="increment">+</button>-->
+  <!--<button v-on:click="decrement">-</button>-->
+  <button @click="increment">+</button>
+  <button @click="decrement">-</button>
+</div>
+
+<script src="../Js/vue.js"></script>
+<script>
+  const app = new Vue({
+    el: '#app',
+    data: {
+      counter: 0
+    },
+    methods: {
+      //对象字面量增强写法
+      increment() {
+        this.counter++
+      },
+      decrement() {
+        this.counter--
+      }
+    }
+  })
+</script>
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>await</title>
+</head>
+
+<body>
+    <script>
+        //await 需要放在使用 async 声明的函数中;
+        //通过await可以直接解析promise对象,获取到执行成功后的返回值;
+        //执行失败时的则需要通过 try{} catch{}处理;
+        //*********************只处理成功的结果*********************
+        async function data() {
+            const result = await new Promise((resolve, reject) => {
+                resolve("用户数据");
+            })
+            console.log(result);
+        }
+        //调用data函数
+        data();
+
+        //**********************处理失败的结果**********************
+        async function main() {
+            try {
+                const result = await new Promise((resolve, reject) => {
+                    reject("失败啦!")
+                })
+                console.log(result);
+            }
+            catch (error){
+                console.log(error)
+            }
+        }
+        //调用main函数
+        main();
+    </script>
+</body>
+
+</html>

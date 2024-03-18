@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>定时器应用练习2</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            height: 100%;
+            border-left: black solid 1px;
+            position:absolute;
+            top: 0;
+            left: 800px;
+        }
+        #box01{
+            width: 100px;
+            height: 100px;
+            background-color:pink;
+            position: absolute;
+            /*防止IE获取到的是auto*/
+            left: 0;
+        }
+    </style>
+    <script>
+        //定义 getStyle函数：获取元素 obj当前显示名为 name的样式
+        function getStyle(obj,name){
+            if(window.getComputedStyle){
+                return getComputedStyle(obj,null)[name];
+            }
+            else{
+                return obj.currentStyle[name];
+            }
+        }
+        /*若定义全局变量保存定时器标识：所有正在执行的定时器都在这个变量中保存*/
+        var timer;
+        /*定义 move函数：控制元素移动
+        参数：
+            obj：要执行的对象；
+            target：执行动画的目标位置
+            speed：移动速度*/
+        
+        function move(obj,target,speed){
+                //关闭上一次开启的定时器；
+                clearInterval(timer);
+                //获取当前位置与目标位置比较决定速度的正负
+                var current =  parseInt(getStyle(obj,"left"));
+                if(current > target){
+                    speed = -speed;
+                }
+                //开启定时器
+                timer = setInterval(function(){
+                    //将获取到的 obj的 left值转换为 number类型
+                    var oldValue = parseInt(getStyle(obj,"left"));
+                    var newValue = oldValue + speed;
+                    //判断当前值与目标位置的距离
+                    if((speed<0 && newValue<target) || (speed>0 && newValue>target)){
+                        newValue = target;
+                    }
+                    obj.style.left = newValue + "px";
+                    //当距离达到目标距离时停止移动
+                    if(newValue == target){
+                        clearInterval(timer);
+                    }
+                },30);
+        };
+        window.onload = function(){
+            var btn01 = document.getElementById("btn01");
+            var btn02 = document.getElementById("btn02");
+            var box01 = document.getElementById("box01");
+           //单击响应函数中直接调用 move函数
+            btn01.onclick = function(){
+                move(box01,800,10);
+            };      
+            btn02.onclick = function(){
+                move(box01,0,10);
+            };
+        };
+    </script>
+</head>
+<body>
+    <button id="btn01">向右移动</button>
+    <button id="btn02">向左移动</button><br><br>
+    <div id="box"></div>
+    <div id="box01"></div>
+</body>
+</html>

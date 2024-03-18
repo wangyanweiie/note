@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>超链接</title>
+</head>
+<body>
+
+<!-----------------------------------------
+超链接：<a href="网址或者路径" target=""></a>
+（1）属性：href="路径"
+    target="_self"（默认值）：在原窗口打开链接
+          ="_blank"：在新的空白窗口打开链接
+
+（2）空链接：href="#"  点击效果返回页面顶部
+
+（3）锚点
+    name：名字（锚点：同一个页面做跳转）
+    ①点击a跳转到a，注意：name只能给a标签加
+    ②点击a跳转到块级元素，注意：ID具有唯一性
+------------------------------------------>
+
+<!--点击图片3跳转到图片5，进行嵌套-->
+<a href="../images/img5.gif ">
+    <img src="../images/img3.gif" height ="200" alt=""/>
+</a>
+<br/>
+<a href="#">空链接 </a>
+<a href="http://www.baidu.com" target="_blank ">百度</a>
+<a href="../images/img4.gif" height ="200">图片</a>
+
+<!--点击a跳转到a-->
+<br/>
+<a href="#userName">点击我</a>
+<a name="userName">跳转到我</a>
+
+<!--点击a跳转到块级元素-->
+<br/>
+<a href="#mingzi">点击哈哈</a>
+<p id="mingzi">哈哈哈哈哈</p>
+
+</body>
+</html>

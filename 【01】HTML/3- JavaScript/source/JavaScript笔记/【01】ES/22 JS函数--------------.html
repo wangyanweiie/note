@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>函数</title>
+</head>
+<body>
+    <script>
+    /*--------------------------------------------------------
+    函数
+    1、定义：函数是由事件驱动或者被调用时执行的可重复使用的代码块;
+    2、作用：可以被重复使用,可以控制代码执行时间;
+    3、创建函数
+    （1）function命令法
+        function 函数名(){
+            函数体;
+        }
+    （2）函数表达式法
+        var 变量名 = function(){
+            函数体;
+        };
+    （3）Function构造法
+        var 变量名称 = new Function('形参1', '形参2',...);
+        注意：Function中的参数可以有多个,那么前面的参数表示函数的形参,最后一个参数表示函数体;
+        
+    （4）区别
+        ①function命令法：调用函数可以写在声明的前面（函数声明提升）
+        ②函数表单式法：调用不能写在声明的前面（虽然变量声明提升,但赋值留在原地）
+        ③Function构造法：调用不能写在声明的前面（同上）
+
+    4、函数的调用
+    （1）function命令法：   函数名();
+    （2）函数表达式法：     变量名();
+    （3）Function构造法：   变量名(实参1,实参2,...);
+
+    5、函数声明提升
+    （1）定义：函数声明提前到所在作用域的最上面;
+    （2）注意
+        a、function命令法：函数会在所有代码执行之前就被创建,所以可以在声明之前调用;
+        b、函数表达式法：不会被声明提升,不能在声明之前调用;
+
+    6、函数的分类
+    （1）根据定义：内置函数、自定义函数
+    （2）根据参数：有参、无参
+    （3）根据返回值：有返回值、无返回值
+    （4）特殊：匿名函数、回调函数、自执行函数等
+    -------------------------------------------------------------------------*/
+    </script>
+    <script>
+        //函数调用 + 声明提升
+        //function命令法：调用函数可以写在声明的前面
+        makeBaoZi();
+        function makeBaoZi(){
+            console.log('和面');
+            console.log('剁馅儿');
+            console.log('包包子');
+            console.log('出锅');
+            console.log('--------');
+        }
+        makeBaoZi();
+        console.log(typeof makeBaoZi);  //function
+        
+        //函数表达式法：调用不能写在声明的前面,写在前面报错
+        var makeBaoZi = function(){
+            console.log('和面');
+            console.log('剁馅儿');
+            console.log('包包子');
+            console.log('出锅');
+            console.log('-------');
+        };
+        makeBaoZi();
+        console.log(typeof makeBaoZi); //function
+
+        //Function构造方法定义一个函数：功能是求三个数的和
+        var add = new Function('num1','num2','num3',' var sum = num1+num2+num3; console.log(sum); ');
+        add(1,2,3);
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>trimStart 与 trimEnd</title>
+</head>
+<body>
+    <!-- 字符串方法-->
+    <!----------------------------------------------------------------- 
+    1、trimStart/trimEnd
+    （1）作用：清除字符串空白字符; trimStart清楚左侧空白,trimEnd清楚右侧空白;
+    （2）语法
+        * str.trim()    
+        * str.trimStart()
+        * str.trimEnd() 
+    
+    2、description
+    （1）作用：获取Symbol声明的实例对象的字符串描述
+    （2）语法：str.description
+    -------------------------------------------------------->
+    <script>    
+        //****** trimStart/trimEnd/trim*******
+        let str = '   I Love You   ';
+        console.log(str.trim());
+        console.log(str.trimStart());
+        console.log(str.trimEnd());
+
+        //******** description *********
+        //创建 Symbol,括号内的字符串用于对Symbol实例的描述,方便在控制台区分
+        let s = Symbol('尚硅谷');
+        console.log(s.description);
+        
+    </script>
+</body>
+</html>

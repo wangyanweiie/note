@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作用域习题</title>
+</head>
+<body>
+    <script type="text/javascript">
+    //********测试题 1********
+    /*在代码执行前各作用域就已经区分好了,即使在 show函数内部调用 fn函数,
+    当在 fn函数中查找不到某个变量时,仍然是去全局作用域中查找,
+    无法访问到 show函数的作用域;*/
+        var x = 10;
+        function fn(){
+          console.log(x);
+        }
+        function show(f){
+          var x = 20;
+          f();
+        }
+        show(fn);       //10
+    //********测试题 2********
+        var fn = function(){
+            console.log(fn);    //fn函数
+        };
+        fn();
+        var obj = {
+            fn2: function(){
+            /* fn2是 obj的属性,不是声明的变量;
+            首先在函数内部寻找 fn2,找不到便要去外部作用域中寻找,
+            此时即全局作用域,没有找到,会报错 */
+            //console.log(fn2);
+            console.log(this.fn2);   //function函数
+            }
+        };
+        obj.fn2();
+
+    </script>
+</body>
+</html>

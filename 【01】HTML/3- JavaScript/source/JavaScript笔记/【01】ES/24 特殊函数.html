@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>特殊函数</title>
+    <style>
+        .box{
+            width: 100px;
+            height: 100px;
+            background-color: #333;
+        }
+    </style>
+</head>
+<body>
+    <script>
+    /*-------------------------------------------------------------
+    特殊函数
+    1、递归函数
+    （1）定义：所谓递归函数就是指在一个函数内部又调用了自己被称为递归函数
+    （2）语法：function fn() {
+                fn();
+            }
+    （3）注意：使用递归函数时一定要确定“出口”,即在某个时刻能够让函数不再调用自己;
+
+    2、匿名函数
+    （1）定义：没有函数名称的函数,匿名函数可以和事件相结合
+    （2）语法：元素.on事件名称 = function(){...};
+    
+    3、回调函数（作为其他函数参数的匿名函数）
+    （1）定义：若一个函数被当做另一个函数或方法的参数,那么这个被作为参数的函数就是回调函数;
+    （2）注意：回调函数常用匿名函数,回调函数通常是在满足某个条件时才会被触发;
+
+    4、匿名自执行函数
+    （1）定义：没有名称且不需要手动调用的函数,只执行一次;
+    （2）语法
+        ①无参无返回值
+        (function(){
+            函数体;
+        })();
+
+        ②有参无返回值
+        (function(形参1,形参2...){
+            函数体;
+        })(实参1,实参2...);
+
+        ③有参有返回值
+        var 变量名 = (function(形参1,形参2...) {
+            函数体;
+            return 返回值;
+        })(实参1,实参2...);
+    （3）注意：匿名自执行函数通常用来创建块级作用域: 闭包
+    ---------------------------------------------------*/
+    </script>
+    <div class="box"></div>
+    <script>
+    //定义函数功能：求1-n的和
+        function fn(n) 
+        {
+            if (n == 1) {
+                return 1;
+            } 
+            else {
+                return fn(n-1) + n; //1+2+3+4+5=15
+            }
+        }
+        var res = fn(5);
+        console.log(res);
+
+    //利用arguments对象模拟重载函数
+        /*function fn() 
+        {
+            if (arguments.length == 1) 
+            {
+                console.log('只有一个形参');
+            } 
+            else if (arguments.length == 2) {
+                console.log('有两个形参');
+            }
+        }
+        fn(10, 20);*/
+
+    //匿名函数：为页面中的div节点添加点击事件
+        // 第一步：获取页面中的div
+        var myDiv = document.querySelector('div');
+        // 第二步：为div添加点击事件
+        myDiv.onclick = function() 
+        {
+            for (var i=1; i<=5; i++) {
+                console.log('hello');
+            }
+        };
+
+    //定义一个匿名自执行函数：在控制台打印一个hello
+        (function() {
+            console.log('helloworld');
+        })();
+
+
+    //定义一个匿名自执行函数：求两个数的和
+        (function(num1, num2) {
+            var sum;
+            sum = num1 + num2;
+            console.log(sum);
+        })(10, 20);         //30
+
+    //定义一个匿名自执行函数：求两个数的和,将和作为返回值返回
+        var res = (function(num1, num2) {
+            var sum;
+            sum = num1 + num2;
+            return sum;
+        })(100, 200);
+        console.log(res);   //300
+     </script>
+</body>
+</html>

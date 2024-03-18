@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>transform</title>
+    <style>
+        /*----------------------------------------------------
+        transfrom
+        1、作用：使元素在位置或者形状上发生一定的改变
+        2、属性：当只设置一个属性时其余自动为默认值
+        3、语法: transform: translate() rotate() scale() skew();
+                              位移       旋转     缩放    倾斜
+        4、属性值
+        （1）位移：transform: translate(x,y)|translateX()|translateY();
+            ①单位：px  %
+            ②当只取一个值,表示水平方向; 当取两个值,表示水平和垂直方向
+             取正值,右下走; 取负值,左上走
+
+        （2）旋转：transform: rotate();
+            ①单位：deg（弧度）
+            ②取正值,顺时针旋转; 取负值,逆时针旋转
+            ③设置旋转中心点：transform-origin:;（默认中心点为宽高的一半）
+              注意：旋转会旋转整个坐标轴,当位移和旋转同时存在,推荐位移写在旋转的前面
+
+        （3）缩放：transform: scale(x,y)|transform:scaleX()|transform:scaleY();
+            ①取值number（默认为1）： 0-1 缩小; >1 放大
+              当只取一个值,等比例缩放; 当取两个值,表示水平方向和垂直方向
+
+        （4）倾斜：transform: skew(x,y)|transform:skewX()|transform:skewY();
+            ①单位：deg（弧度）
+            ②当只取一个值,表示水平方向; 当取两个值,表示水平和垂直方向
+            注意：倾斜的弧度x与y之和不能是直角
+        -------------------------------------------------------------*/
+        .box{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            margin: 50px;
+            /*过渡*/
+            transition: all 1s;
+            transform-origin: right bottom;
+        }
+        .box:hover{
+            /* transform: translate(10px,10px); */
+            /* transform: translate(20px); */
+            /* transform: translateX(20px); */
+            /* transform: translateY(-20px); */
+
+            transform: rotate(360deg);
+            /* transform:  translate(50px,50px) rotate(60deg); */
+
+            /* transform: scale(1.5,.8); */
+            /* transform: scaleX(1.5); */
+            /* transform: scaleY(1.5); */
+
+             /* transform: skew(30deg,60deg); */
+             /*transform: skewX(30deg);*/
+            /* transform: skewY(30deg); */
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<button>按钮1</button>
+<button>按钮2</button>
+<button>按钮3</button>
+
+<script>
+// let
+/*----------------------------------------------------
+1.理解
+  ES5之前if与for都没有块级作用域,需要借助于function的作用域来解决应用外面变量的问题;
+  ES6中加入了let用于变量声明, let它是有if和for的块级作用域;
+2.注意
+  * let与const 声明变量都没有函数作用域的概念,而是遵守块级作用域的概念;
+  * let与const 声明的变量不存在变量提升;
+  * let 有暂存死区 (在声明之前调用变量报错,就是暂时性死区)
+  * let与const 在同一作用域下不能声明同名变量;
+------------------------------------------------------*/
+  // 变量作用域: 变量在什么范围内是可用;
+  {
+    var name = 'Learn';
+    console.log(name);
+  }
+  console.log(name);
+
+  //*******if 没有块级作用域引起的问题*******
+  var func;
+  if (true) {
+    var name = 'Learn';
+    func = function () {
+      console.log(name);
+    };
+    func();
+  }
+  name = 'kobe';
+  func();
+
+  //**********for 没有块级作用域引起的问题***********
+  // 情况一: ES5中没有使用闭包(错误的方式) 当按钮点击时for循环早已遍历结束且为最后一次更改的值;
+  /*
+  var btnS = document.getElementsByTagName('button');
+  for (var i=0; i<btnS.length; i++) {
+    btnS[i].addEventListener('click', function () {
+      console.log('第'+ i +'个按钮被点击');
+    })
+  }
+  */
+  // 情况二: ES5中没有使用闭包(借助this);
+  /*
+  var btnS = document.getElementsByTagName('button');
+  
+  for (var i=0; i<btnS.length; i++) {
+    //将每个btn所对应的下标保存在各自上
+    btnS[i].index = i;
+    btnS[i].addEventListener('click', function () {
+      console.log('第'+ (this.index+1) +'个按钮被点击');
+    })
+  }
+  */
+
+  // 情况三: ES5中使用闭包,函数是一个作用域;
+  var btnS = document.getElementsByTagName('button');
+  for (var i=0; i<btnS.length; i++) {
+    (function (i) { // 0
+      btnS[i].addEventListener('click', function () {
+        console.log('第'+ (i+1) +'个按钮被点击');
+      })
+    }) (i)
+  }
+
+  /*
+  // 情况四: ES6中的let声明/const
+  let btnS = document.getElementsByTagName('button')
+  for (let i = 0; i < btnS.length; i++) {
+    btnS[i].addEventListener('click', function () {
+      console.log('第'+ i +'个按钮被点击');
+    })
+  }
+  */
+</script>
+
+</body>
+</html>

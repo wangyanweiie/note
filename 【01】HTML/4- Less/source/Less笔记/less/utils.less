@@ -1,0 +1,58 @@
+//************混合: 匹配模式************
+//@_通用的匹配模式,无论同名的哪一个混合被匹配了,都会先执行通用匹配模式中的代码;
+
+.triangle(@_,@w,@c){
+  width: 0;
+  height: 0;
+}
+//向上三角形
+.triangle(T,@w,@c){
+  //border-top: @w solid transparent;
+  border-bottom: @w solid @c;
+  border-left: @w solid transparent;
+  border-right: @w solid transparent;
+}
+//向下三角形
+.triangle(B,@w,@c){
+  //border-bottom: @w solid transparent;
+  border-top: @w solid @c;
+  border-left: @w solid transparent;
+  border-right: @w solid transparent;
+}
+//向左三角形
+.triangle(L,@w,@c){
+  //border-left: @w solid transparent;
+  border-right: @w solid @c;
+  border-top: @w solid transparent;
+  border-bottom: @w solid transparent;
+}
+//向右三角形
+.triangle(R,@w,@c){
+  //border-right: @w solid transparent;
+  border-left: @w solid @c;
+  border-top: @w solid transparent;
+  border-bottom: @w solid transparent;
+}
+
+//************混合: 元素居中************
+.middle(@w,@h,@c){
+  position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: @w;
+    height: @h;
+    background-color: @c;
+}
+
+//************继承: 元素继承************
+.center{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+.center:hover{
+  //编译之后位置默认在04-extend.css的上方,被下面权重相同的样式覆盖了;
+  background-color: white !important;
+}

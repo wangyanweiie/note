@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作用域练习</title>
+</head>
+<body>
+    <script>
+    //----------------------------------
+        /*function fun1(a)    //局部变量
+        {   
+            console.log(a);
+        }
+        fun1(10);           //10
+        console.log(a);     //报错*/
+
+    //----------------------------------
+        /*var a = 100;        //全局变量
+        function fun1()
+        {
+            console.log(a);
+        }
+        fun1();             //100
+        console.log(a);     //100*/
+
+    //----------------------------------
+        /*var a = 10;         //全局变量
+        function fun1()
+        {   
+            var a = 100;    //局部变量
+            console.log(a);
+        }
+        fun1();             //100
+        console.log(a);     //10*/
+
+    //----------------------------------
+        /*function fun()
+        {
+            a = 100;        //没有var：全局变量
+            console.log(a); //100
+        }
+        fun();
+        console.log(a);     //100*/
+
+    //----------------------------------
+        /*var a = 100;    //全局变量
+        function fun(){
+            a++;        //全局变量
+            console.log(a); //101
+        }
+        fun()
+        console.log(a);     //101*/
+        
+    //----------------------------------
+        /*var a = 10;    //全局变量
+        function fun(){
+            var a = 10; //局部变量
+            a++;        //局部变量+1
+            console.log(a); //11
+        }
+        fun();
+        console.log(a);     //10*/
+        
+    //----------------------------------
+        var a;
+        var b;
+        var c;
+        function fun(){
+            //a局部变量,bc全局变量
+            var a = b = c = 5;  
+            console.log(a);     //5
+            console.log(b);     //5
+            console.log(c);     //5
+        }
+        fun();
+        console.log(a);     //undefined
+        console.log(b);     //5
+        console.log(c);     //5
+
+    //----------------------------------
+        /*var a;
+        var b;
+        var c;
+        function fun(){
+            //a,b,c局部变量：一个var可以声明多个变量，用逗号隔开
+            var a = 5,b  = 5, c = 5;  
+            console.log(a);     //5
+            console.log(b);     //5
+            console.log(c);     //5
+        }
+        fun();
+        console.log(a);     //undefined
+        console.log(b);     //undefined
+        console.log(c);     //undefined*/
+    
+    </script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>基本列表</title>
+		<script type="text/javascript" src="../js/vue.js"></script>
+	</head>
+	<body>
+<!-- v-for -->
+<!------------------------------------------------------- 
+1.应用：可以遍历数组、对象、字符串、数字
+2.遍历数组语法
+（1）数组元素的值: 		v-for="item in 数组名" :key="index
+（2）元素值与索引值: 	v-for="(item,index) in items" :key="index"
+3.遍历对象语法
+（1）只获取键值: 							 v-for="value in 对象名" :key=""
+（2）需要获取键名与键值: 			 v-for="(value,key) in 对象名" :key=""
+（3）需要获取键名键值与索引值:  v-for="(value,key,index) in 对象名" :key=""
+----------------------------------------------------------------------->
+		<div id="root">
+			<!-- 遍历数组 -->
+			<h4>遍历数组（人员列表）</h4>
+			<ul>
+				<li v-for="(p,index) of persons" :key="index">
+					{{p.name}}-{{p.age}}
+				</li>
+			</ul>
+
+			<!-- 遍历对象 -->
+			<h4>遍历对象（汽车信息）</h4>
+			<ul>
+				<li v-for="(value,key) of car" :key="value">
+					{{key}}-{{value}}
+				</li>
+			</ul>
+
+			<!-- 遍历字符串 -->
+			<h4>遍历字符串</h4>
+			<ul>
+				<li v-for="(char,index) of str" :key="index">
+					{{char}}-{{index}}
+				</li>
+			</ul>
+			
+			<!-- 遍历指定次数 -->
+			<h4>遍历指定次数</h4>
+			<ul>
+				<li v-for="(number,index) of 5" :key="index">
+					{{index}}-{{number}}
+				</li>
+			</ul>
+		</div>
+
+		<script type="text/javascript">
+			Vue.config.productionTip = false
+			//声明vue实例
+			new Vue({
+				el:'#root',
+				data:{
+					persons:[
+						{id:'001',name:'张三',age:18},
+						{id:'002',name:'李四',age:19},
+						{id:'003',name:'王五',age:20}
+					],
+					car:{
+						name:'奥迪A8',
+						price:'70万',
+						color:'黑色'
+					},
+					str:'hello'
+				}
+			})
+		</script>
+	</body>
+</html>

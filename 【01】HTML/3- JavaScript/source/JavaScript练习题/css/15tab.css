@@ -1,0 +1,25 @@
+*{
+    background-color: #e5e5e5;
+}
+.container{
+    position: relative;
+}
+.nav{
+    width: 758px;
+    height: 60px;
+}
+.nav>li{
+    float: left;
+    padding:20px 55px;
+    color: white;
+    background-color: #333;
+    cursor: pointer;
+}
+.container>div{
+    width: 758px;
+    height: 400px;
+    background-color:white;
+    position: absolute;
+    top: 60px;
+    left: 0;
+}

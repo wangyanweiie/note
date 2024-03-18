@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div>
+
+  </div>
+  <script>
+    /**
+     * let arr = [{value:23,label:'H2'}]
+     * 转化数据格式为 [{key:value}]
+     */
+    let arr1 = [1,23,45,677]
+    let arr2 = ['H2','H2O','SF6',"NF3"]
+
+    let arr = [];
+    arr2.forEach(item => {
+      // 每次循环都新建一个空对象赋值Push到数组中
+      let obj = {};
+      obj.key = item;
+      arr.push(obj);
+    });
+    arr1.forEach((item,index)=>{
+      arr[index].value = item;
+    })
+    console.log(arr);
+
+    
+    /**
+     * let arr = [[1,2,3],[4,5,6]]
+     * 数组拆分
+     */
+    let arr3 = [1,2,3,4,5,6,7,8,9,10]
+    // 声明定义截取规则的函数
+    function fn(arr,num){
+      let array = [];
+      let flag = arr3.length % num;
+      let count = arr3.length / num;
+      if(flag){
+        // 如果不能整除,则对count取整加一;
+        count = parseInt(count) + 1;
+      }
+      // 一共Push count次,遍历Push;
+      for(let i = 1; i <= count; i++){
+        array.push(arr3.slice((i-1)*num, i*num));
+      }
+      return array;
+    }
+    console.log(fn(arr3,3));
+
+
+    /**
+     * console.log(a.x),console.log(b)
+     */
+    let a = { n:1 };
+    let b = a;
+    a.x = a = {n:2};
+
+    // a --> { n:1 }
+    // b --> { n:1 }              xxxx--> undefined
+    // a --> { n:2 }
+    // a --> { n:2 , x:{n,2} }    xxxx--> { n:1 , x:{n,2} }
+    // console.log('===>',a.x);
+    console.log('+++>',b);
+
+  </script>
+</body>
+</html>

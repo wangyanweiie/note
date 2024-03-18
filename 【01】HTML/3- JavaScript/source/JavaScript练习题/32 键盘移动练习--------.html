@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>键盘移动Div练习</title>
+    <style>
+        #box01{
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            position:absolute;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            var box01 = document.getElementById("box01");
+            document.onkeydown  =function(event){
+                //定义变量作为偏移量
+                var speed = 20;
+                //当 ctrl键按下时加速移动
+                if(event.ctrlKey == true){
+                    speed = 100;
+                }
+                //方向键左上右下：37-40
+                switch(event.keyCode){
+                    case 37:
+                        box01.style.left = box01.offsetLeft - speed +"px";
+                        break;
+                    case 38:
+                        box01.style.top = box01.offsetTop - speed +"px";
+                        break;
+                    case 39:
+                        box01.style.left = box01.offsetLeft + speed +"px";
+                        break;
+                    case 40:
+                        box01.style.top = box01.offsetTop + speed +"px";
+                        break;
+                };hhs
+            };
+
+        };
+    </script>
+</head>
+<body>
+    <div id="box01"></div>
+</body>
+</html>

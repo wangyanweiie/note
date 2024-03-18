@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<!-- Plugin使用配置 -->
+<!------------------------------------------------------------
+1、理解: plugin是webpack中的插件,是对其现有功能的扩展,比如打包优化、文件压缩等;
+2、Plugin与loader的区别
+  * loader主要用于转换某些类型的模块,它是一个转换器;
+  * plugin是插件,它是对webpack本身的扩展,是一个扩展器;
+3、使用配置
+  * 通过npm安装需要使用的plugins(webpack内置插件不需要安装)
+  * 在webpack.config.js中引入并且在plugins中配置;
+
+4、常用插件
+（1）添加版权声明: BannerPlugin（内置插件）
+
+（2）打包HTML文件: HtmlWebpackPlugin
+    * 安装: npm install html-webpack-plugin@3.2.0 --save-dev
+    * 功能: 自动生成一个index.html文件
+          可以将打包的js文件自动通过script标签插入到body中;
+    * 注意: 需要删除之前在output中添加的publicPath属性
+
+（3）压缩Js文件: uglifyjs-webpack-plugin
+    * 安装: npm install uglifyjs-webpack-plugin@1.1.1 --save-dev
+    （只在打包时需要的配置）
+----------------------------------------------------------------->
+</body>
+</html>

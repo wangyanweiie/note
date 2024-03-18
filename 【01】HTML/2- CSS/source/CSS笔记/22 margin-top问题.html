@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>margin-top问题</title>
+    <style>
+        /*-----------------------------------------------------------
+        margin-top问题
+        （1）问题：当地一个块级子元素设置margin-top时，父元素跟着一起下来
+        （2）解决：
+            ①父元素加overflow：hidden（原功能是溢出部分隐藏，此时可以找到原位置）
+            ②父元素或者子元素浮动（一般不主动使用）
+            ③父元素加1像素的透明边框 border: 1px solid transparent;（不用，会改变盒模型的大小）
+            ④父元素加padding-top:1px;（不用，会改变盒模型的大小）
+        -----------------------------------------------------------------------*/
+        .box{
+            width: 500px;
+            height: 500px;
+            background-color: pink;
+            /*父元素加overflow，找到原位置*/
+            overflow: hidden;
+            /*父元素浮动*/
+            /*float: left;*/
+            /*父元素加1像素的透明边框*/
+            /*border: 1px solid transparent;*/
+            /*padding-top:1px;*/
+        }
+        .box1{
+            width: 500px;
+            height: 200px;
+            background-color: yellow;
+            margin-top: 50px;
+            /*子元素浮动*/
+            /*float: left;*/
+        }
+    </style>
+</head>
+<body>
+
+    <div class="box">
+        <div class="box1"></div>
+    </div>
+
+
+</body>
+</html>

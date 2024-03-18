@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON</title>
+    <!-- 兼容IE7及以下的JSON操作: 引入外部JSON -->
+    <script src="JS/json.js"></script>
+</head>
+<body>
+    <!----------------------------------------------
+    JSON（只适用于 IE8及以上的浏览器）
+    1、全称：JavaScript Object Notation（JS对象表示法）
+    2、作用：由于在 JS中的对象只有 JS自己认识,其他语言都不能识别;
+        JSON就是一个可以被任意语言识别的字符串,并可以转换为任意语言中的对象,
+        即是为了给其他语言进行识别的一种包装对象的手段,在开发中主要用于数据的交互;
+
+    3、格式：JSON与 JS对象的格式相同,但 JSON中字符串的属性名必须加双引号 " "
+    4、分类：对象 {}、数组 []
+    5、JSON中允许的值：数字、布尔值、null、字符串、数组、对象
+
+    6、语法
+    （1）JSON.parse();
+        作用：可以将 JSON字符串转换为JS对象、需要一个JSON字符串作为参数
+    （2）JSON.stringify();
+        作用：可以将 JS对象转换为JSON字符串、需要一个Js对象作为参数
+
+    7、IE7及以下浏览器兼容问题
+    （1）eval();
+        作用：该函数可以用来执行一端字符串形式的 JS代码,并将执行结果返回;
+        注意：若使用 eval执行的字符串中含有 {},它会将 {}当成代码块;
+            若不希望当成代码块解析,则需要在代码块前后各加一个();
+            虽然 eval函数功能强大,但执行能力较差、存在安全隐患,在开发中一般不使用
+    （2）通过引入外部定义的JSON文件处理
+    ------------------------------------------------------------------------->
+    <script>
+        //创建JS对象 obj01
+        var obj01 = {name:"孙悟空", age:18, gender:"男"};
+        //创建JSON字符串 obj02
+        var obj02 = '{"name":"猪八戒","age":28,"gender":"男"}';
+        //JSON字符串与 JS对象互相转换
+        var o1 = JSON.stringify(obj01);
+        var o2 = JSON.parse(obj02);
+        console.log(o1);    //JS--->JSON
+        console.log(o2);    //JSON--->JS
+        console.log("eval函数执行字符串形式的JS代码:", eval("("+ obj02 +")"));
+</script>
+</body>
+</html>

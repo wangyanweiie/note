@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>模板字符串</title>
+</head>
+<body>
+    <!---------------------------------- 
+    ES6引入新的声明字符串的方式：
+    （1）反引号：``
+        * 反引号内容中可以直接出现换行符
+        * 反引号内容中可以进行变量拼接：`${内容1}内容2`
+    （2）单引号：'' 
+    （3）双引号：""  
+    ------------------------------------>
+    <script>
+        //声明
+        let str01 = `我是一个字符串!`;
+        console.log(str01,typeof str01);
+
+        //内容中可以直接出现换行符
+        let str02 = `<ul>
+                    <li>沈腾</li>
+                    <li>玛丽</li>
+                    <li>魏翔</li>
+                    <li>艾伦</li>
+                    </ul>`;
+                    console.log(str02);
+        //内容中可以进行变量拼接
+        let star = '沈腾';
+        let out01 = star + '是我心目中最搞笑的演员!';
+        let out02 = `${star}是我心目中最搞笑的演员!`;
+        console.log(out01);
+        console.log(out02);
+    </script>
+</body>
+</html>

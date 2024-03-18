@@ -1,0 +1,61 @@
+.box{
+    width: 100%;
+    margin: 0 auto;
+    background-color: #0d0d0d;
+    padding: 40px 0;
+    overflow: hidden;
+
+}
+.item{
+    height: 450px;
+    background-color: #0d0d0d;
+    float: left;
+    padding: 10px;
+    box-sizing: border-box;
+}
+.item>a{
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: #1f1f1f;
+    padding: 60px 10px;
+    box-sizing: border-box;
+    color: #333;
+}
+.item>a>img{
+    width:100%;
+    max-width: 230px;
+}
+.item>a>div{
+    margin-top: 10px;
+}
+
+.name{
+    color: white;
+    font-size: 15px;
+    line-height: 26px;
+}
+.price{
+    color: white;
+    margin-top: 10px;
+    height: 27px;
+    line-height: 27px;
+}
+/* PC */
+@media screen and (min-width: 992px) {
+    .box > div {
+        width: 25%;
+    }
+}
+/* iPad */
+@media screen and (min-width: 768px) and (max-width: 991px) {
+    .box > div {
+        width: 33.33333%;
+    }
+}
+/* APP */
+@media screen and (max-width: 767px){
+    .box>div{
+        width:50%;
+    }
+}

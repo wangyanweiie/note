@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>JS引入方式</title>
+    <script src="JS/02script.js"></script>
+
+    <script>
+        console.log("33333")
+    </script>
+</head>
+	<!-----------------------------------------------------------------------
+	HTML中引入JavaScript的方式
+	1、内部方式
+	（1）语法：<script type="text/javascript">js代码</script>
+			其中type属性可以省略: <script>js代码</script>
+	（2）注意：一个页面可以有多个script,可以写在任意位置,推荐写在head中;
+
+	2、外部方式
+	（1）语法：<script src="01.js">< /script>
+	（2）注意：
+			* 一个页面可以有多个script,可以写在任意位置,推荐写在body标签结束前;
+				Js脚本应该放在底部,原因在于Js线程与GUI渲染线程是互斥的关系,若在首部,当执行Js时会阻塞页面渲染;
+				Js的作用主要是处理交互,而交互必须得先让页面呈现才能进行,所以为了保证用户体验尽量让页面先绘制出来;
+			* 引入显示汉字乱码时,将页面右下角的编码格式改成 UTF-8;
+
+	3、注意
+			两种引入方式不能共用一个script标签,如果共用,只有外部样式生效；
+			若想同时使用内部方式可以再新建一个script标签;
+	------------------------------------------------------------------------->
+<script>
+    console.log("22222")
+</script>
+
+<body>
+<script src="JS/02script.js"></script>
+<script>
+    console.log("11111")
+</script>
+
+</body>
+</html>

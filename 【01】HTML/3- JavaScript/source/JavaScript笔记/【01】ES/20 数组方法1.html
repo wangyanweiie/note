@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数组方法1</title>
+</head>
+<body>
+    <script>
+    /*-----------------------------------------------------------
+    数组方法
+    1、isArray
+    （1）作用：判断一个对象是否为数组,是数组返回true,否则返回false
+    （2）语法：Array.isArray(arr);
+
+    2、concat()
+    （1）作用：拼接数组
+    （2）语法：arr.concat(数组1,数组2,..)
+
+    3、查找数组元素
+    （1）arr.indexOf(查找的元素,index)
+        ①从前往后查找,返回第一个符合条件的下标,如果查找不到返回-1
+        ②index：表示开始查找的位置,若省略后从最开始往后查找;
+    （2）arr.lastIndexOf(查找的元素,index)
+        ①从后往前查找,返回后面第一个符合条件的下标,如果查找不到返回-1
+        ②index：表示开始查找的位置,若省略从最后往前查找;
+
+    4、slice()
+    （1）作用：截取数组元素
+    （2）语法：arr.slice(开始位置的下标,结束位置的下标)
+    （3）注意：
+            a、截取时含头不含尾
+            b、当只有一个参数时,表示从开始位置截取到最后
+            c、当开始位置的下标大于结束位置的下标,返回空数组;
+            d、可以从后往前截取,最后一个下标为-1,倒数第二个为-2,以此类推;
+            e、原数组不改变
+
+    5、splice()
+    （1）作用：增加和删除数组元素
+    （2）语法：arr.splice(开始位置的下标,删除的个数,新增元素1,新增元素2,..)
+    （3）注意：
+            a、返回删除的数组元素
+            b、当删除个数为0时,返回空数组
+            c、当删除个数为0时,新增数组元素在当前开始位置的前面
+            d、第三个参数开始的新增数组元素可以省略
+            e、改变原数组
+    ------------------------------------------------------------*/
+    </script>
+    <script>
+        //判断是不是数组
+        var  arr = ["易烊千玺","古力娜扎"];
+        console.log(Array.isArray(arr));
+        if(Array.isArray(arr) === true){
+            console.log('是数组');
+        }
+        else{
+            console.log('不是数组');
+        }
+
+        //拼接数组
+        var arr1 = [1,2];
+        var arr2 = [11,22];
+        console.log(arr1.concat(arr2,[66,77])); //[1,2,11,22,66,77]
+        
+        //查找数组元素
+        var arr = [1,2,3,3,2,1];
+        console.log(arr.indexOf(2));    //1
+        console.log(arr.indexOf(5));    //-1
+        console.log(arr.indexOf(2,2));  //4 
+        console.log(arr.lastIndexOf(2));    //4
+        console.log(arr.lastIndexOf(5));    //-1
+        console.log(arr.lastIndexOf(2,2));  //1
+
+        //截取数组
+        var arr = [1,2,3,4,5,6];
+        //         0 1 2 3 4 5
+        //        -6 -5-4-3-2-1
+        console.log(arr.slice(1,4));    // [2,3,4]
+        console.log(arr.slice(1));      // [2,3,4,5,6]
+        console.log(arr.slice(4,1));    // []
+        console.log(arr.slice(-5,-2));  // [2,3,4]
+
+        //删除数组元素：splice
+        var arr = ['迪丽热巴','佟丽娅','古力娜扎','热依扎'];
+        console.log(arr.splice(1,2));   // ["佟丽娅", "古力娜扎"]
+        console.log(arr);               // ["迪丽热巴", "热依扎"]
+        console.log(arr.splice(1,0));   // []
+        console.log(arr);               // ["迪丽热巴", "热依扎"]
+        console.log(arr.splice(1,1,'关晓彤','贾玲'));   //["热依扎"]
+        console.log(arr);   //["迪丽热巴", "关晓彤", "贾玲"]
+        console.log(arr.splice(1,0,'沈腾'));    //[]
+        console.log(arr);   // ["迪丽热巴", "沈腾", "关晓彤", "贾玲"]
+        
+    </script>
+</body>
+</html>

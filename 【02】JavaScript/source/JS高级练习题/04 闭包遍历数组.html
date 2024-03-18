@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>闭包实现遍历监听习题</title>
+</head>
+<script>
+    window.onload = function(){
+    //三个按钮实现点击按钮提示当前点击的是第几个按钮
+    //********************* 遍历 + 监听 *********************
+        /*var btnS = document.getElementsByTagName("button");
+        for(var i = 0; i < btnS.length; i++){
+            btnS[i].onclick = function(){
+                //此时当点击按钮时, for循环遍历早已结束,i的值为 3;
+                //无论点击哪个按钮都会提醒当前是第 i+1=4 个按钮,显然是不可行的;
+                alert("当前是第" + (i+1) + "个按钮");
+            };
+        }*/
+    //*************保存 button各自的下标到 button上*************
+    //先将数组长度赋值给变量 len,可以提高执行效率
+       /* var btnS = document.getElementsByTagName("button");
+        for (var i = 0,len = btnS.length; i < len; i++){
+            //将每个 btn所对应的下标保存在各自的 btn上
+            btnS[i].index = i;
+            btnS[i].onclick = function(){
+                alert('当前是第'+(this.index+1)+'个按钮')
+            };
+        };*/
+    //******************闭包: 匿名自执行函数*******************
+        var btnS = document.getElementsByTagName("button");
+        for(var i = 0; i < btnS.length; i++){
+            (function(i){
+                btnS[i].onclick = function(){
+                    alert('当前是第'+(i+1)+'个按钮')
+                }
+            })(i);
+        };
+    };
+</script>
+<body>
+    <button id="btn01">按钮1</button>
+    <button id="btn02">按钮2</button>
+    <button id="btn03">按钮3</button>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<!----------------------------------------------------------------
+（1）全局组件
+  * 理解：当我们通过调用Vue.component()注册组件时,组件的注册就是全局的;
+    意味着该组件可以在任意Vue示例下使用;
+  * 语法：Vue.component('组件标签名',组件构造器对象)
+
+（2）局部组件
+  * 理解：如果我们注册的组件是挂载在某一个vue实例中,那么就是一个局部组件;
+  * 语法：在需要使用的vue实例的中添加注册组件的属性
+      components:{
+        组件标签名:组件构造器对象;
+      }
+----------------------------------------------------------------------->
+<div id="app">
+  <cpn></cpn>
+  <cpn></cpn>
+</div>
+
+<div id="app2">
+  <cpn></cpn>
+</div>
+
+<script src="../Js/vue.js"></script>
+<script>
+  // 1.创建组件构造器
+  const constructor = Vue.extend({
+    template: `
+      <div>
+        <h2>我是标题</h2>
+        <p>我是内容哈哈</p>
+      </div>
+    `
+  })
+  //注册全局组件：Vue.component('cpn',constructor)
+
+  //问:怎么注册的组件才是局部组件了?
+  const app = new Vue({
+    el: '#app',
+    data: {
+      message: ''
+    },
+    //注册局部组件的属性
+    components: {
+      //cpn使用组件时的标签名：constructor是组建构造器;
+      cpn: constructor
+    }
+  })
+
+  //在实际开发应用中一般只有一个vue实例
+  const app2 = new Vue({
+    el: '#app2'
+  })
+</script>
+
+</body>
+</html>

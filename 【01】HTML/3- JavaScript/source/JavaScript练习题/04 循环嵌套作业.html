@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>循环嵌套作业</title>
+</head>
+<body>
+    <script>
+        //打印左上倒三角形----------------
+        /*for(var i = 1; i <= 5; i++)
+        {
+            for(var j = 5; j >= i; j--)
+            {
+                document.write(" * ");
+            }
+            document.write("<br>");
+        }*/
+
+        /*for(var i = 1; i <= 5; i++)
+        {
+            for(var j = i; j <= 5; j++)
+            {
+                document.write(" * ");
+            }
+            document.write("<br>");
+        }*/
+
+        for(var i = 1; i <= 5; i++)
+        {
+            for(var j = 1; j <= 6-i; j++)
+            {
+                document.write(" * ");
+            }
+            document.write("<br>");
+        }
+
+        //打印等腰三角形------------------
+        for(var i = 1; i <= 5; i++)
+        {   //空格倒三角
+            for(var j = 1; j <= 6-i; j++)
+            {
+                document.write("&nbsp;");
+            }
+            //星正三角
+            for(var j = 1; j <= i; j++)
+            {
+                document.write(" * ");
+            }
+            //换行
+            document.write("<br>");  
+        }
+
+
+        //打印所有的水仙花数：个位、十位、百位的立方和等于其本身的三位数-----
+        for(var i = 100; i <= 999; i++)
+        {
+            var a = i % 10;
+            var b = parseInt(i/10)%10;
+            var c = parseInt(i/100);
+            if(i == a*a*a + b*b*b + c*c*c)
+            {
+                console.log(i);
+                document.write(i+"&nbsp;");
+            }
+        }
+
+        //迷你计算器 : 输入两个数以及运算符号得出相应的运算结果-----
+        //String需要通过 parseFloat转化为number类型
+
+        /*var num1 = parseFloat(prompt("请输入第一个数"));
+        var num2 = parseFloat(prompt("请输入第二个数"));
+        var symbol = prompt("请输入+ - * /");
+        if(symbol === '+')
+        {
+            console.log(num1 + num2);
+        }
+        else if(symbol === '-') {
+            console.log(num1 - num2);
+        }
+        else if(symbol === '*') {
+            console.log(num1 * num2);
+        }
+        else if(symbol === '/') {
+            if(num2 !== 0) {
+                console.log(num1 / num2);
+            }
+            else{
+                console.log("分母不能为0");
+            }
+        }
+        else{
+            console.log('请输入+ - * /');
+        }*/
+    </script>
+</body>
+</html>

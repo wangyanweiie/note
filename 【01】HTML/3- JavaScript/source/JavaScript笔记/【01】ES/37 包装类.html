@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>包装类</title>
+</head>
+<body>
+    <script>
+        /*-------------------------------------------------------
+        1、数据类型
+        （1）基本数据类型：number、string、boolean、null、undefined
+        （2）引用数据类型：object
+
+        2、包装类：在JS中提供了三个包装类,可以将基本数据类型转换为对象;
+        （1）基本数据类型对象
+            ① String()：可以将基本数据类型字符串转换为 String对象
+            ② Number()：可以将基本数据类型数字转换为 Number对象
+            ③ Boolean()：可以将基本数据类型布尔值转换为 Boolean对象
+
+        （2）注意：
+            ① 方法和属性只能添加给对象,不能添加给基本数据类型;
+            ② 当我们对一些基本数据类型调用属性或者方法时,解析器会临时使用包装类将其转换为对象,再调用对象的属性或者方法;
+              调用结束后再转换为基本数据类型;所以才有了可以直接通过基本数据类型调用属性或者方法;
+            ③ 在实际开发中不会去使用基本数据类型的对象;因为将基本数据类型对象进行比较时可能会带来不可预期的结果;
+        --------------------------------------------------------------------------------------------------*/
+    </script>
+    <script>
+        //直接创建 num、string、boolean类型变量
+        var num1 = 3;
+        var str1 = "Hello";
+        var bool1 = true;
+        console.log(typeof num1);   //number
+        console.log(typeof str1);   //string
+        console.log(typeof bool1);  //boolean
+
+        //通过 String()、Number()、Boolean()创建
+        var num2 = new Number(3);
+        var num3 = new Number(3);
+        var str2 = new String("Hello");
+        var str3 = new String("Hello");
+        var bool2 = new Boolean(true);
+        var bool3 = new Boolean(true);
+        console.log(typeof num2);   //object
+        console.log(typeof str2);   //object
+        console.log(typeof bool2);  //object
+
+        //对象比较的是地址,2与 3是两个不同的对象
+        console.log(num2 == num3);      //false
+        console.log(str2 == str3);      //false
+        console.log(bool2 == bool3);    //false
+
+        //由于Boolean创建的是对象,对象转换成布尔值都是 true
+        var a = new Boolean(true);
+        if(a){
+            console.log("哈哈哈");
+        }                           //哈哈哈
+        var b = new Boolean(false);
+        if(b){
+            console.log("哈哈哈");
+        }                           //哈哈哈
+
+        //临时使用包装类将基本数据类型转换为对象
+        var s = 110;
+        console.log(typeof s);  //number
+        s = s.toString();
+        console.log(typeof s);  //string
+
+    </script>
+</body>
+</html>

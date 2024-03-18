@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise基本语法</title>
+</head>
+<body>
+    <!-- Promise -->
+    <!----------------------------------------------------------------
+    1、理解：ES6 引入的异步编程的新解决方案,语法上 Promise 是一个构造函数;
+        用来封装异步操作并可以获取其成功或失败的结果;
+
+    2、声明语法：const 对象名 = new Promise(function(resolve,reject){});
+
+    3、then方法
+    （1）语法: 两个回调函数作为参数,可以只写一个回调函数
+        * 普通函数：对象名.then(function(value){},function(reason){});
+        * 箭头函数：
+            对象名.then(value => {
+                console.log(value);
+            },reason => {
+                console.error(reason);
+            });
+    （2）链式调用：对象名.then(value=>{},reject=>{}).then(value=>{},reject=>{})..
+
+    4、catch方法
+    （1）语法：返回错误的回调函数作为参数
+        对象名.catch(function(reason){
+            console.warn(reason);
+        });
+
+    5、工作原理
+    （1）Promise 有三种状态
+        * 如果用Promise()构造器创建一个实例对象,当被创建时它的状态是 pending（进行中）,
+        * 当 Promise 实例对象的 resolve方法被调用时,会返回状态为 fulfilled（已成功）的对象,
+        * 而当 Promise 实例对象的 reject方法被调用时,会返回状态为 rejected（已失败）的对象;
+    （2）当在 Promise 链中时
+        * 当实例对象的状态变成了 fulfilled,它会自动在链中向下寻找,直到发现一个then方法，并执行其中的第一个参数函数;
+        * 而当状态变成了rejected,它会在链中向下寻找,直到发现一个有两个参数的then方法并执行它的第二个参数函数或发现一个catch方法并执行它的参数函数;
+    ------------------------------------------------------------------------------------------------------>
+    <script>
+        /*声明 Promise 实例对象：回调函数作为参数,函数中有两个形参 resolve reject
+        调用 resolve 与 reject 函数会改变实例对象的状态：
+            * 默认状态：初始化;
+            * 调用 resolve 状态设置为成功;
+            * 调用 reject 状态设置为失败;*/
+        const p = new Promise(function(resolve, reject){
+            setTimeout(function(){
+                let res = '用户数据读取成功';
+                resolve(res);
+                //let err = '用户数据读取失败';
+                //reject(err);
+            }, 1000);
+        });
+        /*调用实例对象的 then 方法,两个回调函数作为参数,两个函数的形参分别为 value reason;
+            * 第一个回调函数中 value 对应获取的是当函数状态设置为成功时的值;
+            * 第二个回调函数中 reason 对应获取的是当函数状态设置为失败时的值;*/
+        p.then(function(value){
+            console.log(value);
+        }, function(reason){
+            console.error(reason);
+        });
+    </script>
+</body>
+</html>

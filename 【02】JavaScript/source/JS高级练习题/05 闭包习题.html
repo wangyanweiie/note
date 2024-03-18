@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>闭包习题</title>
+</head>
+<body>
+<script type="text/javascript">
+  //*******代码片段一：没有闭包*******
+  var name = "The Window";
+  var object = {
+    name : "My Object",
+    getNameFunc : function(){
+      return function(){
+        return this.name;
+      };
+    }
+  };
+  /*此时 getNameFunc()是由 object调用的，但是 object.getNameFunc()调用返回的是 function函数;
+  即 object.getNameFunc()()相当于直接执行了 function()函数,此时 this指向的是 window;*/
+  alert(object.getNameFunc()());    
+  //？：The Window
+
+
+  //*******代码片段二：有闭包*******
+  var name2 = "The Window";
+  var object2 = {
+    name2 : "My Object",
+    getNameFunc : function(){
+      var that = this;
+      return function(){
+        //引用了外部函数的变量 that
+        return that.name2;
+      };
+    }
+  };
+  /*此时 object2.getNameFunc()调用返回的是 function函数;
+  即 object2.getNameFunc()()相当于直接执行了 function()函数,此时 this依旧指向的是 window;
+  但是此处使用的是 that, that保存了 object2调用 getNameFunc()时的 this, 即 object2*/
+  alert(object2.getNameFunc()());   
+  //？：My Object
+
+  //*******代码片段三：有闭包 n *******
+  function fun(n,o){
+    console.log(o);
+    return {
+      fun:function(m){
+        return fun(m,n)
+      }
+    };
+  };
+  var a = fun(0); //undefined
+  /*若 var xx = a.fun(1);将会保存新产生的对象,新产生的闭包 n的值也会更新;
+  但现在调用产生的对象没有保存,新产生的闭包马上就消失了;一直使用的都是 a里面的闭包,即 n =0;*/
+  a.fun(1);       //0 
+  a.fun(2);       //0
+  a.fun(3);       //0
+
+  //每次调用产生的对象被保存,新产生的闭包也被保存;
+  var b = fun(0).fun(1).fun(2).fun(3);
+  //undefined,0,1,2;
+  
+  //只保存了前两次调用产生的闭包值 0 1;
+  var c = fun(0).fun(1);  //undefined 0
+  c.fun(2);     //1
+  c.fun(3);     //1
+
+</script>
+</body>
+</html>

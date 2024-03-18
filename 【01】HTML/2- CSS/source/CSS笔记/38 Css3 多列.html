@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>多列</title>
+    <style>
+        /*-----------------------------------
+        多列
+        （1）定义：把一个元素内的文本分成多列
+        （2）语法
+            ①column-count:number;  设置列的数量
+            ②column-gap:;  设置列之间的距离
+            ③column-rule: ;  设置列之间的边框
+                column-rule-width: px;
+                column-rule-style: solid;
+                column-rule-color: red;
+        -----------------------------------*/
+        .box{
+            width: 500px;
+            height: 200px;
+            column-count: 3;
+            column-gap: 30px;
+            column-rule: 1px solid blue;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+    Voluptates, ut, quam iste doloremque laborum sit unde alias quibusdam 
+    ipsum asperiores rerum eum qui commodi veniam ea facere enim. Sunt, impedit!
+</div>
+</body>
+</html>

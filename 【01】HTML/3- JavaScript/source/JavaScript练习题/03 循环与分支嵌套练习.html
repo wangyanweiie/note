@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>循环与分支嵌套练习</title>
+</head>
+<body>
+    <script>
+        //循环与分支嵌套：求和1-100
+        /*var sum = 0,n;
+        for(n = 1;n <= 100;n++)
+        {
+            sum = sum + n;
+        }
+        console.log(sum);*/
+
+       //循环与分支嵌套：分别求和1-100奇数和与偶数和
+       var oddSum = 0,evenSum = 0,n;
+        for(n = 1;n <= 100; n++)
+        {
+            if(n % 2 == 0){
+                evenSum = evenSum + n;
+            }
+            else oddSum = oddSum + n;
+        }
+        console.log("偶数和"+evenSum);
+        console.log("奇数和"+oddSum);
+        
+
+        //循环与分支嵌套：分别求和1-100之间不能被7整除的和
+        /*
+        var sum = 0,n;
+        for(n = 1;n <= 100;n++)
+        {
+            if(n % 7 != 0){
+                sum = sum + n;
+            }
+        }
+        console.log(sum);*/
+
+        //循环与分支嵌套：分别求和1-100之间能同时整除3与5的和
+        /*var sum = 0,n;
+        for(n = 1;n <= 100;n++)
+        {
+            if((n % 3 == 0)&&(n % 5 == 0))
+            {
+                sum = sum + n;
+            }
+        }
+        console.log(sum);*/
+    </script>
+</body>
+</html>

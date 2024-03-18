@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+	<meta charset="UTF-8">
+	<title>伪类选择器</title>
+	<style>
+		/*----------------------------------------------------
+		伪类选择器
+		（1）：冒号链接，表示元素的一个状态，比如鼠标悬停、鼠标按下等
+				① :link  点击之前（只适用于超链接a）
+				② :visited  点击之后（只适用于超链接a）
+				③ :hover  鼠标悬停（适用于所有元素）
+				④ :active  鼠标按下（适用于所有元素）
+		（2）当四个都要设置时顺序：link-viited-hover-active
+		
+		（3）css3新增伪类选择器
+				① :first-child   第一个子元素是...
+				② :last-child    最后一个子元素是...
+				③ :nth-child（number|even偶数|odd奇数|2n..倍数）第几个子元素是..
+				④ :only-child 	 唯一一个子元素是...
+				⑤ :empty 				 空的子元素（元素之间什么内容都没有）
+				⑥ :focus     		 获取焦点时的样式
+				⑦ :checked   		 默认被选中，配合单选按钮或者多选按钮使用
+		-----------------------------------------------------------*/
+		.box{
+			width: 200px;
+			height: 200px;
+			background-color: red;
+		}
+		/*鼠标悬停*/
+		.box:hover{
+			background-color: green;
+		}
+		/*鼠标按下*/
+		.box:active{
+			background-color: purple;
+		}
+		/*（1）点击之前*/
+		a:link{
+			color: blue;
+		}
+		/*（2）点击之后*/
+		a:visited{
+			color: black;
+		}
+		/*（3）鼠标悬停*/
+		a:hover{
+			color: orange;
+		}
+		/*（4）鼠标按下*/
+		a:active{
+			color: green;
+		}
+		/*选中第几个子元素设置*/
+		.box>div:first-child{
+			background-color: blueviolet;
+		}
+		.box>div:nth-child(4),.box>div:nth-child(5){
+			background-color: white;
+		}
+		ul>li:first-child>a{
+			color: deeppink;;
+		}
+		.bobo:link{
+			color: red;
+		}
+		/*自动获取焦点时的样式*/
+		input:focus{
+			border: 3px solid red;
+		}
+		/*默认被选中时的样式*/
+		input:checked{
+			width: 20px;
+			height: 20px;
+		}
+	</style>
+</head>
+<body>
+
+<!--块级元素设置-->
+<div class="box">
+	<div>1</div>
+	<div>2</div>
+	<div>3</div>
+	<div>4</div>
+	<div>5</div>
+</div>
+<!--超链接设置-->
+<a href="#">超链接</a>
+<!--选中第几个子元素设置-->
+<ul>
+	<li><a href="#">wangyanwei</a></li>
+	<li><a href="#" class="bobo">wangyanwei</a></li>
+	<li><a href="#">wangyanwei</a></li>
+	<li><a href="#">wangyanwei</a></li>
+	<li><a href="#">wangyanwei</a></li>
+</ul>
+<!--自动获取焦点时-->
+<input type="text"/>
+<input type="checkbox"/>
+<!--默认被选中时-->
+
+
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>内存溢出与泄露</title>
+</head>
+<body>
+<!--------------------------------------------
+1. 内存溢出
+  * 一种程序运行出现的错误;
+  * 当程序运行需要的内存超过了剩余的内存时, 就出抛出内存溢出的错误;
+2. 内存泄露
+  * 占用的内存没有及时释放;
+  * 内存泄露积累多了就容易导致内存溢出;
+  * 常见的内存泄露:
+      意外的全局变量
+      没有及时清理的计时器或回调函数
+      闭包
+---------------------------------------------->
+<script type="text/javascript">
+    //**********内存溢出**********
+    /*var obj = {};
+    for (var i = 0; i < 10000; i++) {
+      obj[i] = new Array(10000000);
+    };*/
+  
+    //**********内存泄露**********
+    // 1.意外的全局变量：调用结束不会被释放
+    function fn(){
+        // 没有var声明的是全局变量
+        a = 5;
+        console.log(a);
+    }
+    fn();
+  
+    // 2.没有及时关闭定时器或回调函数
+    var timer = setInterval(function(){ 
+        console.log('欢迎光临')
+    }, 1000);
+    // 启动定时器后要关闭
+    clearInterval(timer);
+  
+    // 3.闭包
+    function fn1(){
+      var a = 10;
+      function fn2(){
+        console.log(a);
+      };
+      return fn2;
+    };
+    var fun = fn1();
+    fun();
+    // 用完够让内部函数成为垃圾对象-->回收闭包
+    fun = null;
+  </script>   
+</body>
+</html>

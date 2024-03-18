@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>应用：自定义遍历数据</title>
+</head>
+<body>
+    <!----------------------------------------
+    迭代器应用：需要自定义遍历数据时要想到迭代器; 
+    ------------------------------------------->
+    <script>
+        //声明一个对象
+        const banJi = {
+            name: "一班",
+            stuS: ['小明','小宁','小天','小黑'],
+            //自己在对象中创建一个iterator接口,用于满足使用 for..of 遍历的条件;
+            [Symbol.iterator](){
+                //声明索引变量
+                let index = 0;
+                //保存外部的this
+                let that = this;
+                return {
+                    //在iterator接口中创建一个next方法
+                    next: function () {
+                        if (index < that.stuS.length) {
+                            //设置 text 方法中的 value 与 done 的值
+                            const result = { value: that.stuS[index], done: false };
+                            index++;
+                            return result;
+                        }
+                        else{
+                            return {value: undefined, done: true};
+                        }
+                    }
+                };
+            }
+        };
+        //需求: 用for..of遍历这个对象中的属性stuS数组,依次返回数组内的值
+        for (let i of banJi) {
+            console.log(i);
+        }
+    </script>
+</body>
+
+</html>

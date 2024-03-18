@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>伪类选择器练习</title>
+    <style>
+        .box{
+            width: 1240px;
+            margin: 0 auto;
+/*          background-color: pink;
+            height: 500px;*/
+        }
+        .box>div{
+            width: 303px;
+            height: 375px;
+            margin-top: 10px;
+            margin-right: 9px;
+            background-color: pink;
+            float: left;
+        }
+        .box>div:nth-child(4n){
+            margin-right: 0;
+        }
+        /*设置悬停时的元素透明度*/
+        .box>div:hover{
+            opacity: .85;
+        }
+    </style>
+</head>
+<body>
+
+<div class="box">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+</div>
+
+</body>
+</html>

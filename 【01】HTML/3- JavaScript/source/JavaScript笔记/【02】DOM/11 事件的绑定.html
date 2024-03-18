@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件的绑定</title>
+</head>
+    <button id="btn01">点击button01</button><br><br>
+    <button id="btn02">点击button02</button><br><br>
+    <button id="btn03">点击button03</button>
+<body>
+    <!----------------------------------- 
+    事件的绑定
+    1、对象名.on事件 = function(){ 函数体 };
+    注意：只能为同一个元素的相同事件绑定一个响应函数,若绑定多次,后面绑定的会将前面覆盖掉;
+
+    2、addEventListener("事件名",function(){},false);
+    （1）参数
+        ① 事件的字符串,不要on
+        ② 回调函数 function(){}
+        ③ 是否在捕获阶段触发事件,需要一个布尔值：一般是false
+    （2）作用：可以为同一个元素的相同事件同时绑定多个响应函数; 当事件触发时,响应函数会按绑定的顺序执行;
+    （3）注意：使用该方法绑定的事件,若要取消其中的默认行为需要调用：event.preventDefault();
+            只支持 IE9及以上的浏览器;
+
+    3、attachEvent("事件名",function(){});
+    （1）参数
+        ① 事件的字符串,要on
+        ② 回调函数 function(){}
+    （2）作用：也可以为同一元素的相同事件同时绑定多个响应函数; 但当事件触发时,它是后绑定的先执行;
+    （3）注意：只支持 IE8及以下;
+            
+    4、自定义函数：事件的绑定,要求兼容所有的浏览器
+    （1）参数：
+        ① obj：要绑定事件的对象
+        ② eventStr：事件的字符串,不要on
+        ③ callback：回调函数
+    （2）语法：
+        function bind(obj,eventStr,callback){
+            if(obj.addEventListener){
+                obj.addEventListener(eventStr,callback,false);  //this：obj
+            }else{
+                obj.attachEvent("on"+ eventStr,function(){      //this：obj
+                    callback.call(obj);
+                });
+            }
+        }; 
+    （3）注意：
+            a、addEventListener中 this是绑定事件的对象; attachEvent中 this是window;
+            b、要统一两个方法中的this,而 this指向谁是由调用方式决定的;
+            c、方法：将 attachEvent参数中的浏览器调默认用的callback回调函数换成 function(){}匿名函数;
+                在匿名函数中再通过 callback.call(obj) 调用可以改变 this的指向为obj;
+    ------------------------------------------------------------------------------->
+    <script>
+        //定义函数：事件的绑定兼容所有浏览器
+        function bind(obj,eventStr,callback){
+            if(obj.addEventListener){
+                obj.addEventListener(eventStr,callback,false);
+            }
+            else{
+                obj.attachEvent("on"+ eventStr,function(){
+                    callback.call(obj);
+                });
+            }
+        }; 
+        window.onload = function(){
+            var btn01 = document.getElementById("btn01");
+            var btn02 = document.getElementById("btn02");
+            var btn03 = document.getElementById("btn03");
+            /*//********************onclick******************
+            btn01.onclick = function(){
+                alert("我是1-1");
+            };
+            btn01.onclick = function(){
+                alert("我是1-2");
+            };
+            
+            //*********addEventListener方法,只支持 IE9及以上***********
+            btn02.addEventListener("click",function(){
+                alert("我是2-1");
+            },false)
+            btn02.addEventListener("click",function(){
+                alert("我是2-2");
+            },false)
+
+            //**********attachEvent方法,只支持 IE8及以下************
+            btn03.attachEvent("onclick",function(){
+                alert("我是3-1");
+            });
+            btn03.attachEvent("onclick",function(){
+                alert("我是3-2");
+            });*/
+            
+            //*********调用兼容所有浏览器的函数************
+            /*bind(btn01,"click",function(){
+                alert("我是1-1");
+            })*/
+            
+            bind(btn01,"click",function(){
+                alert(this);    //所有浏览器中都指向 button
+            }) 
+        };
+    </script>
+</body>
+</html>

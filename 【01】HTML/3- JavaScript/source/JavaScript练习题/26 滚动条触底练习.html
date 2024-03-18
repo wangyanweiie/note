@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>滚动条触底练习</title>
+    <style>
+        #info{
+            width: 200px;
+            height: 400px;
+            background-color:pink;
+            overflow: auto;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            var info = document.getElementById("info");
+            var inputs = document.getElementsByTagName("input");
+            //给div绑定滚动条滚动的响应函数
+            info.onscroll = function(){
+                //谷歌浏览器精确到了小数位 故不能完全相等 可设置总成差值<1
+                //判断div标签的垂直滚动条是否触底
+                if(info.scrollHeight-info.scrollTop == info.clientHeight){
+                    //inputs获取到的是全部的input标签，是伪数组
+                    inputs[0].disabled = false;
+                    inputs[1].disabled = false;
+                }
+            };
+        };
+    </script>
+</head>
+<body>
+    <h4>用户信息注册</h4>
+    <div id="info">
+        <p>
+            您必须仔细阅读以下协议方可进行注册：
+            你是年少的欢喜你是年少的欢喜你是年少的欢喜你是年少的欢喜
+            你是年少的欢喜你是年少的欢喜你是年少的欢喜你是年少的欢喜
+            你是年少的欢喜你是年少的欢喜你是年少的欢喜你是年少的欢喜
+            你是年少的欢喜你是年少的欢喜你是年少的欢喜你是年少的欢喜
+            你是年少的欢喜你是年少的欢喜你是年少的欢喜你是年少的欢喜
+            你是年少的欢喜你是年少的欢喜你是年少的欢喜你是年少的欢喜 
+            你是年少的欢喜你是年少的欢喜你是年少的欢喜你是年少的欢喜
+            你是年少的欢喜你是年少的欢喜你是年少的欢喜你是年少的欢喜
+            你是年少的欢喜你是年少的欢喜你是年少的欢喜你是年少的欢喜 
+            你是年少的欢喜你是年少的欢喜你是年少的欢喜你是年少的欢喜
+            你是年少的欢喜你是年少的欢喜你是年少的欢喜你是年少的欢喜
+            你是年少的欢喜你是年少的欢喜你是年少的欢喜你是年少的欢喜 
+            你是年少的欢喜你是年少的欢喜你是年少的欢喜你是年少的欢喜
+            你是年少的欢喜你是年少的欢喜你是年少的欢喜你是年少的欢喜
+            你是年少的欢喜你是年少的欢喜你是年少的欢喜你是年少的欢喜           
+        </p>
+    </div>
+    <input type="checkbox" disabled="disabled"/>
+    我已仔细阅读协议
+    <input type="submit" value="注册" disabled="disabled"/>
+</body>
+</html>

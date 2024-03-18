@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>元素透明opacity</title>
+    <style>
+        /*---------------------------------
+        1、opacity：
+        （1）作用：设置整个元素透明
+        （2）取值：0-1  0：完全透明  1：不透明
+
+        2、rgba()
+        （1）作用：a:表示透明度，写在字体颜色或背景颜色下
+        （2）取值0-1  0：完全透明  1：不透明  0.5等同于.5
+        -----------------------------------------------*/
+        .box{
+            width: 1240px;
+            margin: 0 auto;
+            /*height: 400px;*/
+            /*background-color: #f4f4f4;*/
+        }
+        .box>div{
+            width: 303px;
+            height: 375px;
+            background-color: pink;
+            float: left;
+            margin-right: 9px;
+        }
+        .box>div:last-child{
+            margin-right: 0;
+        }
+        /*设置鼠标悬停时元素透明0.6*/
+        .box>div:hover{
+            opacity: .6;
+        }
+    </style>
+
+</head>
+<body>
+
+<div class="box">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+</div>
+
+</body>
+</html>

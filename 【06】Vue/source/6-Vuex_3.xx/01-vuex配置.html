@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<!-- Vuex 3.xx -->
+<!-----------------------------------------------
+1、理解
+  * Vuex是一个专为Vue.js应用程序开发的状态管理模式;
+  * Vuex是在多个组件间共享状态的插件,可以集中式存储管理应用的所有组件的状态;
+
+2、使用流程
+  * 先创建一个文件夹store,并且在其中创建一个index.js文件,
+  * 在index.js中使用vuex插件,并创建store的实例对象进行导出;
+  * 在main.js文件中导入store对象,并且挂载到vue实例中,
+  * 在其他Vue组件中就可以通过this.$store获取到store对象;
+
+3、核心概念
+（1）state
+    * Vuex使用单一状态树管理应用层级的所有状态
+    * 单一状态树可以让以最直接的方式找到某个状态的片段,便于管理与维护;
+（2）getters
+    * 回调函数: 第一个参数为 state,第二个参数就是 getters自身;
+    * 语法: this.$store.getters.xxx
+（3）mutations
+    * 主要包括两部分：事件类型(方法名)与回调函数
+    * 回调函数: 第一个参数为 state,第二个参数可以传入变量或者对象 payload;
+    * 作用: store中state状态更新的唯一方式,但只进行同步操作;
+    * 语法: this.$store.commit('事件类型',payload)
+（4）actions
+    * 回调函数: 第一个参数为 context,第二个参数可以传入变量或者对象 payload;
+    * 作用: 进行一些逻辑判断与异步操作时,必须在actions中调用mutations的方法进行更新state状态;
+    * 语法: this.$store.dispatch('事件类型',payload)
+（5）module
+    * Vue x允许将store分割成模块,每个模块拥有自己的state、mutations、actions、getters;
+    * 模块中的mutations、actions的提交语法以及对getters的调用语法依然同全局一样;
+
+4、mutations补充
+（1）响应式系统
+    Vuex的store中的state是响应式的,当state中数据改变时Vue组件会自动更新;
+    但需要满足一些规则:
+    * 需要提前在store中初始化好所需的属性
+    * 当给state中的对象删除属性时: Vue.delete(obj,'键名','键值')
+    * 当给state中的对象添加新属性时需要使用: Vue.set(obj,'键名','键值')
+（2）常量类型
+    * 可以创建一个文件: mutation-types.js 并且在其中定义对应的常量导出;
+    * 在需要使用的文件中导入: 作为函数名:[常量],作为参数:直接替换成常量;
+（3）同步函数
+    * 一般情况下Vuex要求我们写在 mutations中的方法必须是同步方法;
+    * 主要的原因是当我们使用devtools时,可以devtools可以帮助我们捕捉mutation的快照;
+      但如果是异步操作,那么devtools将不能追踪这个操作什么时候会被完成;
+
+5、项目结构
+  * 可以将index.js中的mutations/getters/actions/modules抽离成单独的文件导入
+
+6、辅助函数
+  * import {mapGetters} from vuex: 可以在组件中将store的getters直接当作计算属性调用;
+  * import {mapActions} from vuex: 可以在组件中将store的actions直接当作方法调用;
+------------------------------------------------------------------------------>
+</body>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.bootcss.com/echarts/4.2.1-rc1/echarts.min.js"></script>
+  <title>ECharts</title>
+  <style>
+    #box{
+      width: 1000px;
+      height: 600px;
+      border: solid 1px #ccc;
+    }
+  </style>
+</head>
+<body>
+<!-- 配置项手册: https://echarts.apache.org/zh/option.html#title -->
+<!-------------------------------------------------------------
+（1）title: 标题组件
+（2）tooltip: 提示框组件
+（3）legend: 图例组件
+（4）toolbox: 工具栏组件
+（5）grid: 直角坐标系内绘图网格
+    * xAxis: 直角坐标系grid中的x轴
+    * yAxis: 直角坐标系grid中的y轴
+（6）series: 系列列表,每个系列通过type决定自己的图表类型;
+    * type: 图表类型,比如line是折线图、bar柱形图、pie饼形图等;
+    * name: 系列名称,用于tooltip与legend的图例筛选的显示;
+    * stack: 数据堆叠,如果设置相同的stack值则会数据堆叠;
+（7）color : 调色盘颜色列表
+--------------------------------------------------------------->
+  <div id="box"></div>
+  <script type="text/javascript">
+    var myChart = echarts.init(document.getElementById("box"))
+    var option = {
+      //标题组件:主标题与副标题
+      title: {
+        text: 'ECharts每日工作时间曲线'
+      },
+      //提示框组件: 鼠标在折线图上方的提示信息
+      tooltip: {
+        trigger: 'axis',
+        axisPointer: {
+          type: 'cross',
+          label: {
+            backgroundColor: '#6a7985'
+          }
+        }
+      },
+      //图例组件: 折线图顶部图例说明
+      legend: {
+        data: ['Email', 'Union Ads', 'Video Ads', 'Direct', 'Search Engine']
+      },
+      //工具栏组件: 下载图片进行保存
+      toolbox: {
+        feature: {
+          saveAsImage: {}
+        }
+      },
+      //直角坐标系内绘图网格
+      grid: {
+        left: '3%',         //网格距离容器左侧的距离
+        right: '4%',        //网格距离容器右侧的距离
+        bottom: '3%',       //网格距离容器底部的距离
+        containLabel: true  //当以上设置都为0%,刻度标签溢出时,是否显示刻度标签;
+      },
+      //直角坐标系grid中的x轴:'category'类目轴,适用于离散的类目数据,可通过 xAxis.data 设置类目数据;
+      xAxis: [
+        {
+          type: 'category',
+          boundaryGap: false,
+          data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+        }
+      ],
+      //直角坐标系grid中的y轴:'value'数值轴,适用于连续数据;
+      yAxis: [
+        {
+          type: 'value'
+        }
+      ],
+      series: [
+        {
+          name: 'Email',    //系列名称: 用于tooltip的显示,legend的图例筛选;
+          type: 'line',     //图表类型
+          stack: 'Total',   //同名stack会发生数据堆叠
+          areaStyle: {},
+          emphasis: {
+            focus: 'series'
+          },
+          data: [120, 132, 101, 134, 90, 230, 210]
+        },
+        {
+          name: 'Union Ads',
+          type: 'line',
+          stack: 'Total',
+          areaStyle: {},
+          emphasis: {
+            focus: 'series'
+          },
+          data: [220, 182, 191, 234, 290, 330, 310]
+        },
+        {
+          name: 'Video Ads',
+          type: 'line',
+          stack: 'Total',
+          areaStyle: {},
+          emphasis: {
+            focus: 'series'
+          },
+          data: [150, 232, 201, 154, 190, 330, 410]
+        },
+        {
+          name: 'Direct',
+          type: 'line',
+          stack: 'Total',
+          areaStyle: {},
+          emphasis: {
+            focus: 'series'
+          },
+          data: [320, 332, 301, 334, 390, 330, 320]
+        },
+        {
+          name: 'Search Engine',
+          type: 'line',
+          stack: 'Total',
+          label: {
+            show: true,
+            position: 'top'
+          },
+          areaStyle: {},
+          emphasis: {
+            focus: 'series'
+          },
+          data: [820, 932, 901, 934, 1290, 1330, 1320]
+        }
+      ]
+    };
+    myChart.setOption(option);
+  </script>
+</body>
+</html>

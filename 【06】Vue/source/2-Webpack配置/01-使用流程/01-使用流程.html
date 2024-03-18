@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<!-- webpack使用流程 -->
+<!------------------------------------------------------------------------------------
+1、理解
+  当Js文件使用了模块化的方式进行开发时,如果直接在HTML文件中引入该Js文件浏览器不能识别模块代码;
+  webpack可以帮助我们进行模块化,处理模块间的关系; webpack可以将多个资源模块进行打包合并成一个或多个包(Bundle);
+  并且打包过程中还可以对资源进行处理:比如压缩图片、scss转成css、ES6语法转成ES5语法，TypeScript转成JavaScript等操作;
+
+2、流程
+（1）在终端全局安装: npm install webpack -g
+（2）打开终端在当前文件夹路径下使用命令: webpack ./src/main.js ./dist/bundle.js
+（3）在HTML文件中直接引入打包后生成的bundle.js即可: <script src="文件路径"></script>
+
+3、文件与文件夹分配
+（1）src文件夹：用于存放我们写的源文件
+    * main.js：项目的入口文件
+（2）dist文件夹：用于存放之后打包的文件
+    * bundle.js: webpack处理了项目直接文件依赖后生成的一个js文件
+------------------------------------------------------------------------------>
+</body>
+</html>

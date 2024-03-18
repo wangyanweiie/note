@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./less/03-mixin.css">
+  <title>Less</title>
+</head>
+<body>
+  <div class="wrap">
+    <div class="inner1">
+      <span>你是年少的欢喜</span>
+    </div>
+    <br>
+    <div class="inner2">
+      <span>你是年少的欢喜</span>
+    </div>
+    <br>
+    <!-- 绘制三角形: 匹配模式 -->
+    <div class="top"></div><br>
+    <div class="bottom"></div><br>
+    <div class="left"></div><br>
+    <div class="right"></div><br>
+    <!-- arguments -->
+    <div class="args">arguments</div>
+  </div>
+<!-- less混合 -->
+<!----------------------------------------------------------------
+  1.理解: 混合是将一组属性从一个规则集中提取,混入到另一个规则集的方法;
+  2.语法
+  （1）普通混合
+      * 定义混合: .mixin() {需要复用的属性集合}
+      * 调用混合: .mixin()
+  （2）混合传参
+      * 定义混合: .mixin(@a,@b,..) {需要复用的属性集合}
+      * 调用混合: .mixin(属性值,属性值,..)
+  （3）混合传参默认值
+      * 定义混合: .mixin(@a:属性值,@b:属性值,@c) {需要复用的属性集合}
+      * 调用混合: .mixin(..,..,属性值)
+  （4）混合命名参数
+      * 定义混合: .mixin(@a:属性值,@b:属性值,@c) {需要复用的属性集合}
+      * 调用混合: .mixin(@c:属性值)
+  （5）匹配模式
+      * 定义混合: .mixin(匹配符,@a,@b) {需要复用的属性集合}
+      * 调用混合: .mixin(匹配符,属性值,属性值)
+      * 注意: @_代表通用的匹配模式; 同名的任何混合被匹配了,都会先执行通用匹配模式中的代码;
+  （6）arguments
+------------------------------------------------------------------------------------>
+</body>
+</html>

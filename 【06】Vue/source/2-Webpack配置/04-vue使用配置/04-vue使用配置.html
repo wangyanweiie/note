@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<!-- vue使用配置 -->
+<!------------------------------------
+1、配置流程
+（1）在终端安装: npm install vue --save
+（2）在webpack.config.js文件中进行配置
+（3）在需要进行vue开发的Js文件中导入: import Vue from 'vue'
+（4）由于vue版本不同可能会有问题,需要指定要是用的vue版本:
+    回到webpack.config.js文件中通过alias 指定需要的vue的查找路径;
+    * alias: { 'vue$': 'vue/dist/vue.esm.js' }
+
+2、vue版本问题
+  * runtime-compiler:代码中可以使用template标签,可以进行编译;
+  * runtime-only:代码中不可以有任何的template标签（包括挂载在vue实例下的div）
+    如果在开发中使用的是.vue文件夹开发就可以选择 runtime-only
+
+3、el与template的关系
+  * Vue实例中的el属性用于指定Vue要管理的DOM,可以帮助解析其中的指令、事件监听等等;
+  * Vue实例中当同时指定了template属性时,那么template模板的内容会替换掉挂载的对应el的模板;
+    可以进一步将template属性抽离: 组件 -> Js文件 -> vue文件
+
+4、导出与导入语法
+  * export default {} 
+  * import 自定义名 from " 导出变量的文件路径 "
+---------------------------------------------------------->
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<!--
+  * 语法
+  const 组件构造器 = Vue.extend({
+    template: `
+      <div>
+        <h3>标题</h3>
+        <p>段落内容</p>
+        ......
+      </div>`, //设置第二个参数     
+    components:{
+      组件标签名:组件构造器; 
+    }
+  })
+-->
+<div id="app">
+  <cpn2></cpn2>
+  <!-- 只能在父组件中使用,在全局使用报错 -->
+  <!-- <cpn1></cpn1> -->
+  <!---------------------------------------------------------------------------------
+  注意事项：
+  由于第一个组件只是在第二个组件中被注册的,没有在全局或者vue实例中进行注册,只能在第二个组件中使用;
+  ---------------------------------------------------------------------------------->
+</div>
+
+<script src="../Js/vue.js"></script>
+<script>
+  //创建第一个组件构造器(子组件)
+  const constructor1 = Vue.extend({
+    template: `
+      <div>
+        <h2>我是子组件</h2>
+        <p>我是内容,哈哈哈哈</p>
+      </div>
+    `
+  })
+  //创建第二个组件构造器(父组件)
+  const constructor2 = Vue.extend({
+    template: `
+      <div>
+        <h2>我是父组件</h2>
+        <p>我是内容,呵呵呵呵</p>
+        <cpn1></cpn1>
+      </div>
+    `,//在第二个组件中注册第一个组件:产生父子关系
+    components: {
+      cpn1: constructor1
+    }
+  })
+
+  //vue实例(root组件)
+  const app = new Vue({
+    el: '#app',
+    data: {
+      message: ''
+    },
+    //在vue实例中注册第二个组件:产生父子关系
+    components: {
+      cpn2: constructor2,
+    }
+  })
+</script>
+
+</body>
+</html>

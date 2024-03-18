@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>循环结构嵌套练习</title>
+</head>
+<body>
+    <script>
+    //for循环嵌套:5*5
+    /*for(var row = 1;row <= 5;row++)
+    {
+        for(var col = 1;col <= 5;col++)
+        {
+            document.write(" * ");
+        }
+        document.write("<br>");
+    }*/
+
+    //for循环嵌套:1*2*3*4*5
+    /*for(var row = 1;row <= 5;row++)
+    {
+        for(var col = 1;col <= row;col++)
+        {
+            document.write(" * ");
+        }
+        document.write("<br>");
+    }*/
+
+    //for循环嵌套:99乘法表
+    var result = 0;
+    for(var i = 1;i <= 9;i++)
+    {
+        for(var j = 1;j <= i;j++)
+        {   
+            result = i * j;
+            //除了第一列的小于10的一位数 +一个空格
+            if (result < 10 && j > 1)
+            {
+                result = result +"&nbsp"+"&nbsp";
+            }
+            //输出i*j=result
+            document.write(j +"*"+ i +"="+ result +"&nbsp");
+        }
+        document.write("<br>");
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>上下三栏布局2</title>
+    <!--弹性盒布局-->
+    <style>
+        body html{
+            height: 100%;
+            overflow: hidden;
+        }
+        .box{
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .top{
+            height: 50px;
+            background: lightpink;
+        }
+        .center{
+            flex-grow:1;
+            min-height: 100px;
+            overflow: auto;
+            background: lightskyblue;
+        }
+        .bottom{
+            height: 50px;
+            background: lightyellow;
+        }
+
+
+
+    </style>
+</head>
+<body>
+<div class="box">
+    <div class="top">上</div>
+    <div class="center">
+        <p>中间自适应</p>
+        <p>中间自适应</p>
+        <p>中间自适应</p>
+        <p>中间自适应</p>
+        <p>中间自适应</p>
+        <p>中间自适应</p>
+    </div>
+    <div class="bottom">下</div>
+</div>
+</body>
+</html>

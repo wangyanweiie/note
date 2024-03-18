@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>arguments</title>
+</head>
+<body>
+    <script>
+    /*----------------------------------------------------------
+    1、浏览器在调用函数时,每次都会向函数内部传递 1+1=2 个隐含的参数;
+    （1）函数的上下文对象：this
+    （2）封装实参的对象：arguments
+
+    2、arguments对象（函数内部）
+    （1）定义：该对象是函数内部的一个对象,即该对象只能在函数里面使用,不可以在外部使用;
+    （2）作用：用来保存管理函数被调用时传递过来的实参（数据）;
+    （3）注意：它是一个伪数组,但可以使用 arguments[下标]的形式操作实参;
+            arguments[0]：第一个实参
+            arguments[1]：第二个实参
+            .......
+
+    3、arguments对象的属性
+    （1）length属性：用来获取实参的个数
+    （2）callee属性：用来获取 arguments对象当前所在的函数
+    
+    4、形参与 arguments的关系
+    （1）形参与 arguments都可以管理实参,而且它们管理的是同一份数据;
+    （2）在操作实参时可以用形参,也可以用arguments,为了方便通常用形参;
+    （3）若实参的个数是确定的,那么我们就定义形参;
+    （4）若实参的个数不确定,不能定义形参,可以用arguments对象操作;        
+    -------------------------------------------------------------*/
+    </script>
+    <script>
+        //定义一个函数,功能是求数据的和
+        function add() {
+            var sum = 0;
+            for (var i=0; i<arguments.length; i++) {
+                sum = sum + arguments[i];
+            } 
+            console.log(sum);
+        }
+        add(10,20,30,40);
+
+
+        // arguments.length属性：返回arguments对象所在的函数实参个数
+        // arguments.callee属性：返回arguments对象所在的函数
+        function fn() {
+            console.log(arguments);
+            console.log(arguments[0]);
+            console.log(arguments.length);
+            console.log(arguments.callee);
+        }
+        fn(1, 2, 3, 4, 5, 6, 7);
+    </script>
+</body>
+</html>

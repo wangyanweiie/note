@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>函数中的this</title>
+</head>
+<body>
+    <script>
+        /*-------------------------------------------------------------------------
+        1、方法
+        （1）理解：若一个函数作为一个对象的属性值保存,那么我们称这个函数是这个对象的方法;
+            此时调用这个函数就说调用对象的方法,但除了名称上与调用函数没有任何区别;
+        2、this
+        （1）定义
+            * 浏览器在调用函数时,每次都会向函数内部传递一个隐含的参数,这个参数就是this;
+            * this指向的是一个对象,这个对象我们称为函数执行的上下文对象;
+        （2）调用方式不同 this指向不同
+            ① 以函数形式调用时, this永远指向 window;
+            ② 以方法形式调用时, this指向调用方法的那个对象;
+            ③ 当以构造函数形式调用时, this就是新建的对象;
+            ④ 函数使用call()与apply()方法调用时, this是指定的对象;
+            ⑤ 在事件的响应函数中,响应函数是给谁绑定的,this就指向谁（原理同2）
+        -----------------------------------------------------------------*/
+    </script>
+    <script>
+        function fun(){
+            console.log(this.name);
+        }
+        var name = "诸葛大力";
+        var obj = {
+            name : "成果",
+            sayName : fun
+        };
+        //以函数形式调用：由于函数中没有、故查找上一级,this永远都是全局的name：诸葛大力
+        fun();              
+        //以方法形式调用：由于是 obj调用的 sayName方法,故此时this指向obj：成果
+        obj.sayName();
+
+        //构造函数调用：构造函数 Person后,创建了新的对象per,此时this指向的就是对象per：Hello小王
+        function Person(name,age,gender){
+            this.name = name;
+            this.age = age;
+            this.gender = gender;
+            this.sayName = fun;
+        }
+        function fun(){
+            alert("Hello" + this.name)
+        };
+        var per = new Person("小王",18,"男");
+        per.sayName();
+    </script>
+</body>
+</html>

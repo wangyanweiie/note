@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<!-- 组件访问 -->
+<!-----------------------------------------------
+1、理解：有时需要父组件直接访问子组件,子组件直接访问父组件或者是子组件访问跟组件(vue实例);
+2、方法：
+  * 父组件访问子组件：this.$children 与 this.$refs
+  * 子组件访问父组件：this.$parent
+
+3、父组件访问子组件
+（1）this.$children
+  * 作用: 它包含所有子组件对象,可以通过遍历取出所有子组件对象;
+  * 缺陷: 通过$children访问子组件时是一个数组类型,访问其中的子组件必须通过索引值;
+    但当子组件过多时,往往不能确定具体某一个的索引值,甚至还可能会发生变化;（一般不使用）
+
+（2）this.$refs
+  * 作用: 可以明确获取众多子组件中一个特定的组件;
+  * 语法: this.$refs 与 ref指令一般是一起使用的
+      首先用 ref="ID" 给某一个子组件标签绑定一个特定的ID;
+      其次用 this.$refs.ID 就可以访问到该组件了;
+---------------------------------------------------->
+<!-- 父组件模板 -->
+<div id="app">
+  <cpn></cpn>
+  <cpn ref="ID"></cpn>
+  <button @click="btnClick">按钮</button>
+</div>
+<!-- 子组件模板 -->
+<template id="cpn">
+  <div>我是子组件</div>
+</template>
+
+<script src="../Js/vue.js"></script>
+<script>
+  //父组件(vue实例)
+  const app = new Vue({
+    el: '#app',
+    data: { },
+    methods: {
+      btnClick() {
+        //************$children***********
+        //console.log(this.$children[0].name);
+        console.log(this.$children);
+        for (let item of this.$children){
+          console.log(item.name);
+          item.show();
+        }
+        //*************$refs*************
+        //不在标签中加ref绑定id直接输出,默认是空对象;
+        console.log("----------------");
+        console.log(this.$refs.ID.name);
+        this.$refs.ID.show();
+      }
+    },
+    components: {
+      //子组件
+      cpn: {
+        template: '#cpn',
+        data() {
+          return {
+            name: '我是子组件的name'
+          }
+        },
+        methods: {
+          show() {
+            console.log('我是子组件的show方法');
+          }
+        }
+      },
+    }
+  })
+</script>
+
+</body>
+</html>

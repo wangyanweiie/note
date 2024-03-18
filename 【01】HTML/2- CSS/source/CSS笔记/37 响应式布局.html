@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>响应式布局：媒体查询</title>
+    <style>
+    /*-----------------------------------------------
+    媒体查询
+    （1）作用：实现响应式布局 (写一次样式适用所有的终端)
+    （2）语法：
+        @media 设备类型 and (媒体特性){}
+        @media all/screen/print and (max/min-width: px){}
+    （3）引用方式
+        ① 外部引用：(分别写在不同的Css文件)
+        <link rel="stylesheet" href="" media="only screen and (max-width:767px)">
+
+        ② 内联方式：(写在同一个css文件)
+        @media screen and (max-width:767px) {       //超小屏幕(手机)
+            width: 100%;
+        }
+        @media screen and (min-width:768px) {       //小屏幕(平板)
+            width:750px;
+        }
+        @media screen and (min-width:992px) {       //中等屏幕(桌面显示器)
+            width:970px
+        }
+        @media screen and (min-width:1200px) {      //大屏幕(大桌面显示器)
+            width:1170px
+        }
+
+    （4）视口viewport
+        布局视口: 默认布局视口with: 980px，设置css的样式作用在布局视口
+        可视视口设备的宽度: device-width
+        完美/理想视口: width = device-width
+        initial-scale 初始缩放比例默认值 1 
+        minimum-scale 最小缩放比例默认值 1 
+        maximum-scale 最大缩放比例默认值 1 
+        user-scalable 用户是否可以手动缩放no/0
+        ---------------------------------------------*/
+        /*由于浏览器自上而下解析，故共同样式先写在最顶部*/
+        body{
+            color: white;
+        }
+        /* 移动端 */
+        @media screen and (max-width: 767px){
+            body{
+                background-color: pink;
+            }
+        }
+        /* iPad端 */
+        @media screen and (min-width: 768px) and (max-width: 991px) {
+            body{
+                background-color: green;
+            }
+        }
+        /* pc端 */
+        @media screen and (min-width: 992px){
+            body{
+                background-color: red;
+            }
+        }
+    </style>
+</head>
+<body>
+    你是年少的欢喜
+</body>
+</html>

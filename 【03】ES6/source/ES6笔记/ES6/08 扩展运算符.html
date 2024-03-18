@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>扩展运算符</title>
+</head>
+<body>
+    <!--------------------------------------------
+    ... 扩展运算符
+    （1）作用：能将数组转换为逗号分隔的参数序列;
+    （2）注意：
+            * rest参数是放在函数声明时形参的位置
+            * 扩展运算符可以放在函数调用时实参的位置
+    （3）应用：
+            * 数组的合并
+            * 数组的克隆：若克隆的数组中有引用类型数据的话,浅拷贝(只拷贝地址);
+            * 将伪数组转为真正的数组：可以使用数组的方法;
+             （...伪数组拆分为参数序列 + 两端[]组合 = 数组）
+    ----------------------------------------------------->
+    <div></div>
+    <div></div>
+    <div></div>
+    <script>
+        //声明一个数组 ...
+        const tfBoys = ['易烊千玺','王源','王俊凯'];
+        //...作用：'易烊千玺','王源','王俊凯'
+        // 声明一个函数
+        function team(){
+            console.log(arguments);
+        };
+        team(tfBoys);
+        //...作用等同于调用 team('易烊千玺','王源','王俊凯')
+        team(...tfBoys);
+
+        //******应用******
+        //数组的合并
+        const Kz = ['王太利','肖央'];
+        const Fh = ['曾毅','玲花'];
+        //使用数组的concat方法进行数组连接
+        //const KzFh = Kz.concat(Fh);
+        //...将两个数组转为参数序列,与[ , ]组成新的数组
+        const KzFh = [...Kz,...Fh];
+        console.log(KzFh);
+
+        //数组的克隆
+        const Szh = ['E','G','M'];
+        const Syc = [...Szh];
+        console.log(Syc);
+
+        //将伪数组转为真正的数组
+        const divS = document.querySelectorAll('div');
+        console.log(divS);
+        const divArr = [...divS];
+        console.log(divArr);
+
+    </script>
+</body>
+</html>

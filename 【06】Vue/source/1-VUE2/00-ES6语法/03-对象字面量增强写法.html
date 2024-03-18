@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+  //*****属性的增强写法*****
+  const name = 'why';
+  const age = 18;
+  const height = 1.88
+  //ES5的写法
+  /*const obj01 = {
+    name: name,
+    age: age,
+    height: height
+  }*/
+  //ES6的增强写法
+  const obj01 = {
+    name,
+    age,
+    height,
+  }
+  console.log(obj01);
+
+  //*****函数的增强写法*****
+  //ES5的写法
+  /*const obj02 = {
+    run: function () {},
+    eat: function () {}
+  }*/
+  //ES6的增强写法
+  const obj02 = {
+    run() {},
+    eat() {}
+  }
+</script>
+
+</body>
+</html>

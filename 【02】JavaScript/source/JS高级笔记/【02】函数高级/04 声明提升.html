@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>变量提升与函数提升</title>
+</head>
+<body>
+<!--------------------------------------------------
+1、变量声明提升
+  * 通过var定义(声明)的变量, 在定义语句之前就可以访问到;
+  * 值: undefined
+
+2、函数声明提升
+  * 只有通过 function声明的函数, 在之前就可以直接调用;
+  * 值: 函数定义(对象)
+
+3、注意:
+  * 声明提升是提升到变量/函数所在作用域的最上面;
+  * 函数提升优先级高于变量提升,且不会被同名变量声明时覆盖,但会被变量赋值后覆盖;
+------------------------------------------------------------------------->
+<script type="text/javascript">
+    console.log(b);   //undefined  变量提升
+    fn2()             //可调用      函数提升
+    //fn3()           //不能调用    变量提升
+    var b = 3;
+    function fn2() {
+      console.log('fn2()')
+    };
+    var fn3 = function () {
+      console.log('fn3()')
+    };
+</script>
+</body>
+</html>

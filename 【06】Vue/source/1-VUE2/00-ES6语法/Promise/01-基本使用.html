@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<!---------------------------------------------------------------------
+1、理解：Promise是一个构造函数,用来封装异步操作并可以获取其成功或失败的结果;
+2、作用: Promise是一种常用的异步解决方案,解决回调地狱的问题;
+3、语法
+（1）声明
+    const 对象名 = new Promise(function(resolve,reject){
+      resolve('res')
+      reject('err')
+  });
+（2）then方法: 返回成功与错误的两个回调函数作为参数,可以只写一个回调函数;
+    * 普通函数：对象名.then(function(value){},function(reason){});
+    * 箭头函数：
+        对象名.then(value => console.log(value),reason => console.error(reason));
+（3）catch方法: 返回错误的回调函数作为参数
+      对象名.catch(function(reason){
+        console.warn(reason);
+      });
+    
+4、参数问题
+  * Promise构造函数的参数是function,并且function有两个参数: resolve与reject;
+  * resolve与reject本身也是函数,当调用reslove时状态成功,调用reject则失败;
+  * 成功时执行 then方法,then方法的第一个参数value获取的就是当函数状态设置为成功时的值 res;
+  * 失败时执行 catch方法,catch方法的参数reason获取的就是当函数状态设置为失败时的值 err;
+
+5、Promise的三种状态
+  * 当使用Promise()构造器创建一个实例对象,当被创建时它的状态是 pending(进行中);
+  * 当 Promise实例对象的 resolve方法被调用时,会返回状态为 fulfilled(成功)的对象;
+    此时会调用then方法并执行其中的第一个参数函数;
+  * 当 Promise实例对象的 reject方法被调用时,会返回状态为 rejected(失败)的对象;
+    此时会调用then方法并执行其中的第二个参数函数或者调用catch方法并执行它的参数函数;
+-------------------------------------------------------------------------------->
+<script>
+  //处理形式
+  //*************then**************
+  new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve('Hello World')
+      //reject('error message')
+    }, 1000)
+  }).then(value => {
+    console.log(value);
+  },reason => {
+    console.log(reason);
+  })
+
+  //**********then与catch***********
+  new Promise((resolve, reject) => {
+    setTimeout(() => {
+      //resolve('Hello World')
+      reject('error message')
+    }, 1000)
+  }).then(value => {
+    console.log(value);
+  }).catch(error => {
+    console.log(error);
+  })
+</script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>其他样式属性/方法</title>
+    <style>
+        #box1{
+            width: 300px;
+            height: 300px;
+            background-color:pink;
+            /*溢出自动显示滚动条*/
+            overflow: auto;
+        }
+        #box2{
+            width: 600px;
+            height: 600px;
+            background-color: #e5e500;
+            z-index: 999;
+        }
+    </style>
+</head>
+<body>
+    <!-- box1: 300*300  box2: 600*600 -->
+    <div id="box1">
+        <div id="box2"></div>
+    </div>
+    <button id="btn01">点我</button>
+    <script>
+        //注意：该属性读取的结果都是不带 px的,可以直接进行计算;
+        //      该属性都是只读的,修改依旧只能使用 style属性;
+        /*--------------------------------------------------
+        1、语法
+        （1）元素名.clientWidth
+            作用：获取元素的可见宽度（内容 + padding）
+        （2）元素名.clientHeight
+            作用：获取元素的可见高度（内容 + padding）
+
+        （3）元素名.offsetWidth
+            作用：获取元素的整个宽度（内容 + padding + border）
+        （4）元素名.offsetHeight
+            作用：获取元素的整个高度（内容 + padding + border）
+
+        （5）元素名.offsetParent
+            作用：获取当前元素的定位父元素,即离当前元素最近的、有设置定位的祖先元素,若都没有定位最后获取到 body;
+        （6）元素名.offsetLeft
+            作用：获取当前元素相对于定位父元素的水平偏移量;
+        （7）元素名.offsetTop
+            作用：获取当前元素相对于定位父元素的垂直偏移量;
+
+        （8）元素名.scrollWidth
+            作用：可以获取元素整个滚动区域的宽度;
+        （9）元素名.scrollHeight
+            作用：可以获取元素整个滚动区域的高度;
+        （10）元素名.scrollLeft
+            作用：获取水平滚动条滚动的距离;
+        （11）元素名.scrollTop
+            作用：获取垂直滚动条滚动的距离;
+        
+        2、注意事项
+            当 scrollWidth-scrollLeft == clientWidth 证明水平滚动条到底了
+            当 scrollHeight-scrollTop == clientHeight 证明垂直滚动条到底了
+        ----------------------------------------------------------------*/
+    </script>
+    <script>
+        window.onload = function(){
+            var box1 = document.getElementById("box1");
+            var box2 = document.getElementById("box2");
+            var btn01 = document.getElementById("btn01");
+            btn01.onclick = function(){
+                //元素可见高度
+                alert(box1.clientHeight);   //300   283
+                //元素整个滚动区域的高度
+                alert(box1.scrollHeight);   //600   600           
+                //水平滚动条滚动的距离
+                alert(box1.scrollLeft);
+                //垂直滚动条滚动的距离
+                alert(box1.scrollTop);
+                //查看垂直滚动条是否触底
+                alert(box1.scrollHeight-box1.scrollTop);
+            };
+        };
+    </script>
+</body>
+</html>

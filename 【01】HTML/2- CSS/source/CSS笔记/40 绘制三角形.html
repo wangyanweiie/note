@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>三角形</title>
+    <style>
+        /*-------------------------------------
+        绘制三角形 (通过border绘制)
+        （1）设置div的宽高都为0
+        （2）添加20px的边框实线 (border: 20px solid)
+        （3）与箭头相同方向的边框线不绘制;
+        （4）与箭头相反方向的边框线绘制成有颜色的实线;
+        （5）其余两方向绘制成没有颜色的实线;
+        ----------------------------------------*/
+        /*绘制向上的三角形*/
+        .box1 {
+            width: 0;
+            height: 0;
+            /*border-top: 20px solid red;*/
+            border-bottom: 20px solid green;
+            border-left: 20px solid transparent;
+            border-right: 20px solid transparent;
+        }
+        /*绘制向右的三角形*/
+        .box2 {
+            width: 0;
+            height: 0;
+            border-top: 20px solid transparent;
+            border-bottom: 20px solid transparent;
+            border-left: 20px solid blue;
+            /*border-right: 20px solid gold;*/
+        }
+    </style>
+</head>
+<body>
+    <div class="box1"></div>
+    <div class="box2"></div>
+</body>
+</html>

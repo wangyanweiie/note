@@ -1,0 +1,55 @@
+//@import url(./utils.less);
+@import "./utils.less";
+
+//*************普通混合*************
+/*.mixin(){
+  width: 200px;
+  height: 20px;
+  background-color: green;
+  &:hover{
+    background-color:purple;
+  }
+}*/
+//*************混合传参*************
+.mixin(@w,@h){
+  width: @w;
+  height: @h;
+  background-color: green;
+  &:hover{
+    background-color:purple;
+  }
+}
+//**********混合:arguments**********
+.params(@a,@b,@c){
+  border: @arguments;
+}
+
+//=============设置样式=============
+.wrap{
+  height: 500px;
+  background-color: white;
+  border: 5px solid pink;
+  .inner1{
+    //调用混合
+    .mixin(150px,20px);
+  }
+  .inner2{
+    .mixin(300px,40px);
+  }
+  //匹配模式: 绘制三角形
+  .top{
+    .triangle(T,20px,purple);
+  }
+  .bottom{
+    .triangle(B,20px,purple);
+  }
+  .left{
+    .triangle(L,20px,purple);
+  }
+  .right{
+    .triangle(R,20px,purple);
+  }
+  .args{
+    .params(5px,solid,skyblue)
+  }
+}

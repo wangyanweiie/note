@@ -1,0 +1,24 @@
+.wrap {
+  height: 150px;
+  color: white;
+  background-color: pink;
+  border: 10px solid skyblue;
+}
+.wrap .inner {
+  width: 200px;
+  height: 20px;
+  background-color: green;
+}
+.wrap .inner:hover {
+  background-color: purple;
+}
+.img {
+  width: 1.7 rem;
+  height: 1.7 rem;
+}
+/*.wrap .inner{
+    width: 200px;
+    height: 20px;
+    background-color: green;
+    font-size: @fs14;
+}*/

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>重复请求问题</title>
+</head>
+<body>
+    <button>点击发送</button>
+    <script>
+        //获取元素对象
+        const btnS = document.querySelectorAll('button');
+        let xhr = null;
+        //设置标识变量：是否正在发送AJAX请求,true/false
+        let isSending = false;
+
+        btnS[0].onclick = function(){
+            //判断标识变量：如果正在发送,则取消该请求,创建一个新的请求
+            if(isSending) xhr.abort();
+            xhr = new XMLHttpRequest();
+            //修改标识变量的值
+            isSending = true;
+            xhr.open("GET",'http://127.0.0.1:8000/delay');
+            xhr.send();
+            xhr.onreadystatechange = function(){
+                if(xhr.readyState === 4){
+                    //请求完成后修改标识变量为false 代表没有在发送的请求
+                    isSending = false;
+                }
+            }
+        }
+    </script>
+</body>
+</html>

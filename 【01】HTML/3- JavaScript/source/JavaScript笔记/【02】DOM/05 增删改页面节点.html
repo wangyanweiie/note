@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>创建页面元素</title>
+</head>
+<body>
+    <div id="info">王言伟</div>
+    <div style="width:200px; height:200px;background-color:aquamarine"></div>
+    <script>
+        /*-------------------------------------------
+        1、子节点
+        （1）添加新的子节点：父节点.appendChild(子节点)
+        （2）删除子节点：父节点.removeChild(子节点)
+                       子节点.parentNode.removeChild(子节点)
+        （3）替换子节点：父节点.replaceChild(newNode,node)
+        （4）子节点前插入新节点：父节点.insertBefore(newNode,node)
+            注意：innerHTML也可以进行增删改的操作（覆盖）一般将两者结合使用
+
+        2、创建页面节点
+        （1）元素节点：document.createElement('标签名')
+        （2）文本节点：document.createTextNode('文本')
+        （3）属性节点：document.createAttribute('属性名')
+
+        3、设置元素节点属性
+        （1）设置元素的属性节点：元素.setAttributeNode(属性)
+        （2）设置属性值: 属性名.value = " "
+        （3）读取属性值：元素.getAttribute('属性名')    注意：没有则返回null
+        （4）设置属性：元素.setAttribute('属性名','属性值')
+        （5）删除属性：元素.removeAttribute('属性名')
+        （6）设置Class属性：元素.className = " ";  
+        -----------------------------------------------------------------*/
+    </script>
+    <script>
+        //JS实现创建200*200的块
+        //创建div元素
+        var div = document.createElement('div')
+        //div作为子节点追加到body中
+        document.body.appendChild(div);
+        //创建文本节点：我是js创建的div
+        var text = document.createTextNode('我是Js创建的div');
+        //文本节点作为子节点追加到div中
+        div.appendChild(text);
+        //创建style属性
+        var styleAttr = document.createAttribute('style');
+        // 设置属性节点
+        div.setAttributeNode(styleAttr);
+        // 给style属性赋值
+        styleAttr.value = 'width: 200px;height: 200px;background-color: red;';
+
+        //****************************************************
+        //第一步：先获取到页面元素：id|className|标签|css选择器
+        var box = document.getElementById('info');
+        //操作元素节点法：创建设置元素属性
+        //box.setAttribute('style','width: 200px;height: 200px;background-color: red;border-radius: 50%; float:left;')
+ 
+        //操作元素节点的style属性
+        //操作单个设置
+        /*box.style.width = '200px';
+        box.style.height = '200px';
+        box.style.backgroundColor = 'red';
+        box.style.borderRadius = '50%';
+        box.style.cssFloat = 'left';*/
+        //操作多个设置
+        box.style.cssText = 'width: 200px;height: 200px;background-color: red;border-radius: 50%; float:left;';
+        //操作ClassName属性：给元素添加为 box的类名
+        box.className = 'box'
+    </script>
+</body>
+</html>

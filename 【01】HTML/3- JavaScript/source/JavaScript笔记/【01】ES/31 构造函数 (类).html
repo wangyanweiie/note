@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>构造函数</title>
+</head>
+<body>
+    <script>
+    /*---------------------------------------------------
+    构造函数法（类）
+    1、定义：构造函数就是一个普通的函数,不同的是习惯首字母大写;
+    2、语法：
+        function 构造函数名(形参1,形参2,...){
+            this.变量1 = 形参1;
+            this.变量2 = 形参2;
+            .....
+            this.变量 = fun;
+        }
+
+    3、声明方式：var 变量 = new 构造函数名(实参1,实参2,...);
+        普通函数是直接声明,构造函数是通过 new关键字声明;
+
+    4、执行流程：
+    （1）立刻创建一个新的对象
+    （2）将新建的对象设置为函数中的 this,在构造函数中可以使用this引用新建的对象
+    （3）逐行执行函数中的代码
+    （4）将新建的对象作为返回值返回
+
+    5、注意：
+    （1）使用同一个构造函数创建的对象,可以称为一类对象,也将一个构造函数称为一个构造类;
+    （2）我们将通过一个构造函数创建的对象,称为该构造函数的实例对象,也叫该类的实例;
+    （3）实例对象无法获构造函数本身的属性/方法,只能通过this获取构造函数原型对象上的属性/方法;
+
+    6、instanceof运算符
+    （1）作用：使用 instanceof可以检查一个对象是否为一个类的实例
+    （2）语法：对象名 instanceof 构造函数名
+    （3）注意：若是则返回 true,否则返回 false,且所有对象都是Object的实例
+    ------------------------------------------------------------------*/
+    </script>
+    <script>
+        //构造函数 CreatePerson + 调用  
+        function CreatePerson(){};
+        var per = CreatePerson();
+        console.log(per);   //返回值：undefined
+        var per = new CreatePerson();
+        console.log(per);   //返回值：CreatePerson()
+
+        //-------构造名为 Person的函数---------
+        /*function Person(name,age,gender){
+            this.name = name;
+            this.age = age;
+            this.gender = gender;
+            this.sayName = function(){
+                alert("Hello" + this.name)
+            };
+        }*/
+        /*目前我们的 sayName方法是在函数内部创建的,构造函数执行一次就会产生一个新的 sayName方法,
+        即所有实例的的方法都是独立存在的,但是每次新创建的 sayName方法都是完全一样的,是完全没有必要的。
+        改进：可以使所有新建的对象共享同一个方法,将 sayName方法放到全局作用域创建,*/
+        //2.0：将sayName方法放到全局作用域
+        /*function Person(name,age,gender){
+            this.name = name;
+            this.age = age;
+            this.gender = gender;
+            //向对象中添加一个方法
+            this.sayName = fun;
+        }
+        function fun(){
+            alert("Hello" + this.name)
+        };*/
+        /*但是放在全局作用域污染了全局作用域的命名空间、不安全,
+        改进：方法设置在原型对象 prototype中,见 28-prototype原型对象*/
+        //3.0：将方法放到函数中的原型对象中
+        function Person(name,age,gender){
+            this.name = name;
+            this.age = age;
+            this.gender = gender;
+        }
+        //向原型对象中写入方法 sayName,读取实例应该也含有写入的方法
+        Person.prototype.sayName = function(){
+            alert("Hello" + this.name)
+        };
+
+        //---------构造名为 Dog的函数--------
+        function Dog(name,age){
+            this.name = name;
+            this.age = age;
+        }
+        //调用构造的函数 Person
+        var per1 = new Person("小王",18,"男");
+        var per2 = new Person("小红",16,"女");
+        console.log(per1);
+        console.log(per2);
+        per1.sayName();     //弹窗：Hello小王
+        per2.sayName();     //弹窗：Hello小红
+        console.log(per1 instanceof Person);    //true
+        //调用构造的函数 Dog
+        var dog1 = new Dog("小黑",2);
+        var dog2 = new Dog("小白",1);
+        console.log(dog1)
+        console.log(dog2)
+    </script>
+</body>
+</html>

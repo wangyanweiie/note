@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<!--路由嵌套-->
+<!----------------------------------------------------------
+1、流程
+  * 先在components文件夹创建对应的子组件
+  * 在index.js文件中引入（懒加载）
+  * 在需要嵌套的路由映射中使用children:[{}] 配置对应的子路由映射
+    （注意:子路由映射路径path不能加"/",嵌套路由也可以配置默认路径）
+        {
+          path: '/home',
+          component: home,
+          children:[{
+                path: 'new',
+                component: homeNews,
+            }]
+        }
+  * 在需要嵌套的组件内部使用<router-link>与<router-view>
+------------------------------------------------------------->
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //柯里化指的是将一个接受多个参数的函数变为接受一个参数返回一个函数的固定形式,便于再次调用;
+    //经典面试题: 实现add(1)(2)(3)=6; add(1)(2,3)(4)=10;
+    function add(){
+      debugger;
+      //let args = Array.prototype.slice.call(arguments);
+      let args = Array.from(arguments);   //将传入的实参列表转换为数组保存
+      let inner = function(){             //内部函数inner递归不断接收下一次传入的参数
+        args.push(...arguments);
+        return inner;
+      }
+      inner.toString = function(){        //重写toString隐式转换特性
+        return args.reduce((prev,cur) => prev + cur,0);
+      }
+      return inner;
+    }
+    //调用柯里化后的函数
+    let a = add(1)(2)(3);
+    let b = add(1)(2,3)(4);
+    console.log(a);   //inner
+    console.log(b);   //inner
+    alert(a)          //6
+    alert(b)          //10
+  </script>
+</body>
+</html>

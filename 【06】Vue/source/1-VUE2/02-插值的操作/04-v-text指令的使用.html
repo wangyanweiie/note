@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<!---------------------------------------------------
+v-text="string"
+（1）作用：与Mustache比较相似,都是用于将数据显示在界面中;
+（2）注意：v-text通常情况下接受一个string类型
+    会把双标签中的原始文字清空,只显示v-text绑定的变量值;
+------------------------------------------------------>
+<div id="app">
+  <h2>{{message}}, 李银河!</h2>       <!--你好阿,李银河！-->
+  <h2 v-text="message">, 李银河!</h2> <!--你好阿-->
+</div>
+
+<script src="../Js/vue.js"></script>
+<script>
+  const app = new Vue({
+    el: '#app',
+    data: {
+      message: '你好阿'
+    }
+  })
+</script>
+
+</body>
+</html>

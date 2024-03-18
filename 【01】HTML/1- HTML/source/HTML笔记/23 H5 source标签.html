@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>source标签</title>
+</head>
+<body>
+<!-------------------------------------------
+source
+（1）作用：给浏览器提供多种视频或者音频格式的选择
+（2）标签：<source/>
+（3)语法
+    <video autoplay>
+        <source  src=""/>
+        <source  src=""/>
+        <source  src=""/>
+        您的浏览器不支持视频
+    </video>
+--------------------------------------------->
+<video controls width="200">
+    <source src="../videos/video1.mp4"/>
+    <source src="../videos/video1.ogg"/>
+    <source src="../videos/video2.webM"/>
+    您的浏览器不支持视频
+</video>
+
+</body>
+</html>

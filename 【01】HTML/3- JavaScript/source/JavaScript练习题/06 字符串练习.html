@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>字符串练习</title>
+</head>
+<body>
+    <!-- 三个input输入框与一个按钮 -->
+    <input type="text" id="text1">
+    <input type="text" id="text2">
+    <input type="text" id="text3">
+    <button id="btn1">点击</button>
+    <br>
+
+    <!-- 一个input输入框与一个按钮 -->
+    <input type="text" id="text4">
+    <button id="btn2">点击</button>
+    <br>
+
+    <!-- 两个input输入框与一个按钮 -->
+    <input type="text" id="text5">
+    <input type="text" id="text6">
+    <button id="btn3">点击</button>
+    <br>
+
+    <script>
+        //字符串首字母改成大写，并输出字符串------------------------------------------
+        /*var str = "abcdegfg";
+        //          截取a      +       转换大写    +   截取bcdefg
+        var newStr = str.charAt(0).toUpperCase() + str.substr(1);
+        var newStr = str.substr(0,1).toUpperCase() + str.substr(1);
+        var newStr = str.substr(0,1).toUpperCase().concat(str.substr(1));
+        document.write(newStr);*/
+
+        /*编写程序，页面中有三个input输入框与一个按钮----------------------------------
+        要求：获取到用户在这三个input输入框输入的内容；
+        然后将三个inout输入框的内容拼接在一起显示出来*/
+        //id获取元素
+        var text1 = document.getElementById("text1")
+        var text2 = document.getElementById("text2")
+        var text3 = document.getElementById("text3")
+        var btn1 = document.getElementById("btn1")
+        //点击：绑定事件
+        //由于浏览器自上而下解析，使用btn.onclick 要在语句前面设置一个id=btn，在后面设置不行。
+        btn1.onclick = function()
+        {   //操作：输出三个输入框的内容
+            console.log(text1.value + text2.value + text3.value); 
+        };
+
+        /*编写页面，页面中有一个input输入框与一个按钮----------------------------------
+        要求：点击按钮时，控制台获取前20个字符的字符串*/
+        var text4 = document.getElementById("text4")
+        var btn2 = document.getElementById("btn2")
+        btn2.onclick = function()
+        {   //操作：    获取输入值 + 截取前20个字符
+            console.log(text4.value.substring(0,19)); 
+        };
+        
+        /*编写页面，页面包含两个输入框+一个按钮；--------------------------------------
+        用户在第一个输入框输入目标字符串，第二个输入框输入搜索字符串。
+        要求：当点击按钮时能够判断第一个字符串中是否包含第二个字符串；
+        若包含则输出第一次出现的位置与最后一次出现的位置，若不包含则输出未能搜索到指定字符串*/
+        var text5 = document.getElementById("text5")
+        var text6 = document.getElementById("text6")
+        var btn2 = document.getElementById("btn3")
+        var res1,res2;
+        btn3.onclick = function()
+        {   //在第一个字符串中搜索第二个：顺序 + 逆序
+            res1 = text5.value.indexOf(text6.value);
+            res2 = text5.value.lastIndexOf(text6.value);
+            //if(res1 == -1 ||res2 == -1)
+            if(res1 == -1)
+            {
+                console.log("未能搜索到指定字符串");
+            }
+            else
+            {
+                console.log(res1);
+                console.log(res2);
+            }
+        };
+    </script>
+
+</body>
+</html>

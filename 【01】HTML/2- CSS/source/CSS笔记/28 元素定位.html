@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>元素定位position</title>
+    <style>
+        /*-------------------------------------------
+        元素定位
+        1、属性：position:;
+        2、属性值
+        （1）static：静态定位（默认值）
+        （2）relative：相对定位
+            ①规则：相对于自己原位置定位（定位后原位置保留）
+                配合left、right、top、bottom移动
+            ②应用场景：自己小范围移动、配合绝对定位使用
+
+        （3）absolute：绝对定位
+            ①规则：相对于已经定位(relative/absolute/fixed)的父元素定位
+                如果父元素没有定位，逐级往上找，最后相对于body定位（定位后原位置不保留）
+                配合left、right、top、bottom移动
+            ②应用场景：一般给绝对定位的父元素加一个相对定位进行使用
+
+        （4）fixed：固定定位
+            ①规则：相对于浏览器窗口定位（定位后原位置不保留）
+                配合left、right、top、bottom移动
+                （注意：当四个属性同时存在，left和top的优先级高于right和bottom）
+            ②应用场景：固定在页面某个位置
+        （5）sticky
+
+        3、z-index: number;  堆叠顺序
+            （1）取值：取值越大层级越往上，可以取负值但不推荐
+            （2）注意：必须配合定位使用（position: relative、absolute、fixed）
+
+        4、在页面中不占位置
+            （1）float:left|right;
+            （2）display:none;
+            （3）position:absolute;
+            （4）position:fixed;
+        ----------------------------------------------------------*/
+        body{
+            height: 2000px;
+        }
+        .box{
+            width: 500px;
+            height: 500px;
+            background-color: skyblue;
+            margin: 50px;
+            position: relative;
+        }
+        .one{
+            width: 200px;
+            height: 200px;
+            background-color: palegreen;
+            /*position: relative;*/
+            position: absolute;
+            top: 50px;
+            left: 50px;
+            z-index: 666;
+        }
+        .two{
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            z-index: 888;
+        }
+        /*绝对定位*/
+        a{
+            text-decoration:none;
+            position: fixed;
+            right: 0;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+<!-- <div class="box"></div> -->
+<div class="box">
+    <div class="one"></div>
+    <div class="two"></div>
+</div>
+
+<a href="#">返回页面顶部</a>
+
+</body>
+</html>

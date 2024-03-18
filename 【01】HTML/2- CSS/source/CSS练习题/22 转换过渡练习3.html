@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>转换练习3：旋转</title>
+    <style>
+        body{
+            background: #eee;
+        }
+        img{
+            width: 210px;
+            border: 1px solid red;
+            padding:10px;
+            background: white;
+            /*旋转*/
+            transform: rotate(5deg);
+            /*设置过渡时间0.3s*/
+            transition: all 0.3s;
+
+            margin: 20px;
+        }
+        img:hover{
+            box-shadow: 0 15px 30px rgba(0,0,0,.2);
+            /*当transform只取一个值时，其余是默认值*/
+            transform: scale(1.2)
+        }
+    </style>
+</head>
+<body>
+    <img src="../images/25.jpg " alt=""/>
+</body>
+</html>

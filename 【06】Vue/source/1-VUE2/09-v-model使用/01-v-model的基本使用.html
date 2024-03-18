@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  </head>
+  <body>
+    <!--------------------------------------------------------
+    v-model = "string"
+    （1）作用：Vue中使用v-model指令来实现表单元素和数据的双向绑定;
+    （2）语法：v-model = "变量名"
+    ----------------------------------------------------------->
+    <div id="app">
+      <input type="text" v-model="message">
+      {{message}}
+    </div>
+    <!--
+    当我们在输入框输入内容时,因为input中的v-model绑定了message,所以会实时将输入的内容传递给message,message发生改变;
+    当message发生改变时,因为上面我们使用Mustache语法,将message的值插入到DOM中,所以DOM会发生响应的改变;
+    即通过v-model实现了双向的绑定;
+    -->
+    <script src="../Js/vue.js"></script>
+    <script>
+      const app = new Vue({
+        el: '#app',
+        data: {
+          message: '你好阿'
+        }
+      })
+    </script>
+  </body>
+</html>

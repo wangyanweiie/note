@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ES5组合继承</title>
+</head>
+<body>
+    <script>
+        //父级:手机
+        function Phone(brand, price){
+            this.brand = brand;
+            this.price = price;
+        }
+        Phone.prototype.call = function(){
+            console.log("我可以打电话");
+        }
+        //子级:智能手机
+        function SmartPhone(brand, price, color, size){
+            //借用构造函数继承：将this指向SmartPhone,为了得到"父类型"的属性;
+            Phone.call(this, brand, price);
+            this.color = color;
+            this.size = size;
+        }
+        //设置子级构造函数的原型 = 父级构造函数的实例
+        SmartPhone.prototype = new Phone;
+        //将子级构造函数原型的构造属性constructor指向子级自身
+        SmartPhone.prototype.constructor = SmartPhone;
+
+        //声明子类的方法
+        SmartPhone.prototype.photo = function(){
+            console.log("我可以打视频电话")
+        }
+
+        //实例化对象
+        const cz = new SmartPhone('锤子',2499,'黑色','5.5inch');
+        console.log(cz);
+        cz.call();          //调用父级原型上的方法
+        cz.photo();         //调用子级原型上的方法
+        // cz.playGame();   //不存在该方法,控制台报错
+    </script>
+</body>
+</html>

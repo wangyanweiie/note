@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>get 和 set</title>
+</head>
+<body>
+    <!-- class类 -->
+    <!----------------------------------------- 
+    get和set方法,在读取和设定值的时候触发;
+        * get：通常对对象的动态属性作封装;
+        * set：可以添加更多的控制与判断;
+     ------------------------------------------>
+    <script> 
+        class Phone{
+            //get读取数据时调用
+            get price(){
+                console.log("读取价格属性");
+                return 'cost';
+            }
+            //set设置器必须要有参数,修改数据时调用
+            set price(newValue){
+                console.log('修改价格属性');
+            }
+        }
+        //实例化对象
+        let s = new Phone();
+        console.log(s.price);   //读取数据触发get
+        s.price = 'free';       //修改数据触发set
+
+    </script>
+</body>
+</html>

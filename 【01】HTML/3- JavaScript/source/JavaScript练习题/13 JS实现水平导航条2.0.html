@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS实现水平导航条2</title>    
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        var i;
+        var arr = ["手机","电视","笔记本","家电","路由器","智能硬件"]
+        for(i = 0; i < arr.length; i++)
+        {
+            var ul = document.createElement("ul");
+            document.body.appendChild(ul);
+
+            var li = document.createElement("li");
+            ul.appendChild(li);
+
+            var a = document.createElement("a");
+            li.appendChild(a);
+
+            var text = document.createTextNode(arr[i]);
+            a.appendChild(text);
+
+            //给li设置style属性
+            li.setAttribute("style","list-style-type: none; float: left; padding: 20px 60px; background-color: #333;")
+            //var listyle = document.createAttribute("style");
+            //li.setAttributeNode(listyle);
+            //listyle.value = "list-style-type: none; float: left; padding: 20px 60px; background-color: #333;"
+
+            //给a设置style属性
+            a.setAttribute("style","text-decoration: none;color: white;")
+            //var astyle = document.createAttribute("style");
+            //a.setAttributeNode(astyle);
+            //astyle.value = "text-decoration: none;color: white;"
+
+            //给a设置href属性
+            a.setAttribute("href","#")
+            //var href = document.createAttribute("href");
+            //a.setAttributeNode(href);
+            //href.value = "#"
+        }  
+    </script>
+</body>
+</html>

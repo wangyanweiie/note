@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>怪异盒模型</title>
+    <style>
+        /*----------------------------------------------------
+        3、怪异盒模型|IE盒模型
+        （1）组成部分
+         content + padding + border + margin
+           内容    内边距   边框   外边距
+
+        （2）实际宽度：width + margin
+         注意：width包含了padding和border,怪异盒模型下不会撑大容器;
+
+        （3）盒模型之间相互转换
+         box-sizing: content-box; 标准盒模型（默认值）
+         box-sizing: border-box; 怪异盒模型
+        --------------------------------------------------------*/
+        .box1{
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            padding: 50px;
+            margin: 50px;
+            border: 5px solid green;
+            /*默认是标准盒模型*/
+        }
+        .box2{
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            padding: 50px;
+            margin: 50px;
+            border: 5px solid green;
+            /*设置怪异盒模型*/
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <div class="box1"></div>
+    <div class="box2"></div>
+</body>
+</html>

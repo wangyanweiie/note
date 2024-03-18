@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>强制类型转换</title>
+</head>
+<body>
+    <script>
+        /*--------------------------------------------------------------------
+        数据类型强制转换
+        1、其他数据类型转换为 string
+        （1）调用被转换类型的 toString方法
+            ①语法：变量名.toSting()
+            ②作用：该方法不会改变原变量,会将转换结果返回;
+            ③注意：null与undefined 没有 toSting方法,强制转换会报错;
+        （2）String函数
+            ①语法：String(变量名)
+            ②作用：将被转换的数据作为参数传递给函数
+            ③注意
+                a、使用String函数进行强制数据转换,对于 number与 boolean就是调用toString方法;
+                b、对于 null 与 undefined则直接转换为 "null"与"undefined";
+
+        2、其他数据类型转换为 number
+        （1）Number函数
+            ①语法：Number(变量名)
+            ②作用：将被转换的数据作为参数传递给函数
+            ③注意
+                a、boolean：true转换为 1,false转换为 0;
+                b、string：纯数字的直接转换为数字,若字符串中有非数字内容则转换为 NaN,若是空串或者只有空格则转换为 0;
+                c、Null：转换为 0;
+                d、undefined：转换为 NaN
+        （2）string类型转换为 number
+            ①parseInt(变量名,进制)：只取有效的整数部分,从左往右读取到非数字内容则停止读取,不四舍五入;
+            ②parseFloat(变量名)：可以获得有效的浮点数,从左往右只取识别第一个小数点,然后读取完数字内容则停止读取;
+            ③注意：对非string类型使用 parseInt或者parseFloat,它会先将其转换为 string类型,再进行运算;
+        （3）toFixed(n): 可把Number四舍五入为指定小数位数的数字;
+        
+        3、其他数据类型转换为 boolean
+        （1）Boolean函数
+            ①语法：Boolean(变量名)
+            ③注意
+                a、number：数字转布尔类型,除了0与 NaN转换结果为 false,其余都为 true;
+                b、string：字符串转布尔类型,除了空串是 false,其余都是 true;
+                c、Null：都是 false;
+                d、undefined：都是 false;
+                e、Object：都是 true;
+       -------------------------------------------------------------------------------------------------*/
+    </script>
+    <script>
+        //其他数据类型转换为 string
+        //tostring方法
+        var a = 100;
+        console.log(a,typeof a);  //100 number
+        var a = a.toString();
+        console.log(a,typeof a);  //100 string
+        //String()函数
+        var b = 100;
+        console.log(b,typeof b);  //100 number
+        b = String(b);
+        console.log(b,typeof b);  //100 string
+
+        //其他数据类型转换为 number
+        //Number函数
+        var c = "200";
+        console.log(c,typeof c);  //200 number
+        c = Number(c);
+        console.log(c,typeof c);  //200 string
+
+        //string类型强制转换为number
+        var num = '66.66.66';
+        var d = parseInt(num);
+        console.log(d,typeof d);   //66 number
+        var e = parseFloat(num);
+        console.log(e,typeof e);   //66.66 number
+
+        //其他数据类型转换为 boolean
+        var n = 300;
+        console.log(n,typeof n);    //300 number
+        n = Boolean(n);
+        console.log(n,typeof n);    //true boolean
+    </script>
+</body>
+</html>

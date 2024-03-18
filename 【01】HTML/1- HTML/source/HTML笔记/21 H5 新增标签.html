@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>H5新增标签了解</title>
+</head>
+<body>
+<!---------------------------
+H5新增的标签
+（1）figure：描述
+（2）details：细节
+（3）mark：突出显示（块级元素）
+（4）meter：刻度
+（5）progress：进度条
+（6）datalist：数据列表
+（7）canvas：画布（js写才显示）
+（8）video: 视频
+（9）audio: 音频
+---------------------------->
+<!--描述-->
+<dl>
+    <dt><img src="../images/img3.gif " alt="" width="100"/></dt>
+    <dd>西瓜小新</dd>
+</dl>
+<div>
+    <img src="../images/img5.gif" alt="" width="100"/>
+    <p>站立的小新</p>
+</div>
+<figure>
+    <img src="../images/img4.gif" alt="" width="100"/>
+    <figcaption>霸气的小新</figcaption>
+</figure>
+<!--细节-->
+<details>
+    <summary>PS</summary>
+    <p>恭喜您发现隐藏属性</p>
+</details>
+<!--突出显示-->
+<p>哈哈<mark>哈哈哈</mark>哈哈</p>
+<!--刻度-->
+<meter min="0" max="100" value="60" low="20" high="80">
+    您的浏览器不支持刻度
+</meter><br>
+<!--进度条-->
+<progress max="100" value="60">您的浏览器不支持进度条</progress><br>
+<!--数据列表：input中的list与datalist中的id进行关联-->
+<input type="text" list="city"/>
+<datalist id="city">
+    <option value="北京">bj</option>
+    <option value="上海">sh</option>
+    <option value="广州">gz</option>
+    <option value="深圳">sz</option>
+</datalist>
+<br>
+<!--画布-->
+<canvas>您的浏览器不支持画布</canvas>
+</body>
+</html>

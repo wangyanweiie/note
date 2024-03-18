@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<!--keep-alive（内置组件）-->
+<!----------------------------------------
+1、作用:
+   * 可以使被包含的组件保留状态或避免重新渲染;
+   * 不会被频繁的创建与销毁;
+
+2、应用:
+    <keep-alive>
+      <router-view></router-view>
+    </keep-alive>
+
+3、属性: 写在<keep-alive>标签中
+  * include:"name"  只有匹配的组件会被缓存
+  * exclude:"name"  任何匹配的组件都不会被缓存
+
+4、补充: 在使用keep-alive时可以使用两个回调函数
+  * activated(){}   组件活跃时回调
+  * deactivated(){} 组件不活跃时回调
+--------------------------------------------->
+</body>
+</html>

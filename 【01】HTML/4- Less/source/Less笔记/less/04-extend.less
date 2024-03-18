@@ -1,0 +1,55 @@
+@import "./utils.less";
+//全局样式
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.wrap {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  border: 1px solid #ccc;
+  background-color: pink;
+  /*********************************正常嵌套写法
+  .inner{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    &:nth-child(1){
+      width: 200px;
+      height: 200px;
+      background-color: purple;
+    }
+    &:nth-child(2){
+      width: 100px;
+      height: 100px;
+      background-color: green;
+    }
+  }*/
+  /*******************************使用混合(mixin)
+  .inner{
+    &:nth-child(1){
+      .middle(200px,200px,purple)
+    }
+    &:nth-child(2){
+      .middle(100px,100px,green)
+    }
+  }*/
+
+  /******************************使用继承(extend)*/
+  .inner{
+    &:extend(.center all);
+    &:nth-child(1){
+      width: 200px;
+      height: 200px;
+      background-color: purple;
+    }
+    &:nth-child(2){
+      width: 100px;
+      height: 100px;
+      background-color: green;
+    }
+  }
+}

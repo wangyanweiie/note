@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<!--动态路由-->
+<!-------------------------------------------------
+1、理解
+  * router是声明的VueRouter路由对象（子组件中 this.$router === router）;
+  * 路由对象中有许多的方法可以调用: $router.方法名
+  * route是当前处于活跃的路由,通过 $route 调用;
+  * 能在组件使用this.$route和this.$router是因为所有组件都继承自Vue类的原型,而这俩都定义在Vue类的原型上;
+
+2、传递URL参数信息的流程:
+  * index.js中配置路由格式: path:'/user/: id'
+  * App.vue中的data属性中添加需要传递的参数:
+      data(){
+        return{
+          userId:"admin&admin123"
+        }
+      }
+  * 通过v-bind动态绑定显示在url路径后面:
+    <router-link :to="'/user/'+ userId"></router-link>
+
+  * 在user组件的computed属性中访问 $route.params,可以获取到传递的数据进行使用;
+      computed:{
+        userId(){
+          return this.$route.params.id;
+        }
+      }
+
+  * 组件user.vue中使用 {{userId}}} 显示在页面中
+------------------------------------------------------->
+</body>
+</html>

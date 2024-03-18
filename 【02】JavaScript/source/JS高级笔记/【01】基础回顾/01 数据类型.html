@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>数据类型1</title>
+</head>
+<body>
+<!----------------------------------
+1. 分类
+（1）基本(值)类型
+    ① String: 任意字符串
+    ② Number: 任意的数字
+    ③ boolean: true/false
+    ④ undefined: undefined
+    ⑥ null: null
+（2）对象(引用)类型
+    ① Object: 任意对象（内部数据是无序的）
+    ② Function: 一种特别的对象(函数可以执行)
+    ③ Array: 一种特别的对象(数值下标,数组内部数据是有序的)
+
+2. 判断数据类型
+（1）typeof:
+    ①可以判断: undefined/ 数值/ 字符串/ 布尔值/ function
+    ②不能判断: null与 object    object与 array
+（2）instanceof：判断对象的具体类型
+（3）===：可以判断: undefined, null
+
+3、问题
+（1）undefined与 null的区别 ?
+    ① undefined代表定义未赋值
+    ② null定义并赋值了, 只是值为null
+
+（2）什么时候给变量赋值为null呢?
+    ① 初始赋值, 表明将要赋值为对象
+    ② 结束前, 让对象成为垃圾对象(被垃圾回收器回收)
+
+（3）严格区别变量类型与数据类型?
+    ①数据的类型
+      * 基本类型
+      * 对象类型
+    ②变量的类型(变量内存值的类型)
+      * 基本类型: 保存就是基本类型的数据
+      * 引用类型: 保存的是地址值
+------------------------------------>
+
+<script type="text/javascript">
+  //1. 基本类型
+  // typeof返回数据类型的字符串表达
+  var a;
+  console.log(a, typeof a, typeof a === 'undefined',a === undefined );  //undefined 'undefined' true true
+  console.log(undefined === 'undefined');  //true
+  a = 5;
+  console.log(typeof a === 'number');      //true
+  a = 'July';
+  console.log(typeof a === 'string');      //true
+  a = true
+  console.log(typeof a === 'boolean');     //true
+  a = null;
+  console.log(typeof a, a === null);       //'object' true
+  console.log('-----------------');
+  //2. 对象类型
+  var b1 = {
+    b2: [1, 'abc', console.log],
+    b3: function() 
+    {
+      console.log('b3')
+      return function() 
+      {
+        return '哈哈哈';
+      }
+    }
+  }
+  console.log(b1 instanceof Object, b1 instanceof Array);          // true false
+  console.log(b1.b2 instanceof Array, b1.b2 instanceof Object);    // true true
+  console.log(b1.b3 instanceof Function, b1.b3 instanceof Object); // true true
+
+  console.log(typeof b1.b2);                   // 'object'
+  console.log(typeof b1.b3 === 'function');    // true
+  console.log(typeof b1.b2[2] === 'function'); //true
+  b1.b2[2](5);               //5 由于左边的 b1.b2[5]是函数类型（5）相当于直接调用
+  console.log(b1.b3()());    //哈哈哈
+  console.log('-----------------');
+  //3、常见问题
+  
+  // 实例: 实例对象
+  // 类型: 类型对象
+  function Person (name, age) { //构造函数  类型
+    this.name = name
+    this.age = age
+  }
+  //根据类型创建的实例对象
+  var p = new Person('tom', 12) 
+
+  //undefined与 null的区别
+  var a;
+  console.log(a);   // undefined
+  var a = null;
+  console.log(a);   // null
+
+  //初始赋值为null, 表明将要赋值为对象
+  var obj = null;
+  //让 obj指向的对象成为垃圾对象(被垃圾回收器回收)
+  obj = ['哈哈哈', 18];
+  obj = null; 
+
+  var c = function(){};
+  console.log(typeof c);   //'function'
+
+</script>
+</body>
+</html>

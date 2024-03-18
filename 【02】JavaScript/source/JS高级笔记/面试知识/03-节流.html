@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div>
+    <button id="btn1">button1</button>
+    <button id="btn2">button2</button>
+  </div>
+  <script>
+    //节流函数一(时间戳)
+    function throttle1(fn,delay){
+      let begainTime = 0;                       //初始化开始时间为0
+      return function() { 
+        let currentTime = Date.now();           //获取执行当前代码的时间
+        if(currentTime - begainTime >= delay){  //时间戳大于延时时间则执行
+          fn.apply(this,arguments);             //this指向调用节流函数的对象
+        }
+        begainTime = currentTime;               //更新开始时间为上一次执行时间
+      }
+    }
+    //节流函数二(定时器)
+    function throttle2(fn,delay){
+        let timer = null;                 //借助闭包保存定时器标识
+        return function() {
+          if(!timer){                     //若定时器未开启则开始计时
+            timer = setTimeout(() => {
+              fn.apply(this,arguments);   //this指向调用节流函数的对象
+              timer = null;               //还原定时器标识timer为null
+          }, delay)
+        }
+      }
+    }
+    //获取页面按钮button
+    let btn1 = document.getElementById('btn1')
+    let btn2 = document.getElementById('btn2')
+    //绑定单击响应函数,包裹防抖函数处理;
+    btn1.onclick = throttle1(function(){
+      console.log('我是时间戳节流-111')
+    },1000)
+    btn2.onclick = throttle2(function(){
+      console.log('我是定时器节流-222')
+    },1000)
+  </script>
+<!-- 防抖与节流 -->
+<!-------------------------------------------------------------------
+2.节流(throttle)
+（1）理解: 对于短时间内连续触发的同一事件,节流的含义就是在函数执行一次之后,
+    该函数在指定的时间期限内不再工作,直至过了这段时间才重新生效;
+（2）语法
+    * 节流函数一(时间戳): 开始时事件立即执行,停止触发后没有办法再次执行事件;
+    * function throttle(fn,delay){
+      let begainTime = 0;                       //初始化开始时间为0
+      return function() { 
+        let currentTime = Date.now();           //获取执行当前代码的时间
+        if(currentTime - begainTime >= delay){  //时间戳大于延时时间则执行
+          fn.apply(this,arguments);             //this指向调用节流函数的对象
+        }
+        begainTime = currentTime;               //更新开始时间为上一次执行时间
+      }
+    }
+
+    * 节流函数二(定时器): 开始时会在间隔时间后第一次执行,停止触发后依然会再次执行一次事件;
+    * function throttle(fn,delay){
+        let timer = null;                 //借助闭包保存定时器标识
+        return function() {
+          if(!timer){                     //若定时器未开启则开始计时
+            timer = setTimeout(() => {
+              fn.apply(this,arguments);   //this指向调用节流函数的对象
+              timer = null;               //还原定时器标识timer为null
+            }, delay)
+          }
+        }
+      }
+    
+    * 节流函数三(时间戳+定时器): 既开始时立即执行,结束时又还能再执行一次;
+    ......
+-------------------------------------------------------------------------------->
+</body>
+</html>

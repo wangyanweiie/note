@@ -1,0 +1,35 @@
+.box{
+    width: 85%;
+    margin: 0 auto;
+}
+.box>div{
+    height: 300px;
+    background-color: pink;
+    float: left;
+    margin-bottom: 15px;
+}
+/* PC*/
+@media screen and (min-width: 992px) {
+    .box > div {
+        width: 32%;
+    }
+    .box > div:nth-child(2), .box > div:nth-child(5) {
+        margin: 0 2%;
+    }
+}
+/* iPad */
+@media screen and (min-width: 768px) and (max-width: 991px) {
+    .box > div {
+        width: 49%;
+    }
+    .box > div:nth-child(odd) {
+        margin-right: 2%;
+    }
+}
+
+/* APP */
+@media screen and (max-width: 767px){
+    .box>div{
+        width:100%;
+    }
+}

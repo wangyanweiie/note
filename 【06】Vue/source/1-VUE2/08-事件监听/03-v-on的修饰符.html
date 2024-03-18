@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<!-- v-on的修饰符 -->
+<!----------------------------------------
+1.事件修饰符
+（1）.stop      原理调用 event.stopPropagation(),可以阻止事件的冒泡;
+（2）.prevent   原理调用 event.preventDefault(),阻值默认事件;
+（3）.once      只触发第一次回调
+（4）.native    监听组件根元素的原生事件; (vue3中废除)
+                即写在子组件标签上,可以直接监听到子组件中的方法;
+2.按键修饰符
+----------------------------------------------------------------->
+<div id="app">
+  <!--1. .stop修饰符的使用-->
+  <div @click="divClick">
+    哈哈哈哈
+    <button @click.stop="btnClick">按钮</button>
+  </div>
+
+  <!--2. .prevent修饰符的使用-->
+  <br>
+  <form action="baidu">
+    <input type="submit" value="提交" @click.prevent="submitClick">
+  </form>
+
+  <!--3. .监听某个键盘的键帽-->
+  <input type="text" @keyup.enter="keyUp">
+  <br><br>
+
+  <!--4. .once修饰符的使用-->
+  <button @click.once="btn2Click">按钮2</button>
+</div>
+
+<script src="../Js/vue.js"></script>
+<script>
+  const app = new Vue({
+    el: '#app',
+    data: {
+      message: '你好阿'
+    },
+    methods: {
+      btnClick() {
+        console.log("btnClick");
+      },
+      divClick() {
+        console.log("divClick");
+      },
+      submitClick() {
+        console.log('submitClick');
+      },
+      keyUp() {
+        console.log('keyUp');
+      },
+      btn2Click() {
+        console.log('btn2Click');
+      }
+    }
+  })
+</script>
+
+</body>
+</html>

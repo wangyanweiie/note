@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math对象</title>
+</head>
+<body>
+    <script>
+    /*-------------------------------------------------
+    Math对象（工具类）
+    1、定义：Math属于一个工具类不用创建对象,封装了数学运算的属性和方法;
+    2、属性
+    （1）PI属性
+        ①作用：获取圆周率3.1415926....
+        ②语法：Math.PI
+
+    3、方法
+    （1）ceil方法
+        ①作用：对数据进行向上取整,取最小的整数;
+        ②语法：Math.ceil(xx);
+    （2）floor方法
+        ①作用：对数据进行向下取整,取最大的整数;
+        ②格式：Math.floor(xx);
+    （3）round方法
+        ①作用：对数据的小数点后一位进行四舍五入取整;
+        ②语法：Math.round(xx);
+    （4）abs方法
+        ①作用：求数据的绝对值
+        ②语法：Math.abs(xx);
+    （5）pow方法
+        ①作用：求x的y次方
+        ②语法：Math.pow(x, y);
+    （6）sqrt方法
+        ①作用：求数据的算数平方根
+        ②语法：Math.sqrt(xx);       
+    （7）max方法
+        ①作用：求数据的最大值
+        ②语法：Math.max(值1,值2,值3...);
+    （8）min方法
+        ①作用：求数据的最小值
+        ②语法：Math.min(值1,值2,值3..);
+    （9）random方法
+        ①作用：返回 0-1的随机小数,[0,1)
+        ②语法：Math.random();
+        ③扩展：random方法生成 n-m的随机整数,[n,m]
+            公式①：Math.round(Math.random()*(m - n) + n);
+            公式②：Math.floor(Math.random()*(m - n + 1) + n);
+            公式③：parseInt(Math.random()*(m - n + 1) + n);
+    ......
+    ---------------------------------------------------------*/
+    </script>
+    <script>
+        //Math属性：PI 求圆的周长和面积
+        var r = 10;
+        var l = 2 * Math.PI * r;
+        console.log(l);
+        var s = Math.PI * r * r;
+        console.log(s);
+
+        //Math方法
+        var num = 3.14;
+        //对数据进行向上取整,取最小的整数
+        var res = Math.ceil(num);
+        console.log(res);   //4
+        
+        //对数据进行向下取整,取最大的整数
+        var res = Math.floor(num);
+        console.log(res);   //3
+
+        //对数据的小数点后一位进行四舍五入取整
+        var num = 3.14;
+        var res = Math.round(num);
+        console.log(res);   //3
+        
+        //绝对值
+        var num = -5;
+        var res = Math.abs(num);
+        console.log(res);
+
+        //求x的y次方
+        var x = 2, y = 10;
+        var res = Math.pow(x, y);
+        console.log(res);
+
+        //算数平方根
+        var num = 100;
+        var res = Math.sqrt(num);
+        console.log(res);
+
+        //最大值与最小值
+        var res = Math.max(1, 0, 7, 3, 2);
+        console.log(res);
+        var res = Math.min(1, 0, 7, 3, 2);
+        console.log(res);
+
+        //返回0-1的随机小数 [0,1)
+        var num = Math.random();
+        console.log(num);
+
+        //random方法生成10-15的随机整数：[10,15]
+        var num = parseInt(Math.random() * (15 + 1 - 10) + 10);
+        console.log(num);
+
+    </script>
+</body>
+</html>

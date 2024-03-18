@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<!-------------------------------
+  Mustache语法：{{}} 双大括号语法
+  注意：{{}}语法只能用于标签的文本内容中;
+        {{}}语法中,不仅可以直接写变量,也可以写简单的表达式;
+---------------------------------------------------------->
+<div id="app">
+  <h2>{{message}}</h2>
+  <h2>{{message}}, 李银河!</h2>
+
+<!--简单表达式-->
+  <h2>{{firstName + lastName}}</h2>
+  <h2>{{firstName + ' ' + lastName}}</h2>
+  <h2>{{firstName}} {{lastName}}</h2>
+  <h2>{{counter * 2}}</h2>
+</div>
+
+<script src="../Js/vue.js"></script>
+<script>
+  const app = new Vue({
+    el: '#app',
+    data: {
+      message: '你好阿',
+      firstName: 'kobe',
+      lastName: 'bryant',
+      counter: 100
+    },
+  })
+
+</script>
+
+</body>
+</html>

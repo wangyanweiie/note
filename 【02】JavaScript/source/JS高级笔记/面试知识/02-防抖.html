@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div>
+    <button id="btn">点击</button>
+  </div>
+  <script>
+    //防抖函数五(默认第一次立即执行)
+    function debounce(fn,delay){
+      let timer = null                                //借助闭包保存定时器标识
+      return function() {
+        let firstClick = !timer;                      //是否是第一次 <==> 即timer===null时, 则!timer===true
+        if (timer) clearTimeout(timer);               //若定时器已开启则取消上一次定时
+        if (firstClick) fn.apply(this,arguments);     //若是第一次则立即执行
+        timer = setTimeout(() => {                    //到达期限时间后还原timer的值为null
+          timer = null;
+        }, delay);
+      }
+    }
+    //获取页面按钮button
+    let btn = document.getElementById('btn')
+    //绑定单击响应函数,包裹防抖函数处理;
+    btn.onclick = debounce(function(){
+      console.log('哈哈哈哈')
+    },200)
+  </script>
+<!-- 防抖与节流 -->
+<!-----------------------------------------------------------------
+1.防抖(debounce)
+（1）理解: 对于短时间内连续触发的同一事件,防抖的含义就是在个某时间期限内,事件处理函数只执行一次;
+    即在第一次触发事件时,不立即执行函数,而是给出一个时间期限值;若在期限值内没有再次触发事件,那么则执行函数;
+    防抖处理的结果: 若在限定时间段内,只要不断触发事件,理论上就永远不会执行事件响应函数;
+
+（2）语法
+    * 防抖函数一(只实现防抖)
+    * function debounce(fn,delay){
+        let timer = null                  //借助闭包保存定时器标识
+        return function() {
+          if(timer) clearTimeout(timer);
+          timer = setTimeout(fn,delay)
+        }
+      }
+
+    * 防抖函数二(改变this指向)
+    * function debounce(fn,delay){
+        let timer = null
+        return function() {
+          if(timer) clearTimeout(timer);
+          timer = setTimeout(()=>{        //箭头函数没有this 即同外层最近作用域的this(即调用防抖函数的对象)
+            fn.apply(this);
+          },delay)
+        }
+      }
+
+    * 防抖函数三(传递event参数问题)
+    * function debounce(fn,delay){
+        let timer = null
+        return function() {
+          if(timer) clearTimeout(timer);
+          timer = setTimeout(()=>{        //借助箭头函数此时定时器内的实参arguments就是外部传入的event事件对象
+            fn.apply(this,arguments);
+          },delay)
+        }
+      }
+
+    * 防抖函数四(设置第一次是否立即执行) <==> 完整功能
+    * function debounce(fn,delay,immediate){
+        let timer = null                                //借助闭包保存定时器标识
+        return function() {
+          if (timer) clearTimeout(timer);               //若定时器已开启则取消上一次定时
+          if (immediate) {                              //第一次是否立即执行immediate: true/false 
+            let firstClick = !timer;                    //是否是第一次 <==> 即timer===null时, 则!timer===true
+            if (firstClick) fn.apply(this,arguments);   //若是第一次则立即执行: this指向调用防抖函数的对象
+            timer = setTimeout(() => {                  //到达期限时间后还原timer的值为null
+              timer = null;
+            }, delay);
+          }
+          else{
+            timer = setTimeout(()=>{                    //箭头函数没有this 即同最近作用域的this(即调用防抖函数的对象)
+              fn.apply(this,arguments);                 //并且此时定时器内的实参arguments就是外部传入的event事件对象
+            }, delay)
+          }
+        }
+      }
+
+    * 防抖函数五(默认第一次立即执行) <==> 完整功能
+    * function debounce(fn,delay){
+        let timer = null                                //借助闭包保存定时器标识
+        return function() {
+          let firstClick = !timer;                      //是否是第一次 <==> 即timer===null时, 则!timer===true
+          if (timer) clearTimeout(timer);               //若定时器已开启则取消上一次定时
+          if (firstClick) fn.apply(this,arguments);     //若是第一次则立即执行
+          timer = setTimeout(() => {                    //到达期限时间后还原timer的值为null
+            timer = null;
+          }, delay);
+        }
+      }
+------------------------------------------------------------------->
+</body>
+</html>

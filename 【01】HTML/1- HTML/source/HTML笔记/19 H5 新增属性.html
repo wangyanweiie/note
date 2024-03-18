@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>H5新增的属性</title>
+</head>
+<body>
+<!---------------------------------------------------
+H5新增的属性
+（1）placeholder：默认提示
+    重点掌握（文本框中灰色字体显示）
+（2）autofocus：自动获取焦点，建议写在第一个表单元素上
+（3）required：设置成必填项
+（4）multiple：可输入多个，英文状态下逗号隔开，多配合邮箱网址使用
+（5）min与max：最小值与最大值，多配合数字范围使用
+（6）minlength与maxlength：最小长度与最大长度
+    注意：placeholder重点掌握，其余了解即可
+-------------------------------------------------------->
+<form action="">
+    姓名：<input type="text" name="userName" placeholder="手机/邮箱/用户名" autofocus required/><br/>
+    密码：<input type="password" name="password" placeholder="8~18位" minlength="8" maxlength="18"/><br/>
+    邮箱：<input type="email" multiple/><br/>
+    <input type="submit"/>
+    <input type="reset"/>
+</form>
+
+</body>
+</html>

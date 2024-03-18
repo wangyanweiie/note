@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ES7新特性</title>
+</head>
+<body>
+    <!----------------------------------------------------------
+    1、Array.prototype.includes
+    （1）作用：Includes方法检测数组中是否包含某个元素,返回布尔类型值;
+    （2）语法：arr.includes(元素);
+
+    2、** 运算符
+    （1）理解：ES7中引入指数运算符「**」,功能与 Math.pow 结果相同;
+    （2）语法：num1 ** num2
+    ------------------------------------------------------------->
+    <script>
+        //includes：检测数组中是否包含某个元素,返回布尔类型值;
+        const classic = ['西游记','红楼梦','三国演义','水浒传'];
+        console.log(classic.includes('西游记'));         //true
+        console.log(classic.includes('宝莲灯'));         //false
+        //indexOf：返回第一个符合条件的下标,查找不到返回-1;
+        console.log(classic.indexOf('西游记'));          //0
+        console.log(classic.indexOf('宝莲灯'));          //-1
+
+        //**运算符
+        console.log(2 ** 10);               //1024
+        //Math.pow
+        console.log(Math.pow(2,10));        //1024
+        
+    </script>
+</body>
+</html>

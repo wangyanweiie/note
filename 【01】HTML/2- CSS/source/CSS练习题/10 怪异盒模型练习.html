@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <!--引入重置文件-->
+    <link rel="stylesheet" href="css/reset.css"/>
+    <title>怪异盒模型练习</title>
+    <style>
+        .box{
+            width: 234px;
+            height: 460px;
+            background-color: rgba(105,101,101,.6);
+            padding: 20px 0;
+            /* 转换为IE盒模型 */
+            box-sizing: border-box;
+            text-align: left;
+        }
+        a{
+            color: #fff;
+            font-size: 14px;
+        }
+        .box li{
+            /*padding移动悬停背景颜色可选中*/
+            padding-left: 30px;
+            height: 42px;
+            line-height: 42px;
+        }
+        .box li:hover{
+            background-color: #ff6700;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="box">
+    <ul>
+        <li><a href="#">手机 电话卡</a></li>
+        <li><a href="#">手机 电话卡</a></li>
+        <li><a href="#">手机 电话卡</a></li>
+        <li><a href="#">手机 电话卡</a></li>
+        <li><a href="#">手机 电话卡</a></li>
+        <li><a href="#">手机 电话卡</a></li>
+        <li><a href="#">手机 电话卡</a></li>
+        <li><a href="#">手机 电话卡</a></li>
+        <li><a href="#">手机 电话卡</a></li>
+        <li><a href="#">手机 电话卡</a></li>
+    </ul>
+</div>
+
+</body>
+</html>

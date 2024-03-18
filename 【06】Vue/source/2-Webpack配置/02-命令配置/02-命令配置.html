@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<!-- webpack的配置 -->
+<!-------------------------------------------------------------------
+1、理解
+  如果每次使用webpack的命令都需要写上入口路径与出口路径作为参数就非常麻烦,
+  可以将这两个参数写到配置中,在运行时直接读取:创建一个webpack.config.js文件;
+
+2、在webpack.config.js文件中进行配置
+    const path = require('path')
+    module.exports = {
+      entry: './src/main.js',
+      output: {
+        path: path.resolve(__dirname, 'dist'),
+        filename: 'bundle.js'
+      },
+    }
+3、语法
+（1）当配置了webpack.config.js文件后,需要打包可以直接在终端输入命令: webpack
+（2）当在package.json文件中加入"build": "webpack"后,可以在终端输入命令: npm run build
+（3）注意:
+    * 通过npm run build方式进行打包会优先在本地寻找 webpack工具包（即局部安装的优先）
+    * 当全局安装的webpack版本不符合项目所依赖的webpack版本时,就需要在当前项目路径进行局部安装;
+    * 在终端运行命令webpack默认都是使用全局安装的webpack工具包;
+    * 若想使用本地安装的需要通过命令:node_modules/.bin/webpack 或者就是配置 npm run build
+-------------------------------------------------------------------------------------->
+</body>
+</html>

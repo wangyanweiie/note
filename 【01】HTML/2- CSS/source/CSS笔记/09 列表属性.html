@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>列表属性</title>
+    <style>
+/*------------------------------------
+列表的属性（继承性 ）
+（1）设置项目符号-------重点
+    list-style-type : none;     不显示
+    list-style-type: square;    正方形
+    list-style-type: circle;    圆形
+
+（2)设置项目符号为图片
+    list-style-image: url("图片的路径");
+
+（3)设置项目符号的位置
+    list-style-position: outside（默认）|inside;
+
+（4)统一可简写为：list-style: ;
+-----------------------------------------------*/
+    ul{
+        list-style-type:circle;
+        /*list-style-type: none;*/
+        /* list-style-image: url('../images/favicon.ico'); */
+        /* list-style-position: inside; */
+        }
+        a{
+            /*元素a的下划线消失*/
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+<!--HTML笔记 09无序列表-->
+<ul>
+    <li><a href="" >首页</a></li>
+    <li><a href="">分类</a></li>
+    <li><a href="">收藏</a></li>
+    <li><a href="">购物车</a></li>
+    <li><a href="">我的</a></li>
+</ul>
+</body>
+</html>

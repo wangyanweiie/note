@@ -1,0 +1,12 @@
+/*
+选择器{
+    属性:属性值;
+    属性:属性值;
+    属性:属性值;
+}
+*/
+.box{
+    width: 200px;
+    height: 200px;
+    background-color: hotpink;
+}

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>字符串方法1</title>
+</head>
+<body>
+    <script>
+    /*-----------------------------------------------------------
+    字符串的方法（var str;）
+    1、charAt()
+    （1）作用：返回指定位置的字符;下标从0开始;
+    （2）语法：str.charAt(index)
+
+    2、charCodeAt()
+    （1）作用：返回指定位置的字符的Unicode编码;
+    （2）语法：str.charCodeAt(index)
+
+    3、concat()
+    （1）作用：拼接字符串;原字符串不改变;
+    （2）语法：str.concat(str1,str2,...)
+
+    4、截取字符串
+    （1）str.substring(开始位置的下标,结束位置的下标)
+        注意：
+            a、截取时含头不含尾（截取时包含开始位置;不包含结束位置）
+            b、当只有一个参数时;表示从开始位置截取到最后;
+            c、当开始位置的下标大于结束位置时;自动调换;
+            d、原字符串不改变;
+
+    （2）str.substr(开始位置的下标,截取的长度)
+        注意：
+            a、当只有一个参数时;表示从开始位置截取到最后;
+            b、原字符串不改变;
+
+    （3）str.slice(开始位置的下标,结束位置的下标)
+        注意：
+            a、截取时含头不含尾（截取时包含开始位置;不包含结束位置）
+            b、当只有一个参数时;表示从开始位置截取到最后;
+            c、当开始位置的下标大于结束位置时;返回空字符串;
+            d、原字符串不改变;
+
+    5、查找字符串
+    （1）str.indexOf(查找的字符串,index)
+        ①作用：从前往后查找;返回第一个符合条件的下标;如果查找不到返回-1;
+        ②index: 表示开始查找的位置;从当前位置开始往后查找;若省略表示从最开始往后查找;
+
+    （2）str.lastIndexOf(查找的字符串,index)
+        ①作用：从后往前查找;返回后面第一个符合条件的下标;如果查找不到返回-1;
+        ②index：表示开始查找的位置;从当前位置开始往前查找;若省略表示从最后开始往前查找;
+
+    6、trim()
+    （1）作用：去掉字符串两端的无效空格
+    （2）语法：str.trim()
+
+    7、英文字母大小写转换
+    （1）转换为大写：str.toUpperCase()
+    （2）转换为小写：str.toLowerCase()
+    （3）注意：转换大小写时小括号内没有参数;但不能省略小括号
+    ---------------------------------------------------------------*/
+    </script>
+    <script>
+        //charAt()：返回指定位置的字符
+        //          0 1 2 345 6 7 8  
+        var str1 = '你好中国 武汉加油';
+        console.log(str1.length);   //9
+        console.log(str1.charAt(2));  //中
+        console.log(str1.charAt(str1.length-1)); //油
+
+        //charCodeAt()：返回指定位置的字符的Unicode编码
+        //              0：48    A：65    a：97
+        var str1 = '你好中国武汉加油0aA';
+        console.log(str1.charCodeAt(2));
+        console.log(str1.charCodeAt(8));
+
+        //concat()：拼接字符串
+        var str1 = '中国';
+        var str2 = '加油';
+        console.log(str1.concat(str2,'哈哈'));  //中国加油哈哈
+        console.log(str1+str2+'哈哈');  //中国加油哈哈
+
+        //-----------------截取字符串-----------------
+        //string.substring(开始位置的下标,结束位置的下标)
+        //         0 1 2 3 4 5 6 7
+        var str = '中国加油武汉加油';
+        console.log(str.substring(2,4));//加油
+        console.log(str.substring(2));//加油武汉加油
+        console.log(str.substring(4,2));//加油
+
+        //string.substr(开始位置的下标,截取的长度)
+        var str = '中国加油武汉加油';
+        console.log(str.substr(2,4));//加油武汉
+        console.log(str.substr(2));//加油武汉加油
+        console.log(str.substr(4,2));//武汉
+
+        //string.slice(开始位置的下标,结束位置的下标)
+        var str = '中国加油武汉加油';
+        console.log(str.slice(2,4));//加油
+        console.log(str.slice(2));//加油武汉加油
+        console.log(str.slice(4,2));//空字符串
+
+        //----------------查找字符串---------------
+        //string.indexOf(查找的字符串,index)从前往后查找
+        var str = '中国加油武汉加油';
+        console.log(str.indexOf('加油'));   //2
+        console.log(str.indexOf('加油阿')); //-1
+        console.log(str.indexOf('加油',3)); //6
+
+        //string.lastIndexOf(查找的字符串,index)从后往前查找
+        var str = '中国加油武汉加油';
+        console.log(str.lastIndexOf('加油'));   //6
+        console.log(str.lastIndexOf('加油阿')); //-1
+        console.log(str.lastIndexOf('加油',5)); //2
+        
+        //trim()去掉字符串两端多余的空格
+        var str = '   中国 加油    ';
+        console.log(str.trim());
+        console.log(str.trim().length);
+        console.log(str);
+        console.log(str.length);
+
+        //英文字母大小写转换
+        var str1 = 'abcdefg';
+        var str2 = 'ABCDEFG';
+        console.log(str1); //abcdefg
+        console.log(str1.toUpperCase()); //ABCDEFG
+        console.log(str2); //ABCDEFG
+        console.log(str2.toLowerCase()); //abcdefg
+
+    </script>
+</body>
+</html>

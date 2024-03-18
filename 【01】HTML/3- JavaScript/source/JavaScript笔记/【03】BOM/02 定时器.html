@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>定时器</title>
+</head>
+<script>
+    window.onload = function(){
+        var h3 = document.getElementById("h3");
+        var i = 1;
+        var timer = setInterval(function(){
+            h3.innerHTML = i++;
+            if (i == 90) {
+                //关闭定时器
+                clearInterval(timer);
+            }
+        },1000);
+    };
+</script>
+<body>
+    <h3 id="h3"></h3>
+    <!------------------------------------------------------ 
+    window对象的方法
+    1、定时调用
+    （1）setInterval()
+        ①作用：定时调用、可以将一个函数每隔一段时间执行一次,执行多次;
+        ②语法：setInterval(回调函数,时间间隔 ms)
+        ③返回值：返回 number类型的数据,作为该定时器的唯一标识;
+    （2）clearInterval()
+        ①作用：关闭由 setInterval设置的定时调用;
+        ②参数：需要定时器的唯一标识作为参数;
+        ③注意：clearInterval可以接收任意参数;若参数是有效定时器标识则关闭该定时器,否则没有作用;
+    
+    2、延时调用
+    （1）setTimeout()
+        ①作用：延时调用、一个函数不马上执行,而是一段时间以后再执行,且只执行一次;
+        ②语法：setTimeout(回调函数,延时时间 ms);
+        ③返回值：返回 number类型的数据,作为该延时器的标识;
+    （2）clearTimeout()
+        ①作用：关闭由 setTimeout设置的延时调用;
+        ②参数：需要延时器的唯一标识作为参数;
+
+    3、注意
+    （1）区别：定时调用会执行多次、延时调用只执行一次;
+    （2）定时调用与延时调用实际上是可以相互替代的;
+    --------------------------------------------------------->
+</body>
+</html>

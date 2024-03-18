@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>关系选择器</title>
+    <style>
+/*-------------------------------
+关系选择器
+（1）后代选择器
+    语法：选择器1 选择器2
+    范围：选中所有的后代（包含儿子）
+
+（2）子代选择器
+    语法：选择器1 > 选择器2
+    范围：选中所有直接子代（只有儿子）
+
+（3）相邻兄弟选择器
+    语法：选择器1 + 选择器2
+    范围：平级 后面挨着的一个兄弟
+
+（4）通用兄弟选择器
+    语法：选择器1 ~ 选择器2
+    范围：平级 后面的所有兄弟
+-------------------------------------*/
+    /* .box{
+         color: red;
+     } */
+    /* .box span{
+        color: red;
+    } */
+    /* .box>span{
+        color: red;
+    } */
+    .box>p>span{
+        color: red;
+    }
+    /* .two{
+        color: blueviolet;
+    } */
+    /* .two+p{
+        color: blue;
+    } */
+    .two~p{
+        color: green;
+    }
+    </style>
+</head>
+<body>
+
+<div class="box">
+    <span>box的儿子span</span>
+    <p>
+        box的儿子p
+        <span>box的孙子span</span>
+    </p>
+</div>
+
+<p>1</p>
+<p class="two">2</p>
+<p>3</p>
+<p>4</p>
+<p>5</p>
+
+</body>
+</html>

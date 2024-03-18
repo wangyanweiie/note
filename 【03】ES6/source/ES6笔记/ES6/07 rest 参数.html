@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>rest参数</title>
+</head>
+<body>
+    <!-------------------------------------------------------
+    ES6引入rest参数
+    （1）作用：用于获取函数的实参,代替arguments参数;
+    （2）语法：...args
+    （3）注意：
+            * rest参数同arguments参数,都放在函数声明时的形参中;
+            * rest参数获取返回的是数组,arguments参数获取返回的是对象;
+            * 若函数有多个形参时,rest参数必须要放到所有参数的最后;
+    ------------------------------------------------------------->
+    <script>
+        //ES5获取实参的方式
+        //arguments 获取返回的是对象
+        function date1(){
+            console.log(arguments);
+        }
+        date1('柏芝','阿娇','思慧');
+
+        //ES6的rest参数
+        //返回的是数组,可以使用数组的API方法：filter some every map
+        function date2(...args){ 
+            console.log(args);
+        }
+        date2('阿娇','柏芝','思慧');
+
+        //rest参数必须要放到参数最后
+        function fn(a,b,...args){
+            console.log(a);         //1
+            console.log(b);         //2
+            console.log(args);      //[3,4,5,6]
+        }
+        fn(1,2,3,4,5,6);
+    </script>
+</body>
+</html>

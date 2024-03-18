@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!--[if lt IE 9]>
+    <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+  <![endif]-->
+  <!-- 引入样式文件 -->
+  <link rel="stylesheet" href="./bootstrap//css//bootstrap.min.css">
+  <title>栅格系统</title>
+  <style>
+    [class^="col"]{
+      border: 1px solid #ccc;
+    }
+  </style>
+</head>
+<body>
+<!------------------------------------
+1.栅格系统分为行和列
+  * 要先写行,创建一div添加类名为row即可;
+  * Row下面的子级div则为列
+  * 可以通过类名设置每列占多宽？(总数是12)
+     col-xs-栅格的数量(设置超小屏幕)
+     col-sm-栅格的数量(设置小屏幕)
+     col-md-栅格的数量(设置中等屏幕)
+     col-lg-栅格的数量(设置大屏幕)
+  * 当列的栅格数量相加没有超过12,则出现空白并在一行显示
+  * 当列的栅格数量相加超过12,则在开始超过12的那个换行显示
+  * 每一列默认有左右15px的padding
+  * 可以为同一列指定多个设备下的类名,以便在不同的设备下划分不同的份数;
+2.列嵌套
+  * 列嵌套最好先加一行,可以去掉父元素的padding,并且高度与父元素相同
+3.列偏移
+  * col-lg/md/md/sx-offset-偏移的栅格数量
+4.列排序
+  * col-lg/md/md/sx-push-推的栅格数量
+  * col-lg/md/md/sx-pull-拉的栅格数量
+5.响应式工具
+  * 理解: 为了加快对移动设备友好的页面开发工作,利用媒体查询功能;
+    并使用这些工具类可以方便的针对不同设备展示或隐藏页面内容;
+  * hidden-xs/sm/md/lg      屏幕下隐藏
+  * visible-xs/sm/md/lg     屏幕下显示
+----------------------------------------------------------------->
+  <div class="container">
+    <!-- 基本布局方式 -->
+    <div class="row">
+      <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">屏幕</div>
+      <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">屏幕</div>
+      <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">屏幕</div>
+      <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">屏幕</div>
+    </div>
+
+    <!-- 列嵌套最好先加一行,可以去掉父元素的padding,并且高度与父元素相同 -->
+    <div class="row">
+      <div class="col-md-4">
+        <div class="row">
+          <div class="col-md-6">a</div>
+          <div class="col-md-6">b</div>
+        </div>
+      </div>
+      <div class="col-md-4">哈哈</div>
+      <div class="col-md-4">嘿嘿</div>
+    </div>
+
+    <!-- 列偏移 -->
+    <div class="row">
+      <div class="col-md-4">左侧</div>
+      <div class="col-md-4 col-md-offset-4">右侧</div>
+    </div>
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">中间</div>
+    </div>
+
+    <!-- 列排序 -->
+    <div class="row">
+      <div class="col-md-4">左侧</div>
+      <div class="col-md-2">右侧</div>
+    </div>
+    <div class="row">
+      <div class="col-md-4 col-md-push-2">左侧</div>
+      <div class="col-md-2 col-md-pull-4">右侧</div>
+    </div>
+
+    <!-- 响应式工具: 隐藏与显示 -->
+    <div class="row">
+      <div class="col-xs-4">左侧</div>
+      <div class="col-xs-4 hidden-md">中间</div>
+      <div class="col-xs-4">右侧</div>
+    </div>
+    <div class="row">
+      <div class="col-xs-4">左侧</div>
+      <div class="col-xs-4 visible-md">中间</div>
+      <div class="col-xs-4">右侧</div>
+    </div>
+  </div>
+</body>
+</html>

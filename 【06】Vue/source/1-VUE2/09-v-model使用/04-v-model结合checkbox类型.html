@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<!----------------------------？？？
+复选框：<input type="checkbox">
+（1）单选框应用：在单选框没有选中时,设置v-model绑定的data中属性的值为布尔类型（false）;
+    当单选框被选中时v-model绑定的data中属性的值变成true？此时input的value值并不影响v-model的值;
+
+（2）多选框应用：当是多个复选框时,因为可以选中多个,设置v-model绑定的data中属性是数组类型[];
+    当某个多选框被选中时 该多选框的value值会自动被添加到空数组中;
+
+（3）自行理解
+  * 单选框传递的是input标签的checked属性值（选中true/未选中false）
+  * 多选框传递的是input标签的value属性值（选中自动添加到空数组[]中）
+---------------------------------------------------------------->
+<div id="app">
+  <!--checkbox单选框-->
+  <label for="agree">
+    <input type="checkbox" id="agree" v-model="isAgree">同意协议
+  </label>
+  <h5>您选择的是: {{isAgree}}</h5>
+  <button :disabled="!isAgree">下一步</button><br><br>
+
+  <!--checkbox多选框-->
+  <input type="checkbox" value="篮球"   v-model="hobbies" id="basketball">  <label for="basketball">篮球</label>
+  <input type="checkbox" value="足球"   v-model="hobbies" id="football">    <label for="football">足球</label>
+  <input type="checkbox" value="乒乓球" v-model="hobbies" id="table-tennis"><label for="table-tennis">乒乓球</label>
+  <input type="checkbox" value="羽毛球" v-model="hobbies" id="badminton">   <label for="badminton">羽毛球</label>
+  <h5>您的爱好是: {{hobbies}}</h5>
+
+  <!--值绑定：通过v-bind:value动态的给value绑定值-->
+  <label v-for="item in originHobbies" :for="item">
+    <input type="checkbox" :value="item" :id="item" v-model="hobbies">{{item}}
+  </label>
+  
+</div>
+
+<script src="../Js/vue.js"></script>
+<script>
+  const app = new Vue({
+    el: '#app',
+    data: {
+      isAgree: false, //单选框
+      hobbies: [],    //多选框
+      //值绑定：input的值可能是从网络获取或定义在data中的
+      originHobbies: ['篮球','足球','乒乓球','羽毛球','台球','高尔夫球']
+    }
+  })
+</script>
+
+</body>
+</html>

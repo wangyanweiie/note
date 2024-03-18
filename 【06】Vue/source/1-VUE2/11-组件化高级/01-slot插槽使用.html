@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<!-- 组件的插槽 -->
+<!--------------------------------------------------
+1、作用: 组件的插槽是为了让我们封装的组件更加具有扩展性;
+2、语法: 在组件的模板中定义slot标签
+（1）基本使用
+  * <slot></slot>
+  * 此时直接使用cpn标签默认不显示,在cpn内部写标签会直接替换插槽slot标签的位置;
+（2）设置默认标签
+  * <slot><button></button></slot>
+  * 此时直接使用cpn就是显示slot内部的默认标签,如果在cpn内部写了其他标签则会替换默认标签;
+
+3、注意: 如果在cpn中有多个标签,同时放入到组件进行替换时,一起作为slot标签的替换元素;
+------------------------------------------------------------------------------>
+<div id="app">
+  <!--写在cpn内部的标签会直接替换插槽slot标签的位置-->
+  <!--基本使用-->
+  <cpn></cpn>
+  <cpn><button>哈哈</button></cpn>
+  <cpn><b>---------</b></cpn>
+  <cpn><i>+++++++++</i></cpn>
+
+  <!--cpn中有多个标签:全部替换-->
+  <cpn>
+    <i>我是I标签</i>
+    <p>我是P标签</p>
+    <div>我是DIV标签</div>
+  </cpn>
+</div>
+
+<!--子组件的模板-->
+<template id="cpn">
+  <div>
+    <h2>我是子组件</h2>
+    <p>我是子组件哈哈哈</p>
+    <!--基本使用-->
+    <slot></slot>
+    <!--设置默认标签-->
+    <slot><button>按钮</button></slot> 
+  </div>
+</template>
+
+<script src="../Js/vue.js"></script>
+<script>
+  //父组件
+  const app = new Vue({
+    el: '#app',
+    data: { },
+    components: {
+      //子组件
+      cpn: {
+        template: '#cpn'
+      }
+    }
+  })
+</script>
+
+</body>
+</html>

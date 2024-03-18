@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>表单小练习</title>
+</head>
+<body>
+<!--方法：表单嵌套表格正解
+（1）table表格属性回顾
+    border：设置表格的边框，表格默认没有边框
+    align：设置表格的水平对齐方式，默认居左
+    valign：设置单元格内容的垂直对齐方式
+    cellpadding：设置内容距边框的距离
+    cellspacing：设置单元格之间的距离，当取值为0时，单元格之间没有距离，变为一条线
+（2）From表单属性回顾
+<input type="" name="" value="" id=""/>输入类型    <label for="id">内容</label>
+                         类型    名字     当前值
+    普通的文本框：<input type="text" name=userName/>
+    密码框：<input type="password" name=password/>
+    单选框：<input type="radio" name=""/>----------------（注意：单选按钮必须加name属性）
+    多选框：<input type="checkbox"/>
+    提交按钮：<input type="submit"/>
+    重置按钮：<input type="reset"/>
+-->
+<form action="" name="form1">
+    <table border="1" cellspacing="0" cellpadding="5">
+        <!--12行2列-->
+        <tr>
+            <td align="right">姓名：</td>
+            <td><input type="text"/></td>
+        </tr>
+        <tr>
+            <td align="right">密码：</td>
+            <td><input type="password"/></td>
+        </tr>
+        <tr>
+            <td align="right">确认密码：</td>
+            <td><input type="password"/></td>
+        </tr>
+        <tr>
+            <td align="right">密码提示问题</td>
+            <td>
+                <select name="wenti">
+                    <option value="">常用密码</option>
+                    <option value="">微信收藏</option>
+                    <option value="">QQ收藏</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td align="right">密码提示答案</td>
+            <td><input type="text"/></td>
+        </tr>
+        <tr>
+            <td align="right">性别：</td>
+            <td>
+                <input type="radio" name="sex" id="man"/><label for="man">男</label>
+                <input type="radio" name="sex" id="woman"/><label for="woman">女</label>
+            </td>
+        </tr>
+        <tr>
+            <td align="right">年龄：</td>
+            <td><input type="text"/><br/></td>
+        </tr>
+        <tr>
+            <td align="right">籍贯：</td>
+            <td>
+                <select name="sheng">
+                    <option value="">江苏</option>
+                    <option value="">浙江</option>
+                    <option value="">山东</option>
+                    <option value="">安徽</option>
+                    <option value="">河南</option>
+                    <option value="">河北</option>
+                </select>
+                省/直辖市
+                <select name="shi">
+                    <optgroup label="江苏">
+                        <option value="">徐州</option>
+                        <option value="">苏州</option>
+                        <option value="">常州</option>
+                        <option value="">无锡</option>
+                    </optgroup>
+                    <optgroup label="浙江">
+                        <option value="">杭州</option>
+                        <option value="">温州</option>
+                        <option value="">绍兴</option>
+                    </optgroup>
+                    <optgroup label="安徽">
+                        <option value="">合肥</option>
+                        <option value="">蚌埠</option>
+                    </optgroup>
+                    <optgroup label="河南">
+                        <option value="">郑州</option>
+                    </optgroup>
+                    <optgroup label="河北">
+                        <option value="">北京</option>
+                    </optgroup>
+                </select>
+                市
+            </td>
+        </tr>
+        <tr>
+            <td align="right">爱好：</td>
+            <td>
+                <input type="checkbox" id="inter"/><label for="inter">上网</label>
+                <input type="checkbox" id="study"/><label for="study">学习</label>
+                <input type="checkbox" id="PE"/><label for="PE">体育</label>
+            </td>
+        </tr>
+        <tr>
+            <td align="right" valign="top">个人介绍：</td>
+            <td><textarea name="myself" cols="30" rows="10"></textarea><br/></td>
+        </tr>
+        <tr>
+            <td align="right">上传头像：</td>
+            <td><input type="file"/></td>
+        </tr>
+        <tr>
+            <td align="right"></td>
+            <td>
+                <input type="submit" value="提交"/>
+                <input type="reset" value="重置"/>
+            </td>
+        </tr>
+    </table>
+</form>
+
+<!--方法二：对齐方式不正确-->
+<!--
+<form action="">
+    姓名：<input type="text"/><br/>
+    密码：<input type="password"/><br/>
+    确认密码：<input type="password"/><br/>
+    密码提示问题： <select name="">
+    <option value="">常用密码</option>
+    <option value="">微信收藏</option>
+    <option value="">QQ收藏</option>
+    </select><br/>
+    密码提示答案：<input type="text"/><br/>
+    姓别：<input type="radio"id="man"/><label for="man">男</label>
+          <input type="radio"id="woman"/><label for="woman">女</label>
+    <br/>
+    年龄：<input type="text"/><br/>
+    籍贯：
+    <select name="sheng">
+        <option value="">江苏</option>
+        <option value="">浙江</option>
+        <option value="">山东</option>
+        <option value="">安徽</option>
+        <option value="">河南</option>
+        <option value="">河北</option>
+    </select>
+    省/直辖市
+    <select name="shi">
+        <optgroup label="江苏">
+            <option value="">徐州</option>
+            <option value="">苏州</option>
+            <option value="">常州</option>
+            <option value="">无锡</option>
+        </optgroup>
+        <optgroup label="浙江">
+            <option value="">杭州</option>
+            <option value="">温州</option>
+            <option value="">绍兴</option>
+        </optgroup>
+        <optgroup label="安徽">
+            <option value="">合肥</option>
+            <option value="">蚌埠</option>
+        </optgroup>
+        <optgroup label="河南">
+            <option value="">郑州</option>
+        </optgroup>
+        <optgroup label="河北">
+            <option value="">北京</option>
+        </optgroup>
+    </select>
+    <br/>
+    爱好：<input type="checkbox" id="inter"/><label for="inter">上网</label>
+    <input type="checkbox" id="study"/><label for="study">学习</label>
+    <input type="checkbox" id="PE"/><label for="PE">体育</label>
+    <br/>
+    个人介绍：<textarea name="" id="" cols="30" rows="10"></textarea><br/>
+    上传头像：<input type="file"/><br/>
+    <input type="submit" value="登录"/>
+    <input type="reset" value="重置"/>
+</form>
+-->
+</body>
+</html>

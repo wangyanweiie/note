@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!--[if lt IE 9]>
+    <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+  <![endif]-->
+  <!-- 引入样式文件 -->
+  <link rel="stylesheet" href="./bootstrap//css//bootstrap.min.css">
+  <title>响应式布局容器</title>
+</head>
+<body>
+    <div class="container">555</div>
+    <div class="container-fluid">555</div>
+<!-- 响应式布局容器 -->
+<!---------------------------------------------------------
+1.普通文件中: 媒体查询
+  @media screen and (max-width:767px) {   //超小屏幕(手机)
+      width: 100%;
+  }
+  @media screen and (min-width:768px) {   //小屏幕(平板)
+      width:750px;
+  }
+  @media screen and (min-width:992px) {   //中等屏幕(显示器)
+      width:970px
+  }
+  @media screen and (min-width:1200px) {  //大屏幕
+      width:1170px
+  }
+
+2.Bootstrap框架
+（1）.container (响应式布局容器 固定宽度)
+    * 大屏(>=1200px)  宽度定位 1170px
+    * 中等屏(>=992px) 宽度定位 970px
+    * 小屏(>=768px)   宽度定位 750px
+    * 超小屏(<768px)  宽度定位 100%
+（2）.container-fluid (流式布局容器 宽度100%)
+    * 占据全部视口(viewport)的容器
+    * 适用于单独做移动端开发
+------------------------------------------------------------>
+</body>
+</html>

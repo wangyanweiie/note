@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<!---------------------------------------------------
+4、具名插槽
+（1）作用: 当子组件的功能复杂时,子组件的插槽可能并非是一个;
+  那么外面在给插槽插入内容时则需要对插槽作出区分,此时就需要给插槽起一个名字;
+
+（2）语法: <slot name='myslot'></slot>
+  即需要在子组件模板中给slot标签添加一个 name="标识名" 属性;
+  然后父组件在使用子组件标签时,通过 slot="标识名" 找到该插槽进行替换;
+----------------------------------------------------->
+<!--父组件模板-->
+<div id="app">
+  <!--在使用子组件标签时通过 slot="标识"找到要替换的插槽-->
+  <cpn><span slot="center">标题</span></cpn>
+  <cpn><button slot="left">返回</button></cpn>
+</div>
+
+<!--子组件模板-->
+<template id="cpn">
+  <div>
+    <!--设置三个默认是span标签的插槽,加上名字 name="标识"-->
+    <slot name="left"><span>左边</span></slot>
+    <slot name="center"><span>中间</span></slot>
+    <slot name="right"><span>右边</span></slot>
+  </div>
+</template>
+
+<script src="../Js/vue.js"></script>
+<script>
+  //父组件（vue实例）
+  const app = new Vue({
+    el: '#app',
+    data: {},
+    components: {
+      //子组件
+      cpn: {
+        template: '#cpn'
+      }
+    }
+  })
+</script>
+
+</body>
+</html>

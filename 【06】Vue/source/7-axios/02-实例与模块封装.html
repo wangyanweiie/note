@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<!-- 实例与模块封装 -->
+<!---------------------------------------------------
+1、axios实例
+（1）理解
+    * 当直接从axios模块中导入对象时,使用的实例是默认的实例;
+      当在默认的实例中进行一些全局配置时,所有的请求都会被设置;
+    * 但是开发中某些配置可能会不太一样,比如某些请求需要特定的baseURL或者timeout等;
+      我们就需要创建新的实例,并且传入只属于该实例的配置信息;
+
+（2）语法
+    * 声明实例对象
+    const instance = axios.create({
+      baseURL = "",
+      timeout = ,
+      header = {}
+      ......
+    })
+    * 调用实例对象
+    instance({});
+
+2、模块封装流程
+  * 创建request.js文件
+  * 在文件中导入axios模块
+  * 创建axios的实例对象instance导出
+  * 封装完成直接return,因为调用instance({})本身返回的就一个Promise对象;
+  * 在需要使用的文件中导入,处理return的结果
+------------------------------------------------------------------->
+</body>
+</html>

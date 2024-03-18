@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>对象遍历</title>
+</head>
+<body>
+    <script>
+    /*-----------------------------------------
+    1、对象遍历（枚举）
+    （1）快速遍历语法
+        for(var i in 对象名){
+            对象名[i];
+        } 
+    （2）注意：i表示属性
+        若属性为字符串变量,则[]内不加引号'';
+        若属性为对象中真实存在的键值,则[]内要加引号;
+    
+    2、引用赋值
+    （1）对象引用赋值：赋值传递的是地址,其中一个发生改变,全部跟着改变;
+    （2）基础数据类型赋值：赋值传递的是复印件,赋值以后不再有任何联系;
+
+    3、in
+    （1）定义：检查对象中是否含有某个属性（若对象中没有,但其原型对象中有也会返回 true）
+    （2）语法："属性名" in 对象名
+    （3）返回值：若有返回 true,否则返回 false
+
+    4、hasOwnProperty
+    （1）定义：只检查对象自身是否含有某个属性（不考虑原型对象中）
+    （2）语法：对象名.hasOwnProperty("属性名")
+    （3）返回值：若有返回 true,否则返回 false
+    -------------------------------------------------------*/
+    </script>
+    <script>
+        //for in
+        var obj = {
+            userName:'成果',
+            age:18,
+            where:'地球',
+            height:'165cm'
+        }
+        for(var i in obj){
+            console.log(i + obj[i]);
+        }
+        //基础数据类型赋值
+        var a = 5;
+        var b = a;
+        console.log(a); //5
+        console.log(b); //5
+        a = 10;         //重新赋值
+        console.log(a); //10
+        console.log(b); //5
+
+        //对象引用赋值
+        var obj1 = {
+            userName:'孙红雷'
+        }
+        var obj2 = obj1;
+        console.log(obj2);  //孙红雷
+        obj1.userName = '黄渤';
+        console.log(obj1);  //黄渤
+        console.log(obj2);  //黄渤
+
+        //数组是对象的特殊表现形式
+        var arr1 = [1,2]; 
+        var arr2 = arr1;  
+        arr2[0] = 3;
+        console.log(arr1);  //3,2
+        console.log(arr2);  //3,2
+        console.log(typeof arr1);   //object
+
+        //检查对象中是否有某个属性：in 与 hasOwnProperty
+        function MyClass(){};
+        var mc = new MyClass();
+        MyClass.prototype.name = "小王";
+        console.log(mc.name);
+        console.log("name" in mc);              //true
+        console.log(mc.hasOwnProperty("name")); //false
+
+
+    </script>
+</body>
+</html>

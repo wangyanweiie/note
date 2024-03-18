@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>定时器应用练习3</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            height: 100%;
+            border-left: black solid 1px;
+            position:absolute;
+            top: 0;
+            left: 800px;
+        }
+        #box01{
+            width: 100px;
+            height: 100px;
+            background-color:pink;
+            position: absolute;
+            /*防止IE获取到的是auto*/
+            left: 0;
+        }
+        #box02{
+            width: 100px;
+            height: 100px;
+            background-color:green;
+            position: absolute;
+            top: 200px;
+            left: 200px;
+        }
+    </style>
+    <script>
+        //定义函数：获取元素 obj当前显示名为 name的样式
+        function getStyle(obj,name){
+            if(window.getComputedStyle){
+                return getComputedStyle(obj,null)[name];
+            }
+            else{
+                return obj.currentStyle[name];
+            }
+        }
+        //var timer;
+        /*若定义全局变量存放定时器标识：所有正在执行的定时器都在这个变量中保存；
+        当在上一个定时器还没结束时开启一个新的定时器，则timer值就会被覆盖，强行终止上一个定时器，即不能多个定时器同时工作；
+        ==> 优化直接在 move函数中向开启定时器的对象obj添加一个 timer属性用于保存自己的标识*/
+        //定义函数：控制元素移动
+        function move(obj,target,speed){
+                //关闭上一次开启的定时器；
+                clearInterval(obj.timer);
+                //获取当前位置与目标位置比较
+                var current =  parseInt(getStyle(obj,"left"));
+                if(current > target){
+                    speed = -speed;
+                }
+                //开启定时器
+                //向开启定时器的对象 obj添加一个timer属性用于保存自己的标识
+                obj.timer = setInterval(function(){
+                    //将获取到的 obj的 left值转换为 number类型
+                    var oldValue = parseInt(getStyle(obj,"left"));
+                    var newValue = oldValue + speed;
+                    //判断当前值与目标位置的距离
+                    if((speed<0 && newValue<target) || (speed>0 && newValue>target)){
+                        newValue = target;
+                    }
+                    obj.style.left = newValue + "px";
+                    //当距离达到目标距离时停止移动
+                    if(newValue == target){
+                        clearInterval(obj.timer);
+                    }
+                },30);
+        };
+        window.onload = function(){
+            var box01 = document.getElementById("box01");
+            var box02 = document.getElementById("box02");
+            var btn01 = document.getElementById("btn01");
+            var btn02 = document.getElementById("btn02");
+            var btn03 = document.getElementById("btn03");
+           //单击响应函数中直接调用 move函数
+            btn01.onclick = function(){
+                move(box01,800,20);
+            };      
+            btn02.onclick = function(){
+                move(box01,0,10);
+            };
+            btn03.onclick = function(){
+                move(box02,800,10);
+            };
+        };
+    </script>
+</head>
+<body>
+    <button id="btn01">粉色向右移动</button>
+    <button id="btn02">粉色向左移动</button><br><br>
+    <button id="btn03">绿色向右移动</button><br><br>
+    <div id="box"></div>
+    <div id="box01"></div>
+    <div id="box02"></div>
+</body>
+</html>

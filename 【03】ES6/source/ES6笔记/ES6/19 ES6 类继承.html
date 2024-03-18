@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ES6类继承</title>
+</head>
+<body>
+    <script>
+        //声明父类:Phone
+        class Phone{
+            //构造方法
+            constructor(brand, price){
+                this.brand = brand;
+                this.price = price;
+            }
+            //父类的方法
+            call(){
+                console.log("我可以打电话!");
+            }
+        }
+        //声明子类:SmartPhone 通过关键字extends继承父类
+        class SmartPhone extends Phone {
+            //构造方法
+            constructor(brand, price, color, size){
+                //super子类调用父类中重复的属性/方法 ==> ES5组合继承的 Phone.call(this, brand, price)
+                super(brand, price);
+                this.color = color;
+                this.size = size;
+            }
+            photo(){
+                console.log("我可以拍照!!");
+            }
+
+            //******子类对父类方法的重写******
+            //子类不能直接去掉父类的同名方法,但可以在子类中声明一个与父类中同名的方法覆盖重写;
+            call(){
+                console.log("我可以视频通话!!");
+            }
+        }
+        //声明实例
+        const xm = new SmartPhone('小米',799,'黑色','4.7inch');
+        console.log(xm);
+        xm.call();      //重写父类的call方法
+        xm.photo();     //调用子类的方法
+    </script>
+</body>
+</html>

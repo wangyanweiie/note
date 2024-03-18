@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<!-- 搭建本地服务器（开发时需要的配置）-->
+<!------------------------------------------------------------
+1、理解:
+  webpack提供了一个可选的本地开发服务器,这个本地服务器基于node.js搭建;
+  内部使用express框架,可以实现让浏览器自动刷新显示我们修改后的结果;
+
+2、搭建流程
+（1）安装: npm install --save-dev webpack-dev-server@2.9.3
+（2）可配置属性：
+    * contentBase：为哪一个文件夹提供本地服务（默认是根文件夹）
+    * port：  端口号（默认8080端口）
+    * inline：页面实时刷新
+    * historyApiFallback：在SPA页面中,依赖HTML5的history模式;
+
+（3）配置
+  * 在webpack.config.js文件中的进行配置devServer的属性
+  * 在package.json文件中的scripts中添加 "dev":"webpack-dev-server --open"（open自动打开浏览器）
+    （此时优先在局部安装的webpack包中查找：npm run dev）
+------------------------------------------------------------------------>
+</body>
+</html>

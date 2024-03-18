@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //扁平化一: 通过toString将数组变为字符串然后再用split分割还原为数组
+    //注意: 因为split分割后形成的数组的每一项值为字符串,所以需要map方法遍历数组将其每一项转换为数值型;
+    function flatten1(arr) {
+      return arr.toString().split(',').map(item => Number(item))
+    } 
+
+    //扁平化二: join + split + map (原理同上)
+    function flatten2(arr) {
+      return arr.join(',').split(',').map(item => parseInt(item))
+    }
+
+    //扁平化三: reduce 遍历数组每一项,若元素值为数组则递归遍历,否则concat;
+    //reduce包含两个参数：回调函数 与 传给回调函数中参数result的初始值;
+    function flatten3(arr) {  
+      return arr.reduce((result,item)=> {
+        return result.concat(Array.isArray(item) ? flatten3(item) : item);
+      }, []);
+    }
+    
+    let arr = [1, [2, 3, [4, 5]]];
+    console.log(flatten1(arr))
+    console.log(flatten2(arr))
+    console.log(flatten3(arr))
+  </script>
+</body>
+</html>

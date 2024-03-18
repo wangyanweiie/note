@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>JS输出方式</title>
+    <style>
+        h1{
+            color: pink;
+            font-weight: normal;
+        }
+    </style>
+</head>
+<body>
+<script>
+    /*--------------------------------------
+    JavaScript的输出方式（由上往下、由左往右顺序执行）
+    1、输出到控制台
+    （1）语法：console.log(""|'');
+
+    2、输出到网页：
+    （1）语法：document.write(""|'');
+    （2）注意：
+        ①输出到页面的内容在script语句后面
+        ②HTML标签可以直接在script中应用
+           document.write("<br/>");
+           document.write("<h1>一号标题<h1/>");
+
+    3、浏览器窗口弹出警告框
+    （1）语法：window.alert(""|'');
+        简写：alert();
+    （2）注意：alert会阻止页面程序的得执行
+    ----------------------------------------*/
+</script>
+<script>
+    // 输出到控制台
+    console.log('从前有座山');
+    console.log('山上有座庙');
+
+
+    //输出到网页
+    document.write("庙里有个老和尚");
+    document.write("<br/>");//换行
+    document.write("<h1>老和尚再给小和尚讲故事</h1>");//一号标题
+
+
+    //弹出警告框
+    window.alert('讲什么呢');
+    alert('从前有座山');
+</script>
+</body>
+</html>

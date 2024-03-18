@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<!-- ES6模块化 -->
+<!-----------------------------------------------------
+1、导出
+（1）语法:
+  * 在声明时,在需要输出的变量或者函数前直接加: export
+  * 统一输出变量或者函数: export { 需要导出的声明好的变量名,用逗号隔开 }
+  * 在模块中导出某个函数/对象,让导入者可以自定义命名
+      导出: export default{}   （default在同一个导出文件只能存在一个）
+      导入: import 自定义函数名 from " 导出变量的文件路径 "
+
+2、导入
+（1）流程: 当使用export指令导出了模块对外提供的接口,就可以通过import命令来加载对应的模块;
+（2）语法:
+    * 首先需要在HTML代码中引入两个js文件，并且在script标签中设置类型需要设置为module;
+    表示采用模块化思想使用改文件,不会再存在全局变量命名冲突问题;
+      <script src="需要导出的文件路径" type="module"></script>
+      <script src="需要导入的文件路径" type="module"></script>
+
+    * import指令用于导入模块中的内容
+      import { 需要导入的变量名 } from " 导出变量的文件路径 "
+    
+    * 通过*可以导入路径中所有的export暴露的变量
+      import * from " 导出变量的文件路径 "
+--------------------------------------------------------------->
+<!-- 
+给通过外部引用的script标签添加 type="module"
+表示采用模块化思想使用,不再存在全局变量命名冲突问题;
+-->
+<script src="aaa.js" type="module"></script>
+<script src="bbb.js" type="module"></script>
+<script src="ccc.js" type="module"></script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<!--------------------------
+单选框：<input type="radio">
+（1）应用
+  当单选框都添加了v-model自动具有互斥属性作用等同于添加相同的name属性;
+  并且会将input中value属性的值传递到v-model绑定的变量中;
+-------------------------------------------------------------->
+<div id="app">
+  <label for="male">
+    <input type="radio" id="male" value="男同志" v-model="sex">男同志
+  </label>
+  <label for="female">
+    <input type="radio" id="female" value="女同志" v-model="sex">女同志
+  </label>
+  <h4>您选择的性别是: {{sex}}</h4>
+</div>
+
+<script src="../Js/vue.js"></script>
+<script>
+  const app = new Vue({
+    el: '#app',
+    data: {
+      sex: '女同志'
+    }
+  })
+</script>
+
+</body>
+</html>

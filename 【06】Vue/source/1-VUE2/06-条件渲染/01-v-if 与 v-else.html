@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<!-----------------------------------------------------------
+v-if="boolean"/ v-else-if="boolean"/ v-else
+（1）作用：这三个指令与JavaScript的条件语句if/else/else if相似,
+    Vue的条件指令可以根据表达式的值在DOM中渲染或销毁元素或组件;
+
+（2）原理：v-if 后面的条件为false时,对应的元素以及其子元素不会渲染;
+    即此时根本没有不会有对应的标签出现在DOM中;
+-------------------------------------------------------------->
+
+<div id="app">
+  <h3 v-if="isShow">
+    {{message}}
+  </h3>
+  <h3 v-else>isShow为false时显示我</h3>
+</div>
+
+<script src="../Js/vue.js"></script>
+<script>
+  const app = new Vue({
+    el: '#app',
+    data: {
+      message: '你好阿',
+      isShow: true
+    }
+  })
+</script>
+
+</body>
+</html>

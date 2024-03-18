@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数据类型</title>
+</head>
+<body>
+    <script>
+			/*-------------------------------------------------------------------------
+			JavaScript数据类型
+			1、定义：数据类型就是声明变量的类型
+			2、数据类型 = 基本数据类型 + 引用数据类型
+			（1）number：数字类型
+					包含了所有的数字（正负、整数、小数、极大极小）、Infinite、NaN（not a number）
+
+			（2）string：字符串类型
+					引号包含的任意内容,单双引号都可以;
+					注意：引号之间相互嵌套时,单引号内嵌套双引号,双引号内嵌套单引号;
+
+			（3）boolean：布尔类型true与false
+			（4）undefined：未定义类型
+					声明变量没有赋值,默认值为undefined,数据类型为undefined;
+					注意：undefined一般不主动去赋值,表示数据类型不确定;
+
+			（5）null：空类型
+					空对象指针,表示数据类型确定为对象object
+					作用：主动用来释放对象
+					注意：typeof时返回object
+
+			（6）object：对象类型（引用数据类型）
+					大括号包含的键值对,多个键值对之间用逗号隔开,最后一个键值对后面不能加逗号;
+					键值对由键名和键值组成,键名和键值用冒号隔开;
+
+			3、判断数据类型
+			（1）语法：typeof 变量名
+			（2）返回值：number、string、boolean、undefined、object
+			（3）动态数据类型：Js中赋值时就决定了变量的类型,类型是自动检测的不是人规定的;
+
+			4、数据类型转换
+			（1）string类型转换为number（隐式转换）
+					- * / % 自动转换为number类型进行计算,若不能转换为数字返回 NaN;
+			（2）强制转换
+			---------------------------------------------------------------------------*/
+    </script>
+    <script>
+        //引用数据类型：object
+            var girlFriend = {
+                girlFriendName:'皮卡皮卡July',
+                age:18
+            };
+            console.log(girlFriend);
+
+        //动态的数据类型
+            var x;
+            console.log(typeof x); //undefined
+            x = 5; //重新赋值
+            console.log(typeof x); //number
+            x = '5'; //重新赋值
+            console.log(typeof x); //string
+    </script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>字符串方法2</title>
+</head>
+<body>
+    <script>
+    //配合正则表达式：可以传递一个正则表达式作为参数,进行检索、提取、分割、替换字符串... 
+    /*-----------------------------------------------------------------------------
+    8、search()
+    （1）作用：搜索字符串中是否含有指定内容,返回第一个符合条件的下标,如果查找不到返回-1
+            即使结合正则表达式设置全局匹配,也只返回第一个符合条件的下标;
+    （2）语法：str.search();
+    
+    9、match()
+    （1）作用：匹配字符串是否含有指定内容,默认返回第一个符合条件的具体内容,如果查找不到返回 null
+            可以结合正则表达式查找到所有符合条件的内容,并封装到一个数组中返回,即使只有一个结果也返回数组;
+    （2）语法：str.match();
+
+    10、split()
+    （1）作用：根据分隔符分割字符串,默认全局分割,返回数组类型 object (字符串转化为数组)
+            即使结合正则表达式没有设置全局匹配,也会全部分割;
+    （2）语法：str.split();
+
+    11、replace()
+    （1）作用：替换字符串,默认替换符合条件的第一个,可以结合正则表达式替换所有符合条件的字符串;
+    （2）语法：str.replace('旧字符串','新字符串')
+    ------------------------------------------------------------------------------------*/
+    </script>
+    <script>
+        //search()
+        var str = 'Hello abc hello adc aec';
+        console.log(str.search('h'));           //10
+        console.log(str.search(/h/i));          //0  
+        //结合正则表达式：搜索
+        console.log(str.search(/a[bde]c/));     //6
+
+        //split()
+        var str = "1a2b3c4d5e6f7g8HIJK"
+        console.log(str.split());
+        console.log(str.split("")); 
+        //结合正则表达式：分割
+        console.log(str.split(/[a-z]/));        //["1", "2", "3", "4", "5", "6", "7", "8HIJK"]
+        //match()
+        //结合正则表达式：匹配提取
+        console.log(str.match(/[a-z]/));        //["a"]
+        console.log(str.match(/[a-z]/g));       //["a", "b", "c", "d", "e", "f", "g"]
+        var result = str.match(/[a-z]/gi);
+        console.log(result);                    //["a", "b", "c", "d", "e", "f", "g", "H", "I", "J", "K"]
+        console.log(Array.isArray(result));     //true：返回的是数组
+        //replace()
+        //结合正则表达式：替换字符串
+        console.log(str.replace(/[a-z]/gi,'-')); //1-2-3-4-5-6-7-8----
+        console.log(str.replace(/[a-z]/gi,''));  //12345678
+        console.log(str);                        //原数组不改变：1a2b3c4d5e6f7g8HIJK                
+
+    </script>
+</body>
+</html>

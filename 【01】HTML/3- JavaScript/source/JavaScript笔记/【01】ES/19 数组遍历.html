@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数组遍历</title>
+</head>
+  <body>
+    <div>
+      <button>按钮1</button>
+      <button>按钮2</button>
+      <button>按钮3</button>
+      <button>按钮4</button>
+      <button>按钮5</button>
+    </div>
+    <script>
+    /*---------------------------------------------
+    1、for循环
+    （1）语法: for(var i = 0; i < arr.length ; i++){}
+    （2）注意：i表示数组的下标,返回number类型;
+            
+    2、快速遍历
+    （1）语法: for(var i in arr){}
+    （2）注意：i表示数组的下标,返回string类型;
+
+    3、forEach()
+    （1）语法: arr.forEach(function(item,index,arr){});
+    （2）注意
+        ① forEach方法需要一个函数作为参数,这种由我们创建但不由我们调用的函数称为回调函数;
+        ② 数组中有几个元素,函数就执行几次,最多可以定义三个形参来读取这些内容;
+            a、第一个参数：当前正在遍历的元素（数组元素）
+            b、第二个参数：当前正在遍历的元素的索引（下标）
+            c、第三个参数：当前正在遍历的对象（数组名）
+        ③ 只支持IE8及以上浏览器
+
+    4、some
+    （1）语法: arr.some(function(item,index,arr){});
+		（2）作用: 遍历数组,每一项都运行传入的函数,如果有一项为true,则返回true;
+
+		5、every
+    （1）语法: arr.every(function(item,index,arr){});
+		（2）作用: 遍历数组,每一项都运行传入的函数,如果每一项都为true,则返回true;
+
+		6、map
+    （1）语法: arr.map(function(item,index,arr){});
+		（2）作用: 遍历数组,每一项都运行传入的函数,可以对每一项进行操作后返回新数组;
+
+		7、filter
+    （1）语法: arr.filter(function(item,index,arr){});
+		（2）作用: 遍历数组,每一项都运行传入的函数,将所有为true的项生成一个新数组返回;
+    --------------------------------------------------------------------------*/
+    </script>
+    <script>
+        var arr = ["易烊千玺","古力娜扎","迪丽热巴","宋祖儿","杨幂","成果"]
+        //for循环
+        for(var i = 0; i < arr.length; i++){
+            console.log(arr[i],typeof(i));
+        }
+
+        //快速遍历：for in
+        for(var i in arr){
+            console.log(arr[i],typeof(i));
+        }
+
+        //forEach方法
+        arr.forEach(function(value,index,arr){
+            console.log("下标："+index , "元素："+value);
+        });
+
+        //*************For循环用Var的问题*************
+        var btnS = document.querySelectorAll("button");
+        for(var i = 0; i < btnS.length; i++) {
+            btnS[i].onclick = function(){
+            console.log('点击了第'+i+'个按钮')
+          }
+        }
+    </script>
+</body>
+</html>

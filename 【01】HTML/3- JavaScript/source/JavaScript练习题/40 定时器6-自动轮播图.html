@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>定时器应用练习6</title>
+    <script src="js/tools.js"></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #outer{
+            width: 520px;
+            height: 350px;
+            margin: 0 auto;
+            margin-top: 50px;
+            padding: 10px 0;
+            background-color: pink;
+            position: relative;
+            overflow: hidden;
+        }
+        ul{
+            /*ul的宽度应该是图片与左右边距的总和*/
+            /*width: 2600px;*/
+            height: 350px;
+            list-style: none;
+            position: absolute;
+            /*每次左移 520px就能显示下一张图片*/
+            left: 0;
+        }
+        li{
+            float: left;
+            margin: 0 10px;
+        }
+        img{
+            width: 500px;
+            height: 350px;
+        }
+        #nav{
+            position: absolute;
+            bottom: 20px;
+            /*左右居中
+            left: 50%;
+            margin-left: -62.5px;*/
+        }
+        #nav>a{
+            /*浮动后自动转换为块级元素*/
+            float: left;
+            width: 15px;
+            height: 15px;
+            margin: 0 5px;
+            background-color:red;
+            opacity: 0.5;
+            /*兼容IE8*/
+            filter:alpha(opacity = 50);
+        }
+        #nav>a:hover{
+            background-color: black;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            var outer = document.getElementById("outer");
+            var ul = document.getElementById("ul");
+            var nav = document.getElementById("nav");
+            var imgArr = document.getElementsByTagName("img");
+            var aArr = document.getElementsByTagName("a");
+            var index = 0;
+            var timer;
+
+            //通过JS动态设置ul的宽度
+            ul.style.width = 520 * imgArr.length + "px";
+            //设置导航条居中的位置
+            nav.style.left = (outer.offsetWidth - nav.offsetWidth)/2 + "px";
+            //设置第一个 a背景颜色默认为黑色
+            aArr[index].style.backgroundColor = "black";
+
+            for(var i = 0; i < aArr.length; i++){
+                //为每一个超链接添加一个num属性
+                aArr[i].num = i;
+                //为每一个超链接 a绑定单击响应函数
+                aArr[i].onclick = function(){
+                    //关闭自动切换图片的定时器
+                    clearInterval(timer);
+                    //改变超链接的索引
+                    index = this.num;
+                    //调用设置超链接背景颜色的函数
+                    setColor();
+
+                    //改变 ul的左移量切换显示的图片
+                    //ul.style.left = (-520 * index) + "px";
+                    //或者通过引入 move函数滑动改变显示的图片
+                    move(ul, "left", -520*index, 20, function(){
+                        //动画执行完毕，开启自动切换图片的定时器
+                        autoChange();
+                    });
+                };
+            };
+            //调用自动切换函数
+            autoChange();
+
+            //定义函数：设置选中的超链接 a的背景颜色
+            function setColor(){
+                //判断当前索引对应的图片是否为最后一张
+                if (index >= imgArr.length - 1) {
+                    //最后一张时将索引置零：即虽然图片在最后一张 但是改变的是第一张的超链接 a的背景颜色
+                    index = 0;
+                    //由于最后一张图片与第一张图片是相同的 通过css将最后一张图片瞬间切换成第一张
+                    ul.style.left = 0;
+                }
+                for(var i = 0; i < aArr.length; i++){
+                    /*若先将所有的 a的背景颜色都设置为红色，由于内联样式的优先级高，鼠标悬停的样式就没有了；
+                    可以将所有的 a的背景颜色都设置为空串，由于内部 style样式中设置了红色，则显示红色*/
+                    aArr[i].style.backgroundColor = "";
+                }
+                //将选中的超链接颜色设置成为黑色
+                aArr[index].style.backgroundColor = "black";
+            };
+
+            //定义函数：自动切换图片
+            function autoChange(){
+                timer = setInterval(function(){
+                index++;
+                //当 index为数组长度时 设置成0
+                index = index % imgArr.length;
+                move(ul, "left", -520*index, 20, function(){
+                    setColor();
+                });  
+            },1000);
+        };
+    };
+    </script>
+</head>
+<body>
+    <div id="outer">
+        <ul id="ul">
+            <li><img src="../images/01.JPG" alt=""></li>
+            <li><img src="../images/02.JPG" alt=""></li>
+            <li><img src="../images/03.JPG" alt=""></li>
+            <li><img src="../images/04.JPG" alt=""></li>
+            <li><img src="../images/05.JPG" alt=""></li>
+            <li><img src="../images/01.JPG" alt=""></li>
+        </ul>
+        <div id="nav">
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+        </div>
+    </div>
+</body>
+</html>

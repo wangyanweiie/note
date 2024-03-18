@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>鼠标跟随div移动</title>
+    <style>
+        #box{
+            width: 100px;
+            height: 100px;
+            background-color:pink;
+            /* 开启绝对定位: 设置div的偏移量等于鼠标的偏移量 */
+            position:absolute;
+        }
+        body{
+            width: 2000px;
+            height: 2000px;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            var box = document.getElementById("box");
+            document.onmousemove = function(event){
+                //解决 IE8兼容问题
+                event = event || window.event;  
+
+                //获取鼠标的坐标 没有单位px
+                //clientX与clientY获取到的是在当前可见窗口的坐标
+                var left = event.clientX;
+                var top = event.clientY;
+
+                //pageX与pageY获取在整个页面的坐标，但只支持IE9及以上的浏览器
+                //var left = event.pageX;
+                //var top = event.pageY;
+
+                //优化：获取滚动条滚动的距离进行相加
+                var ll = document.documentElement.scrollLeft;
+                var tt = document.documentElement.scrollTop;
+
+                /*设置div的偏移量等于鼠标的坐标
+                ① 注意: div的偏移量应该是相对于整个页面的（即滚动条可滑动的全部区域）
+                ② 方法: 
+                  div偏移量 = 当前窗口坐标 + 导航条滚动的距离
+                  div偏移量 = 整个页面坐标（IE8以下浏览器不支持）*/
+                box.style.left = left + ll +"px";
+                box.style.top = top + tt +"px";
+            };
+        };
+
+    </script>
+</head>
+<body>
+    <div id="box"></div>
+</body>
+</html>

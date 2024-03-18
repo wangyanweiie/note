@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //方法1: split+遍历+join
+    function palindrome1(str) {
+      let arr = str.split("");              //将字符串转化为数组
+      arr = arr.filter(val => val !==" ");  //遍历筛选出不是空格的元素保存为新的数组
+      let newStr = arr.join("");            //将新的数组转化为新的字符串
+      return newStr;                        //返回新的字符串
+    }
+    //方法2: replace+正则表达式
+    function palindrome2(str) {
+      let newStr = str.replace(/\s*/g,""); 
+      return newStr;
+    }
+
+    str = "- 1 2 3 4 5 -";
+    console.log(palindrome1(str));
+    console.log(palindrome2(str));
+  </script>
+</body>
+</html>

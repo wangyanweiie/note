@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //去重一: for循环嵌套
+    //注意: 删除j位置的元素,后面的元素自动补位,需要重新判断j位置的新元素;
+    function unique1(arr){
+      for(let i = 0 ; i < arr.length; i++){
+        for(let j = i + 1 ; j < arr.length; j++){
+          if(arr[i] === arr[j]){
+            arr.splice(j,1);
+            j--; 
+          }
+        }
+      }
+      return arr;
+    }
+
+    //去重二: indexOf查找
+    //查找当前数组中是否有该元素,有值则返回下标,没有则返回-1;
+    function unique2(arr){
+      let news = [];
+      for(let i = 0 ; i < arr.length; i++){
+        if(news.indexOf(arr[i]) === -1){
+          news.push(arr[i]);
+        }
+      }
+      return news;
+    }
+
+    //去重三: includes(ES6语法)
+    //arr.includes(元素,索引值) 有值则返回true,没有则返回false;
+    function unique3(arr){
+      let news = [];
+      for(let i = 0 ; i < arr.length; i++){
+        if(news.includes(arr[i]) === false){
+          news.push(arr[i]);
+        }
+      }
+      return news;
+    }
+
+    //去重四: Set + Array.from (ES6语法)
+    //Set是新的数据结构,它类似于数组,但成员的值都是唯一的;
+    //Array.from 可以将伪数组与Set对象转化为数组;
+    function unique4(arr){
+      let set = new Set(arr);
+      return Array.from(set)
+    }
+
+    let arr = [1,2,3,4,4,5,5,4,4,3,2,1];
+    console.log(unique1(arr));
+    console.log(unique2(arr));
+    console.log(unique3(arr));
+    console.log(unique4(arr));
+  </script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>原型链</title>
+</head>
+<body>
+<!------------------------------------
+1、原型链
+（1）访问一个对象的属性时：
+    * 先在自身属性中查找，找到返回;
+    * 如果没有再沿着隐式原型链向上查找, 找到返回;
+    * 如果最终没找到, 则返回 undefined;
+（2）别名: 隐式原型链 .__proto__
+（3）作用: 查找对象的属性(方法)
+
+2、构造函数/原型/实体对象的关系（图）
+3、原型链的继承
+（1）函数的显示原型指向的对象默认是空 Object实例对象（但 Object的原型除外）
+（2）JS中的所有函数/构造函数都是 Function的实例对象（包括 Function自己）
+    * Function = new Function;
+（3）Object的原型对象是原型链尽头 null;
+
+4、原型链中的属性
+（1）读取对象的属性值时: 会自动到原型链中查找;
+（2）设置对象的属性值时: 不会查找原型链, 如果当前对象中没有此属性, 直接添加此属性并设置其值;
+（3）方法一般定义在原型中, 属性一般通过构造函数定义在对象本身上;
+
+5、instanceof
+（1）语法: A实例对象 instanceof B构造函数
+（2）作用：如果构造函数 B的显式原型对象在实例对象A的隐式原型链上, 返回true, 否则返回false
+------------------------------------------------------------------------------------>
+<script type="text/javascript">
+  console.log(Object);
+  console.log(Object.prototype); 
+  console.log(Object.prototype.__proto__);
+//页面创建的函数中之所以都拥有一些共用方法,是因为这些方法都写在了 object的原型对象中
+
+  function Fn(){
+    this.test1 = function(){
+      console.log('test1')
+    };
+  };
+  Fn.prototype.test2 = function () {
+    console.log('test2')
+  };
+  var fn = new Fn();
+  fn.test1();
+  fn.test2();
+  console.log(fn.toString()); //[object Object]
+  console.log(fn.test3);      //undefined
+//---------原型链继承--------
+  //函数的显示原型指向的对象默认是空 Object实例对象(但Object不满足)
+  console.log(Fn.prototype instanceof Object);          // true
+  console.log(Object.prototype instanceof Object);      // false
+  console.log(Function.prototype instanceof Object);    // true
+  //所有函数都是Function的实例(包含Function)
+  console.log(Function.__proto__ === Function.prototype); //true
+  //Object的原型对象是原型链尽头 null
+  console.log(Object.prototype.__proto__);              // null
+
+//---------原型链属性-----------
+  //创建构造函数
+  function Person(name,age) {
+    this.name = name;
+    this.age = age;
+  };
+  //在 person上添加方法
+  Person.prototype.setName = function(name){
+    this.name = name;
+  };
+  //创建实例对象 p1
+  var p1 = new Person('Tom', 12);
+  p1.setName('Bob');
+  console.log(p1);
+  //创建实例对象 p2
+  var p2 = new Person('Jack', 12);
+  p2.setName('Cat');
+  console.log(p2);
+  //p1与 p2的原型相同：true
+  console.log(p1.__proto__ === p2.__proto__);
+
+</script>
+</body>
+</html>

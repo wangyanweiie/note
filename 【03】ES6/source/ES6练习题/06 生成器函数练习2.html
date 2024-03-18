@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>生成器函数练习题:获取数据 </title>
+</head>
+<body>
+    <script>
+        //需求：获取用户数据,用户数据、订单数据、商品数据
+        //生命三个函数分别完成三个异步任务
+        function getUsers(){
+            setTimeout(()=>{
+                let data = '用户数据';
+                //在异步任务中再调用 iterator.next 方法,执行生成器函数中的下一段调用代码,并且将数据传入;
+                //第二次调用 next 方法实参作为第一个 yield 语句的返回值;
+                iterator.next(data);
+            }, 1000);
+        }
+        function getOrders(){
+            setTimeout(()=>{
+                let data = '订单数据';
+                //第三次调用 next 方法实参作为第二个 yield 语句的返回值;
+                iterator.next(data);
+            }, 1000)
+        }
+        function getGoods(){
+            setTimeout(()=>{
+                let data = '商品数据';
+                //第四次调用 next 方法实参作为第三个 yield 语句的返回值;
+                iterator.next(data);
+            }, 1000)
+        }
+        //声明生成器函数
+        function * gen(){
+            let users = yield getUsers();
+            let orders = yield getOrders();
+            let goods = yield getGoods();
+        }
+        //调用生成器函数
+        let iterator = gen();
+        //首次调用一个 next 只执行生成器函数中的第一段调用代码;
+        iterator.next();
+        
+    </script>
+</body>
+</html>

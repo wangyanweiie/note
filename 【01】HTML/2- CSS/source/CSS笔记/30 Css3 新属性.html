@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>css3新属性</title>
+    <style>
+    /*------------------------------------------
+    css3新属性
+    1、圆角
+    （1）取值: px|%
+        ①border-radius:value;                   四角
+        ②border-radius:value value;             左上/右下、右上/左下
+        ③border-radius:value value value;       左上、右上/左下、右下
+        ④border-radius:value value value value; 左上、右上、右下、左下
+    （2）画圆：border-radius:50%;
+
+    2、盒阴影（重点）
+        box-shadow: 水平方向偏移位置  垂直方向偏移位置  模糊度  阴影的尺寸 颜色   位置;
+                        必选            必选           可选    可选      可选   可选
+                        正负            正负           正值    正负          outset|inset
+    3、字阴影
+        text-shadow: 水平方向偏移的位置  垂直方向偏移的位置  模糊度 颜色;
+                          必选               必选          可选   可选
+                          正负               正负          正值
+    4、背景渐变
+    （1）线性渐变：background: linear-gradient(to 方向,颜色1,颜色2,..)
+         方向：left/right/top/bottom/right bottom...或者 deg弧度
+    （2）径向渐变：background: radial-gradient(渐变的中心点,形状,颜色1,样色2,..)
+         厂商前缀兼容性：background: -webkit-radial-gradient
+         默认的渐变中心点在中间: 宽高的一半
+         默认的形状是椭圆: circle正圆
+    
+    5、设置鼠标样式由箭头变成小手
+        cursor: pointer;
+    -------------------------------------------------------*/
+        /*圆角*/
+        .box{
+            width: 600px;
+            height: 200px;
+            border: 3px solid red;
+            /* border-radius: 20px; */
+             border-radius: 5%;
+             /*border-radius: 50%;*/
+            line-height: 200px;
+            text-align: center;
+            /*字阴影*/
+            text-shadow: 10px 10px 5px red;
+            /*背景颜色渐变*/
+            /*background: linear-gradient(to right bottom,red,orange,yellow,green,blue,purple);*/
+            /*background: linear-gradient(120deg,red,orange,yellow,green,blue,purple); */
+            background:-webkit-radial-gradient(center,circle,red,orange,yellow,green,blue,purple);
+
+        }
+        /*盒阴影*/
+        .box:hover{
+            box-shadow: 0 15px 30px rgba(0,0,0,.2);
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="box ">
+    你是年少的欢喜
+</div>
+
+</body>
+</html>

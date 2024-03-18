@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>字体属性</title>
+    <style>
+/*----------------------------------------------------
+字体属性（继承性）
+（1）字体的颜色
+    语法: color: ;
+    取值:
+        ① 关键字：（默认黑色，超链接蓝色不可继承）
+        ② 十六进制：包含0-9 a-f（不区分大小写）
+        ③ rgb()：取值0-255
+        ④ rgba(): a表示透明度取值0-1
+
+（2）字体大小
+    语法: font-size: 16px;
+    注意：浏览器默认字体大小为16px，支持的最小字体为12px
+
+（3）字体加粗
+    语法: font-weight: normal|bold|(100-900);
+    注意: 400=normal  700=bold
+
+（4）字体倾斜
+    语法: font-style: normal|italic;
+
+（5）字体
+    语法: font-family: 字体1,字体2,...;
+    注意：当字体包含空格时，必须加引号，比如"Microsoft YaH"
+--------------------------------------------------------*/
+        .box{
+            color: red;
+            /* color: #ff0000; */
+            /* color: rgb(255,0,0); */
+            /* color: rgba(255,0,0,.5); */
+            font-size: 20px;
+            font-weight: bold;
+            font-style: italic;
+            font-family: 楷体;
+        }
+        b{
+            font-weight: bold;
+        }
+        i{
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+
+<!-- div.className——tab自动补全 -->
+<div class="box">
+    没有语义的块级盒子
+</div>
+
+<b>加粗</b>
+<i>倾斜</i>
+
+</body>
+</html>

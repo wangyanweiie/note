@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<!--
+B站项目新接口: 2021/08/24
+* http://152.136.185.210:7878/api/m5/category
+* http://152.136.185.210:7878/api/m5/home/multidata
+* http://152.136.185.210:7878/api/m5/home/data?type=sell&page=2
+-->
+<!-- 基本使用:main.js -->
+<!-------------------------------------------------------
+1、作用
+  * axios默认发送GET请求,可以通过method=""改变请求类型;
+  * axios请求返回的是一个Promise对象.可以直接通过.then获取到返回的数据;
+  * 请求成功返回的结果中res.data才是服务器返回的真实数据,其余的都是axios框架本身自动添加的;
+  * 请求失败返回的结果中err.message存放的是失败的原因;
+2、安装使用:
+  * npm install axios
+  * import axios from 'axios'
+
+3、请求方式(config代表url/url参数/请求类型等一些配置)
+  * axios(config)
+  * axios.request(config)
+  * axios.get(url, config)
+  * axios.post(url, data{config})
+  ......
+4、并发请求
+  * axios.all([axios(),axios()]).then(()=>{})
+
+5、全局配置
+（1）语法: axios.defaults
+    * 可以配置全局请求都要使用的公共参数;
+    * 全局配置之后所有的请求中自动添加该参数;
+（2）常见配置选项:
+    * 请求地址          url:'/user'
+    * 请求类型          method: 'get/post/put/delete..'
+    * URL查询对象       params:{ id: 12 }
+    * 请求根路径        baseURL: 'http://www.mt.com/api'
+    * 超时设置ms        timeout: 1000,
+    * 响应数据类型      responseType: 'json'
+    * 响应的数据格式    json/ blob/ document/ arraybuffer/ text/ stream
+    * POST请求的请求体  data: { key: 'aa'}
+    * 请求前的数据处理  transformRequest:[function(data){}]
+    * 请求后的数据处理  transformResponse: [function(data){}]
+    * 自定义的请求头    headers:{'x-Requested-With':'XMLHttpRequest'}
+    * 自定义请求处理    adapter: function(resolve, reject, config){}
+    ......
+（3）注意
+    * 请求类型GET: 需要传入params: {}
+    * 请求类型POST: 需要传入data: {}
+---------------------------------------------------------->
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>基础选择器</title>
+    <style>
+/*------------------------------------------------------
+1、基础选择器
+（1）全局选择器：*{}选中页面所有元素
+（2）元素选择器
+    ① div{..}
+    ② p{..}
+    ③ a{..}
+    ④ img{..}
+    ......
+（3）类选择器：利用的HTML的class属性
+    .className{..}
+    注意：className可以重复，一个class可以起多个名字，用空格隔开
+（4）ID选择器：利用HTML的id属性
+    #idName{..}
+    注意：ID名字不能重复，具有唯一性
+（5）合并选择器 (用逗号隔开)
+    选择器1,选择器2,...选择器n
+    {
+        共同样式
+    }
+
+2、选择器优先级（范围越小优先级越高）
+   行内样式 > ID选择器 > 类选择器 > 元素选择器 > 全局选择器
+   权重：1000   100         10          1
+
+3、HTML的通用属性：除了br换行，其他所有标签都有的属性
+    （1）title：鼠标悬停时给予提示
+    （2）style：引入css的行内样式
+    （3）class：类选择器
+    （4）id：ID选择器
+--------------------------------------------------------*/
+        /*全局选择器*/
+        *{
+            color: red;
+        }
+
+        /* 元素选择器 */
+        div{
+            color: blue;
+        }
+        a{
+            color: green;
+        }
+        /* 类选择器 */
+        .box1{
+        color: purple;
+        }
+        .box2{
+        background-color: skyblue;
+        }
+
+        /* id选择器 */
+        #box{
+            color: black;
+        }
+    </style>
+</head>
+<body>
+
+<div class="box1 box2" id="box">盒子1</div>
+<div class="box1">盒子2</div>
+<p>段落1</p>
+<p>段落2</p>
+<h1>标题1</h1>
+<h2>标题2</h2>
+
+<a href="">超链接1</a>
+<a href="">超链接2</a>
+
+</body>
+</html>

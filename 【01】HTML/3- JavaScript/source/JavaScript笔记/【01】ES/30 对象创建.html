@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>对象创建</title>
+</head>
+<body>
+    <script>
+    //对象的创建方法
+    /*----------------------------
+    1、字面量法
+        var 对象名 = {
+            键名:键值,
+            键名:键值
+        };
+
+    2、Object构造函数法
+        var 对象名 = new Object();
+        对象名.属性名 = "属性值";
+        ...
+
+    3、工厂函数方法
+    （1）作用：可以大批量创建对象
+    （2）语法：
+        function 函数名(形参1,形参2,...){
+            var 对象名 = {
+                对象名.属性1 = 形参1,
+                对象名.属性2 = 形参2
+                };
+            return 对象名;
+        };
+    （3）问题：使用工厂方法创建对象使用的构造函数都是Object,
+        所以创建的对象都是object类型,无法区分出多种不同类型的对象;
+    -----------------------------------------------------------*/
+    </script>
+    <script>
+        //字面量法创建对象
+        var obj = {
+            girlName:'成果',
+            age:18,
+            IQ:'150',
+        };
+        console.log(obj);
+        console.log(typeof obj); //object
+
+        // Object构造方法
+        var obj = new Object()
+        console.log(obj);       //{}
+
+        //工厂方法创建对象
+        function createPerson(name,age,gender){
+            var obj = new Object();
+            obj.name = name;
+            obj.age = age;
+            obj.gender = gender;
+            obj.sayname = function(){
+                console.log(this.name);
+            };
+            return obj;
+        }
+        var obj1 = createPerson("成果","18","女");
+        var obj2 = createPerson("张伟","38","男");
+        var obj3 = createPerson("陈赫","38","男");
+        obj1.sayname();     //成果
+        obj2.sayname();     //张伟
+        obj3.sayname();     //陈赫
+    </script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+  //需求:两个网略请求都完成才可以继续执行
+  /**************传统方法**************
+  let isResult1 = false
+  let isResult2 = false
+  $ajax({
+    url: '',
+    success: function () {
+      console.log('结果1');
+      isResult1 = true
+      handleResult()
+    }
+  })
+  $ajax({
+    url: '',
+    success: function () {
+      console.log('结果2');
+      isResult2 = true
+      handleResult()
+    }
+  })
+  function handleResult() {
+    if (isResult1 && isResult2) {}
+  }*/
+
+  //**********使用Promise.all方法**********
+  Promise.all([
+    //需求: 有两个网络请求都完成才继续执行
+    /*new Promise((resolve, reject) => {
+      $.ajax({
+        url: 'url1',
+        success: function (data) {
+          resolve(data)
+        }
+      })
+    }),
+    new Promise((resolve, reject) => {
+      $.ajax({
+        url: 'url2',
+        success: function (data) {
+          resolve(data)
+        }
+      })
+    })*/
+
+   //通过setTimeout模拟网络请求
+    new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve({name: 'why', age: 18})
+      },1000)
+    }),
+    new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve({name: 'kobe', age: 18})
+      },2000)
+    })
+    
+  ]).then(results => {
+    console.log(results);
+  })
+</script>
+</body>
+</html>

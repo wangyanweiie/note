@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Set练习</title>
+</head>
+<body>
+    <script>
+        let arr = [1,2,3,4,5,4,3,2,1];
+        //************数组去重***********
+        //直接声明输出自动去重后是一个Set集合伪数组
+        //let result = new Set(arr);
+        //...扩展运算符将其拆分为参数序列 + []组合
+        let result = [...new Set(arr)];
+        console.log(result);
+
+        //************交集***********
+        let arr2 = [4,5,6,5,6];
+        /*将数组1去重,再使用扩展运算符将Set集合转换为真正的数组;
+        并使用filter方法数组过滤,将符合条件的元素放进新数组返回*/
+        let common = [...new Set(arr)].filter(item => {
+            //将数组2去重变成Set集合,使用 has方法检测集合中是否包含某个元素;
+            let s2 = new Set(arr2);
+            if(s2.has(item)){
+                return true;
+            }else{
+                return false;
+            }
+        });
+        //let common = [...new Set(arr)].filter(item => new Set(arr2).has(item));
+        console.log(common);
+
+        //************并集***********
+        /*先使用...将数组1与数组2拆分成参数序列 + [] 组合成数组;
+        再使用 Set进行去重,此时转化成了set集合,再使用... + [] 组合新的数组;*/
+        let union = [...new Set([...arr, ...arr2])];
+        console.log(union);
+
+        //************差集***********
+        //在数组1中查找数组2中的元素：只在数组1中,不在数组2中的元素
+        let diff = [...new Set(arr)].filter(item => !(new Set(arr2).has(item)));
+        console.log(diff);
+
+    </script>
+</body>
+
+</html>

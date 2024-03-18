@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<!-- 注册组件的语法糖方式 -->
+<!-----------------------------
+（1）全局组件语法糖
+  Vue.component('组件标签名',{
+    template: `
+      <div>
+        <h2>全局组件</h2>
+        <p>段落内容</p>
+        ......
+      </div>`
+  })
+（2）局部组件语法糖：在vue实例中添加compontants属性
+  （可以将组件标签名的键值分离出来写）
+  components: {
+    组件标签名: {
+      template: `
+        <div>
+          <h2>局部组件</h2>
+          <p>段落内容</p>
+          ......
+        </div>`
+    }
+  } 
+（3）作用：主要是省去了调用Vue.extend()的步骤,而是直接使用一个对象来代替;
+--------------------------------------------------------------------->
+<div id="app">
+  <cpn1></cpn1>
+  <cpn2></cpn2>
+</div>
+
+<script src="../js/vue.js"></script>
+<script>
+  //*************注册全局组件**************
+  //完整写法：创建组件构造器 + 在全局注册组件
+  /*const constructor1 = Vue.extend({
+    template: `
+      <div>
+        <h2>全局组件</h2>
+        <p>我是内容哈哈</p>
+      </div>`
+  })
+  Vue.component('cpn1',constructor1)*/
+
+  //语法糖写法：
+  Vue.component('cpn1',{
+    template: `
+      <div>
+        <h2>全局组件</h2>
+        <p>我是内容哈哈</p>
+      </div>`
+  })
+
+  //**************注册局部组件**************
+  //完整写法：创建构造器 + 在vue实例中注册组件
+  /*const constructor2 = Vue.extend({
+    template: `
+      <div>
+        <h2>局部组件</h2>
+        <p>我是内容呵呵</p>
+      </div>`
+  })
+  const app = new Vue({
+    el: '#app',
+    components: {
+      cpn2: constructor2
+    }
+  })*/
+
+  //语法糖写法：
+  const app = new Vue({
+    el: '#app',
+    components: {
+      //此时cpn2的键值{}即为vue实例的子组件
+      cpn2: {       
+        template: `
+          <div>
+            <h2>局部组件</h2>
+            <p>我是内容呵呵</p>
+          </div>`
+      }
+    }
+  })
+
+  //+++++可以在语法糖格式下分离键名与键值产生组件之间的父子关系+++++
+  //子组件
+  const cpn2 = {       
+        template: `
+          <div>
+            <h2>局部组件</h2>
+            <p>我是内容呵呵</p>
+          </div>`
+      }
+  //父组件(vue实例)
+  const app = new Vue({
+    el: '#app',
+    components: {
+      //在vue实例中注册组件cpn2:cpn2成为vue实例的子组件
+      //自定义键值名,定义成与键名相同方便写成对象字面量增强写法：cpn2
+      //cpn2: cpn2  
+      cpn2
+    }
+  })
+</script>
+
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>二级菜单练习</title>
+		<link rel="stylesheet" type="text/css" href="css/41sdmenu.css" />	
+		<script type="text/javascript" src="js/tools.js"></script>
+		<script type="text/javascript">
+        /*二级菜单：点击菜单以后，切换展开与关闭
+        若为元素添加的 名为collapsed的类则菜单关闭，若移除元素的collapsed类则菜单展开*/
+			window.onload = function(){	
+				var menuSpan = document.querySelectorAll(".menuSpan");	//获取所有的 span标签
+				var openDiv = menuSpan[0].parentNode;										//创建变量保存当前正在打开显示的菜单
+
+				for(var i=0 ; i<menuSpan.length ; i++){
+					menuSpan[i].onclick = function(){											//遍历为每一个span标签绑定单击响应函数
+						var parentDiv = this.parentNode;										//this代表当前点击的span 获取其父元素div
+
+						//调用封装的切换class的函数、切换打开关闭菜单
+            //toggleClass(parentDiv,"collapsed");								
+						toggleMenu(parentDiv);
+
+						/*二级菜单只能有一个展开、故在展开新的菜单时要将之前的关闭*/
+						if(openDiv != parentDiv && !hasClass(openDiv,"collapsed")){
+
+							/*为了统一处理过渡的效果可以将 addClass()也修改为 toggleClass()
+              而由于此时只需要添加、不需要删除功能，故添加判断条件需要当前元素没有collapsed类才执行*/
+							//addClass(openDiv,"collapsed");
+              //toggleClass(openDiv,"collapsed");
+							toggleMenu(openDiv);
+						}
+						//更新保存当前正在打开显示的菜单
+						openDiv = parentDiv;		
+					};
+				}
+
+				/*定义函数：用来切换菜单的折叠与显示状态
+				 参数：obj 需要切换的菜单*/
+				function toggleMenu(obj){
+					//在切换前，获取div的高度
+					var begin = obj.offsetHeight;
+					//为当前的div切换collapsed类
+					toggleClass(obj,"collapsed");
+					//在切换后，再获取 div的高度
+					var end = obj.offsetHeight;
+
+					//先将元素的高度通过内联样式重置为 begin (优先级最高)
+					obj.style.height = begin + "px";
+					//动画效果：再通过 move()函数将元素的高度由 begin向 end过渡
+					move(obj,"height",end,15,function(){
+						//动画执行完毕要删除内联样式，不然由于内联样式优先级问题 toggleClass函数无效
+						obj.style.height = "";
+					});
+				}
+			};	
+		</script>	
+	</head>
+	<body>
+		<div id="my_menu" class="sdmenu">
+			<div>
+				<span class="menuSpan">在线工具</span>
+				<a href="#">图像优化</a>
+				<a href="#">收藏夹图标生成器</a>
+				<a href="#">邮件</a>
+				<a href="#">htaccess密码</a>
+				<a href="#">梯度图像</a>
+				<a href="#">按钮生成器</a>
+			</div>
+			<div class="collapsed">
+				<span class="menuSpan">支持我们</span>
+				<a href="#">推荐我们</a>
+				<a href="#">链接我们</a>
+				<a href="#">网络资源</a>
+			</div>
+			<div class="collapsed">
+				<span class="menuSpan">合作伙伴</span>
+				<a href="#">JavaScript工具包</a>
+				<a href="#">CSS驱动</a>
+				<a href="#">CodingForums</a>
+				<a href="#">CSS例子</a>
+			</div>
+			<div class="collapsed">
+				<span class="menuSpan">测试电流</span>
+				<a href="#">Current or not</a>
+				<a href="#">Current or not</a>
+				<a href="#">Current or not</a>
+				<a href="#">Current or not</a>
+			</div>
+		</div>
+	</body>
+</html>

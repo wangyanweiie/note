@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+  <!-----------------------------------------------
+  6、作用域插槽
+  （1）理解:父组件替换插槽的标签,但是内容由子组件来提供;
+  （2）流程:
+    * 在父组件使用我们的子组件模板时,从子组件中拿到数据 :data = "子组件属性";
+    * 在父组件模板中使用<template slot-scope = "xxx">;
+    * 通过 xxx.data 就可以获取到刚才我们传入data的子组件属性了;
+  ----------------------------------------------------------->
+  <!--父组件模板-->
+  <!--获取子组件中的Languages: slot-scope="xxx"是固定写法, xxx.date即可获取数组-->
+  <div id="app">
+    <cpn>
+      <template slot-scope="scope">
+        <h5 v-for="item in scope.data">{{item}}</h5>
+      </template>
+    </cpn>
+  </div>
+
+  <!--子组件模板-->
+  <!--data是自定义的变量名,赋值为要获取的数组-->
+  <template id="cpn">
+    <div>
+      <slot :data="name"></slot>
+    </div>
+  </template>
+
+  <!-- 外部引入vue.js -->
+  <script src="../js/vue.js"></script>
+  <script>
+    //父组件
+    const app = new Vue({
+      el: '#app',
+      data: { },
+      components: {
+        //子组件
+        cpn: {
+          template: '#cpn',
+          data() {
+            return {
+              name: ['小王','小白','小黑','小明']
+            }
+          }
+        }
+      }
+    })
+  </script>
+</body>
+</html>

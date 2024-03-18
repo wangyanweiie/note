@@ -1,0 +1,20 @@
+.box{
+    width: 100%;
+    height: 200px;
+    background: skyblue;
+    /*开启弹性盒，子元素默认水平排列*/
+    display: flex;
+    /*设置子元素在侧轴的对齐方式*/
+    align-items: center;
+}
+.box>div{
+    /*设置子元素宽度之间的比例*/
+    flex-grow: 1;
+}
+.box img{
+    width: 50px;
+    height: 50px;
+}
+.box a{
+    color: white;
+}

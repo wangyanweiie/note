@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<!-- 改变URL但不刷新页面 -->
+<!---------------------------------------------------------------
+1、location.hash
+（1）理解: URL的hash也就是锚点,本质上是改变window.location的href属性;
+（2）语法: location.hash = " "
+
+2、history
+（1）理解: history接口是HTML5新增的,它有五种模式改变URL而不刷新页面;
+（2）语法:
+    * history.pushState({},"","/foo")     可前进后退相当于进栈出栈;
+    * history.replaceState({},"","/foo")  最新的url替换上一次的url,不能返回;
+    * history.go()                        等同于浏览器界面的前进后退;
+    * history.back()    == history.go(-1)
+    * history.forward() == history.go(1)
+
+3.hash与history的区别
+（1）hash
+  * hash虽然出现url中,但不会被包含在HTTP请求中,对后端完全没有影响,因此改变hash不会重新加载页面;
+  * hash的传参是基于url的,如果要传递复杂的数据会有体积的限制;
+（2）history
+  * 改变history也不会重新加载页面;
+  * history模式不仅可以在url里放参数,还可以将数据存放在一个特定的对象中;
+-------------------------------------------------------------------->
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>innerHTML</title>
+</head>
+<body>
+    <div id="box">你是年少的欢喜</div>
+    <div id="box1">你是年少的欢喜</div>
+    
+    <script>   
+        /*-------------------------------------------------------------
+        1、节点属性   （nodeName、nodeType、nodeValue）
+        （1）文档节点： #document    9       null
+        （2）元素节点： 标签名        1       null
+        （3）属性节点： 属性名        2      属性值
+        （4）文本节点： #text        3      文本内容
+
+        2、innerHTML
+        （1）语法：元素名.innerHTML;
+        （2）作用：该属性可以获取到元素内部的 HTML代码,并可以进行增删改操作;
+        （3）注意：对于没有内部的单标记标签 innerHTML属性没有任何意义;
+                并且在使用innerHTML进行修改操作时是直接用新的值覆盖掉原来的值;
+
+        3、innerText
+        （1）语法：元素名.innerText;
+        （2）作用：该属性可以自动将 HTML标签去除,只获取到元素内部的文本内容;
+        ---------------------------------------------------------------*/
+    </script>
+    <script>
+        //通过追加文本改变div里面的值：在原来的基础上增加
+        //获取元素
+        var box = document.getElementById("box");
+        //创建文本
+        var text = document.createTextNode("+中意你");
+        //将文本追加到 div中
+        box.appendChild(text);
+        
+        //通过innerHTML改变div里面的值：把原来的覆盖掉
+        //获取元素
+        var box1 = document.getElementById("box1");
+        box1.innerHTML = "+中意你";
+
+    </script>
+</body>
+</html>

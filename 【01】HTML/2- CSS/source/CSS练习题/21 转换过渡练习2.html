@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>转换练习2：放大</title>
+    <style>
+        .box{
+            width: 276px;
+            height: 276px;
+            background: pink;
+            /*div溢出部分隐藏*/
+            overflow: hidden;
+        }
+        .box>img{
+            width: 100%;
+            /*设置过渡时间0.3s*/
+            transition:all 0.3s;
+        }
+        .box>img:hover{
+            transform: scale(1.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <img src="../images/21.jpg " alt=""/>
+    </div>
+</body>
+</html>

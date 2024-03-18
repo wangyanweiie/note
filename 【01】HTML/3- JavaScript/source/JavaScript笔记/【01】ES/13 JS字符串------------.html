@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>字符串</title>
+</head>
+<body>
+    <script>
+        /*---------------------------------------------------
+        字符串
+        1、定义：引号包含的任意文本,单双引号都可以,可以相互嵌套;
+        2、作用：存储文本
+        3、转义字符 (\反斜杠)：加在产生歧义内容的前面;
+
+        4、一个字符串需要定义在同一行,写在多行会报错;
+            解决方法：
+            （1）+：字符串拼接
+            var str = '中'+
+                    '国'+
+                    '加'+
+                    '油';
+            （2）\：转义字符
+            var str = '中\
+                    国\
+                    加\
+                    油';
+        -----------------------------------------------------*/
+    </script>
+    <script>
+        //字符串定义写在多行的方法
+        var str1 = '中'+
+                '国'+
+                '加'+
+                '油';
+        var str2 = '中\
+                国\
+                加\
+                油';
+        document.write(str1);
+        document.write("<br>");
+        document.write(str2);
+    </script>
+</body>
+</html>

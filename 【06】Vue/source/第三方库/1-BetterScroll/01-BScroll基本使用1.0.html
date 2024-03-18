@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    .content {
+      height: 200px;
+      background-color: pink;
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body>
+<div>
+  <div class="content">
+    <ul>
+      <button class="btn">点击按钮</button>
+      <li>列表数据1</li>
+      <li>列表数据2</li>
+      <li>列表数据3</li>
+      <li>列表数据4</li>
+      <li>列表数据5</li>
+      <li>列表数据6</li>
+      <li>列表数据7</li>
+      <li>列表数据8</li>
+      <li>列表数据9</li>
+      <li>列表数据10</li>
+      <li>列表数据11</li>
+      <li>列表数据12</li>
+      <li>列表数据13</li>
+      <li>列表数据14</li>
+      <li>列表数据15</li>
+      <li>列表数据16</li>
+      <li>列表数据17</li>
+      <li>列表数据18</li>
+      <li>列表数据19</li>
+      <li>列表数据20</li>
+    </ul>
+  </div>
+</div>
+
+<script src="./01-bscroll.js"></script>
+<script>
+  //BetterScroll(1.0)
+  /****************************************************************
+  probe属性: 监听滑动位置,默认情况下BScroll不可以实时的监听滚动位置;
+    * 0: 不侦测
+    * 1: 不实时侦测位置;
+    * 2: 在手指滚动的过程中实时侦测位置,手指离开后的惯性滚动过程中不侦测;
+    * 3: 只要是滚动,不管手指滚动还是惯性滚动都实时侦测位置;
+  ******************************************************************/
+  //const bs = new BScroll(document.querySelector('.content'), {
+  const bs = new BScroll('.content', {
+    probeType: 3,     //可以监听滑动位置: probe属性
+    click: true,      //在BS框架中监听元素的点击事件需要设置属性 click:true
+    pullUpLoad: true  //开启上拉加载功能: pullUpLoad: true 或者是一个对象{}
+  })
+  //监听滑动事件
+  bs.on('scroll',(position) => {
+    //console.log(position);
+  })
+
+  //监听上拉加载事件
+  bs.on('pullingUp',() => {
+    console.log('上拉加载更多');
+    //发送网络请求,请求更多页的数据; 等数据请求完成,并且将新的数据展示出来后需要进行下一次加载;
+    setTimeout(() => {
+      bs.finishPullUp()   //bs.finishPullUp: 进行下一次上拉加载
+    }, 1000)
+  })
+  
+  //原生: 监听按钮点击事件
+  document.querySelector('.btn').addEventListener('click',function(){
+    console.log('哈哈哈');
+  })
+</script>
+</body>
+</html>
