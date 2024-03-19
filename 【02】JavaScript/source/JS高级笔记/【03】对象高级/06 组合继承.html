@@ -10,38 +10,45 @@
 
 （1）原型链实现对父类型原型属性/方法的继承
     * 子类型的原型为父类型的一个实例对象
-    * 子类型原型的构造属性constructor指向子类型
+    * 子类型原型的构造属性 constructor 指向子类型
 
 （2）借用父类型构造函数的私有属性/方法
-    * 在子类型构造函数中使用 call(this,)调用父类型构造函数,
-      改变其this指向为子类构造函数的this;
+    * 在子类型构造函数中使用 call(this,) 调用父类型构造函数,
+      改变其 this 指向为子类构造函数的 this;
 ------------------------------------------------------->
 <script type="text/javascript">
-  //父类型构造函数：Person
+  // 父类型构造函数：Person
   function Person(name,age){
     this.name = name;
     this.age = age;
   };
-  //在父类型的原型上添加方法
+
+  // 在父类型的原型上添加方法
   Person.prototype.setName = function(name){
     this.name = name;
   };
-  //子类型构造函数 Student
-  function Student(name,age,price){
-    //借用构造函数继承：为了得到"父类型"的私有属性;
+
+  // 子类型构造函数 Student
+  function Student(name, age, price){
+    // 借用构造函数继承：为了得到"父类型"的私有属性;
     Person.call(this,name,age);
     this.price = price;
   };
-  //原型继承：为了能访问父类型的方法
+
+  // 原型继承：为了能访问父类型的方法
   Student.prototype = new Person(); 
-  //修正constructor属性的指向;
+
+  // 修正 constructor 属性的指向;
   Student.prototype.constructor = Student; 
-  //在子类型的原型上添加方法
+
+  // 在子类型的原型上添加方法
   Student.prototype.setPrice = function(price){
     this.price = price;
   };
+  
   //创建子类型的实例对象,调用子类型与父类型原型上的方法;
   var s = new Student('Tom', 24, 15000);
+
   s.setName('Bob');
   s.setPrice(20000);
   console.log(s.name, s.age, s.price);

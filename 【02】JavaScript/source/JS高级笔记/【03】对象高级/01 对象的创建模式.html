@@ -14,9 +14,9 @@
     键名:键值,
     键名:键值
   };
-（2）套路: 使用{}创建对象,同时指定属性/方法
+（2）套路: 使用{}创建对象, 同时指定属性/方法
 （3）适用场景: 起始时对象内部数据是确定的
-（4）问题: 如果创建多个对象,有重复代码
+（4）问题: 如果创建多个对象, 有重复代码
 
 2、Object构造函数法
 （1）语法
@@ -24,13 +24,13 @@
     对象名.属性名 = "属性值";
     对象名.属性名 = "属性值";
     ...
-（2）套路: 先创建空Object对象,再向对象中动态添加属性/方法
+（2）套路: 先创建空 Object 对象, 再向对象中动态添加属性/方法
 （3）适用场景: 起始时不确定对象内部数据
 （4）问题: 语句太多
 
 3、工厂方法
 （1）语法
-  function 函数名(形参1,形参2,...){
+  function 函数名(形参1, 形参2, ...){
     var 对象名 = {
       对象名.属性名 = 形参1,
       对象名.属性名 = 形参2,
@@ -40,11 +40,11 @@
   };
 （2）套路: 通过工厂函数动态创建对象并返回
 （3）适用场景: 需要创建多个对象
-（4）问题: 对象没有一个具体的类型,都是Object类型
+（4）问题: 对象没有一个具体的类型, 都是 Object 类型
 -------------------------------------------------------->
 <script type="text/javascript">
 
-//************字面量法************
+// ************ 字面量法 ************
 var p = {
     name: 'Tom',
     age: 12,
@@ -56,10 +56,10 @@ var p = {
   p.setName('JACK');
   console.log(p.name, p.age);
 
-//*********object构造函数法********
-  //先创建空 Object对象
+//********* object 构造函数法 ********
+  // 先创建空 Object对象
   var p = new Object();
-  //再添加属性/方法
+  // 再添加属性/方法
   p.name = 'Tom';
   p.age = 12;
   p.setName = function(name){
@@ -69,8 +69,8 @@ var p = {
   p.setName('Bob');
   console.log(p.name, p.age);
 
-//************工厂方法************
-//返回一个对象的函数 ===>工厂函数
+// ************ 工厂方法 ************
+// 返回一个对象的函数 ===>工厂函数
   function createPerson(name,age){ 
     var obj = {
       name: name,
@@ -81,12 +81,13 @@ var p = {
     };
     return obj;
   };
-  //创建对象 p1与 p2,并输出
+
+  // 创建对象 p1 与 p2, 并输出
+  // p1 与 p2 都是 Object 类型
   var p1 = createPerson('Tom', 12);
   var p2 = createPerson('Lucy', 15);
   console.log(p1.name, p1.age);
   console.log(p2.name, p2.age);
-  //p1与 p2都是 Object类型
 
   function createStudent(name,price){
     var obj = {
@@ -95,9 +96,7 @@ var p = {
     };
     return obj;
   };
-  var s = createStudent('张三', 10000);
-  //s也是 Object类型
-
+  var s = createStudent('张三', 10000); // s 也是 Object类型
 </script>
 </body>
 </html>

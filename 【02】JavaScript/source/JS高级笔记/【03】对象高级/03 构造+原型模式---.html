@@ -8,7 +8,7 @@
 <!-------------------------------
 5、构造函数+原型的组合模式
 （1）语法：
-    function 构造函数名(形参1,形参2,...){
+    function 构造函数名 (形参1, 形参2, ...){
       this.属性名 = 形参1;
       this.属性名 = 形参2;
       .....
@@ -16,19 +16,21 @@
     构造函数名.prototype.方法名 = function(){
       this.属性名 = "属性值";
     };
-（2）套路: 自定义构造函数,属性在函数中初始化,方法添加到原型上;
+（2）套路: 自定义构造函数, 属性在函数中初始化, 方法添加到原型上;
 （3）适用场景: 需要创建多个类型确定的对象
 --------------------------------------------------------------->
 <script type="text/javascript">
-//属性放在函数中
+  // 属性放在函数中
   function Person(name,age){
     this.name = name;
     this.age = age;
   };
-//方法放在原型中
+  
+  // 方法放在原型中
   Person.prototype.setName = function (name){
     this.name = name;
   };
+
   var p1 = new Person('Tom', 15);
   var p2 = new Person('Bob', 20);
   console.log(p1, p2);
